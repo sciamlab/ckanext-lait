@@ -27,6 +27,7 @@ this.ckan.module('spatial-query', function ($, _) {
     initialize: function () {
       var module = this;
       $.proxyAll(this, /_on/);
+      L.Icon.Default.imagePath = this.options.site_url + 'js/vendor/leaflet/images';
 
       var user_default_extent = this.el.data('default_extent');
       if (user_default_extent ){
@@ -71,6 +72,9 @@ this.ckan.module('spatial-query', function ($, _) {
       var is_exanded = false;
       var should_zoom = true;
       var form = $("#dataset-search");
+      var ricerca = $("#field-geometric-search");
+      var markersLayer = new L.FeatureGroup();
+      
       // CKAN 2.1
       if (!form.length) {
           form = $(".search-form");
@@ -98,6 +102,17 @@ this.ckan.module('spatial-query', function ($, _) {
           title: 'Draw rectangle'
         }
       }));
+      map.addLayer(markersLayer);      
+      
+      //Imposta gli eventi sul geocoder
+      ricerca.on("select2-selecting", function(e){
+    	  var coordinates = e.val.split(" ");
+    	  markersLayer.clearLayers();
+  		  L.marker([coordinates[0], coordinates[1]]).addTo(markersLayer).bindPopup(e.object.text).openPopup();    	  
+    	  map.fitBounds([[coordinates[0], coordinates[1]],[coordinates[0], coordinates[1]]]);
+    	  map.zoomOut(4);
+    	  e.object.id="";
+      	});
 
       // OK add the expander
       $('.leaflet-control-draw a', module.el).on('click', function(e) {
@@ -108,6 +123,7 @@ this.ckan.module('spatial-query', function ($, _) {
           }
           resetMap();
           is_exanded = true;
+          $(".geometric-search").show();       
         }
       });
 
@@ -124,6 +140,7 @@ this.ckan.module('spatial-query', function ($, _) {
         setPreviousBBBox();
         resetMap();
         is_exanded = false;
+        $(".geometric-search").hide();
       });
 
       // Handle the apply expanded action

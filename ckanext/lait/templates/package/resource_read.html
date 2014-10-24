@@ -26,12 +26,37 @@
           {% block resource_actions %}
           <ul>
             {% block resource_actions_inner %}
+            {% if c.userobj!=None%}
+              <li>
+                <script type="text/javascript">
+                  function improve(){
+              			var btn = document.getElementById("improve");
+              			if (btn.className == "btn btn-improve") {
+              				btn.className = "btn btn-default active";
+              			} else {
+              				btn.className = "btn btn-improve";
+              			}
+                  }
+                </script>
+                <button id="improve" type="button" class="btn btn-improve" onclick="improve();">
+                  {{ _('Improve the data') }}
+                </button>
+            {% endif %}
             {% if h.check_access('package_update', {'id':pkg.id }) %}
               <li>{% link_for _('Manage'), controller='package', action='resource_edit', id=pkg.name, resource_id=res.id, class_='btn', icon='wrench' %}</li>
             {% endif %}
             {% if res.url %}
               <li>
-                <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}">
+                <script type="text/javascript">
+                  document.getElementById("licenseModal").style = '';
+                  document.getElementById("resource-license-name").innerHTML = '<b>{{pkg.license_title}}</b>';
+                  document.getElementById("resource-license-url").innerHTML = '<a target="_blank" href="{{pkg.license_url}}">{{pkg.license_url}}</a>';
+                  document.getElementById("license-confirmation").onclick = function(){
+                    $('#licenseModal').modal('hide')
+                    window.location.href = '{{res.url}}';
+                  };
+                </script>
+                <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="#licenseModal" data-toggle="modal">
                   {% if res.resource_type in ('listing', 'service') %}
                     <i class="icon-eye-open"></i> {{ _('View') }}
                   {% elif  res.resource_type == 'api' %}
@@ -71,6 +96,11 @@
         </div>
       </div>
       {% block data_preview %}
+	 {% if (res.format.lower() == "geojson" or res.format.lower() == "gjson" or res.format.lower() == "wms" or res.format.lower() == "csv") %}
+	    <div style="padding: 0 25px 10px;">
+              <input type="text" class="geometric-search" placeholder="Cerca su mappa" id="field-geometric-search" data-module="autocomplete" data-module-source="http://ovpngw.sinergis.it/catalog/geocoding_gazetteer?q=?" data-module-key="Value">
+	    </div>
+        {% endif %}
         {{ h.resource_preview(c.resource, c.package) }}
       {% endblock %}
     </section>

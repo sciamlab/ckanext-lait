@@ -49,4 +49,3 @@
     <dct:rights py:if="c.pkg_dict.get('license_url', None)" rdf:resource="${c.pkg_dict['license_url']}"/>
   </dcat:Dataset>
 </rdf:RDF>
-

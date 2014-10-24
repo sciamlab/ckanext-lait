@@ -1,0 +1,14 @@
+{% extends "dataviewer/base.html" %}
+
+{% block page %}
+    <div data-module="wmspreview" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}" id="data-preview" user="{{ c.userobj.name }}" id_dataset="{{ c.package.id }}" id_risorsa="{{ c.resource.id }}" message_puntual_proposition_insert="{{_('Enter a detailed proposal positioning')}}" message_proposition_description="{{_('Insert description')}}">
+        <h4 class="loading-dialog">
+          <div class="loading-spinner"></div>
+          <div class="left">{{ _('Loading...') }}</div>
+        </h4>
+    </div>
+
+  {% resource 'ckanext-lait/wms' %}
+
+{% endblock %}
+

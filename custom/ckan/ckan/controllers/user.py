@@ -349,9 +349,12 @@ class UserController(base.BaseController):
                 vars = {'error_summary': {'': error}}
             else:
                 vars = {}
-            return render('user/login.html', extra_vars=vars)
+            #return render('user/login.html', extra_vars=vars)
+            # LAit customization
+            return render('_login.html')
         else:
-            return render('user/logout_first.html')
+            # LAit customization
+            return render('_login.html')
 
     def logged_in(self):
         # redirect if needed

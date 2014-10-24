@@ -5,7 +5,7 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="CKAN LAit customization">
-    <target name="ckan" description="Copy the CKAN customized controllers into the src directory">
+  	<target name="ckan" description="Copy the CKAN customized controllers into the src directory">
 
         <copy todir="../../ckan/ckan">
             <fileset dir="ckan/ckan">
@@ -21,6 +21,9 @@
               <include name="**/*.py"/>
             </fileset>
         </copy>
-  	
-    </target>              	
+
+        <copy file="ckan/ckanext/reclinepreview/plugin.py" todir="../../ckan/ckanext/reclinepreview"/>
+        <copy file="ckan/ckanext/reclinepreview/theme/templates/recline_lait.html" todir="../../ckan/ckanext/reclinepreview/theme/templates"/>
+
+  	</target>              	
 </project>

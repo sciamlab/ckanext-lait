@@ -1,0 +1,67 @@
+{% extends "app/page.html" %}
+{% import 'macros/form.html' as form %}
+
+{% block subtitle %}{{ _('Apps') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Apps'), controller='ckanext.lait.plugin:LaitController', action='app' %}</li>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block primary_content_inner %}
+  <h1 class="hide-heading">{{ _('Apps') }}</h1>
+  	{% set q = request.params.q %}
+    {% if q %}
+	  	{% set params = 't=application&q='+q %}
+	  {% else %}
+	  	{% set params = 't=application' %}
+	  {% endif %}
+    {% set apps = h.apps(params) %}
+    {% set apps_translated = h.translate_resource_data_dict_list(apps.items) %}
+    <!-- START SEARCH FORM -->
+	<form class="search-form no-bottom-border" method="get" data-module="select-switch" style="padding-bottom:25px">
+
+      <div class="search-input control-group search-giant">
+        <input type="text" class="search" name="q" value="{{ q }}" autocomplete="off" placeholder="{{ _('Search Apps') }}..." >
+        <button type="submit" value="search">
+          <i class="icon-search" ></i>
+          <span>{{ _('Submit') }}</span>
+        </button>
+  	    </div>
+
+	  <h2 style="font-weight:bold;">
+	  	{% set text_query = ungettext('{number} app found for "{query}"', '{number} apps found for "{query}"', apps.item_count) %}
+	  	{% set text_query_none = _('No apps found for "{query}"') %}
+	  	{% set text_no_query = ungettext('{number} app found', '{number} apps found', apps.item_count) %}
+		{% if q %}
+		  {%- if apps.item_count -%}
+		    {{ text_query.format(number=h.localised_number(apps.item_count), query=q) }}
+		  {%- else -%}
+		    {{ text_query_none.format(query=q) }}
+		  {%- endif -%}
+		{%- else -%}
+		  {%- if apps.item_count -%}
+		    {{ text_no_query.format(number=h.localised_number(apps.item_count)) }}
+		  {%- else -%}
+		    {{ _('No apps found') }}
+		  {%- endif -%}
+		{%- endif -%}
+	  </h2>
+	</form>
+	<!-- END SEARCH FORM -->
+
+	{% if apps.items or request.params %}
+      {% if apps.items %}
+      	{% snippet "app/snippets/app_list.html", apps=apps_translated %}
+      {% endif %}
+    {% else %}
+      <p class="empty">
+        {{ _('There are currently no apps for this site') }}.
+      </p>
+    {% endif %}
+    {{ apps.pager() }}
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}

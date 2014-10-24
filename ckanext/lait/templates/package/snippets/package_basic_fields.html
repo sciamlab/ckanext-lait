@@ -19,6 +19,7 @@
   <label class="control-label" for="field-category">{{ _('Category') }}</label>
   <div class="controls">
     <select id="field-category" name="category" data-module="autocomplete">
+      <option value=""></option>
       {% for category in h.categories().categories  %}
         <option value="{{ category.name }}" {% if data.get('category') == category.name %}selected="selected"{% endif %}>{{ category.name }}</option>
       {% endfor %}
@@ -26,11 +27,33 @@
     {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
   </div>
 </div>
-{{ form.textarea('spatial', id='field-spatial', label=_('Location'), placeholder=_('eg. GeoJson data'), value=data.spatial, error=errors.spatial) }}
+<div class="edit-spatial-box">
+  {{ form.textarea('spatial', id='field-spatial', label=_('Location'), placeholder=_('eg. GeoJson data'), value=data.spatial, error=errors.spatial) }}
+  <div class="control-group">
+    {% set error = errors.comuni %}
+    <label class="control-label">{{ _('Municipality') }}</label>
+    <div class="controls">
+      <select id="field-comuni" name="comuni" data-module="autocomplete">
+        <option value=""></option>
+      </select>
+      {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="'field-spatial">{{_('Map')}}</label>
+    <div class="controls">
+      <button class="btn btn-mini" onclick="$('#mapDiv').toggle(); if ($('#mapDiv').is(':visible') ) {this.innerHTML='{{_('Close Map')}}'} else {this.innerHTML='{{_('Open Map')}}'}; return false;">{{_('Open Map')}}</button>
+      <div id="mapDiv" style="display:none;">
+        {% snippet "package/snippets/geolocalization.html", default_extent=[[40.904, 11.559], [42.904, 13.559]]%}
+      </div>
+    </div>
+  </div>
+</div>
 <!-- div class="control-group">
   <label class="control-label" for="field-rating-avg">{{ _('Rating Average') }}</label>
   <div class="controls" --><input id="field-rating-avg" type="hidden" name="rating_average" value="{{ data.get('rating_average') }}"><!-- /div>
 </div>
+
 <div class="control-group">
   <label class="control-label" for="field-rating-int">{{ _('Rating Average Int') }}</label>
   <div class="controls" --><input id="field-rating-int" type="hidden" name="rating_average_int" value="{{ data.get('rating_average_int') }}"><!-- /div>

@@ -1,0 +1,92 @@
+{% extends "translator/base.html" %}
+
+{%- block page -%}
+
+  {%- block header %}
+    {% include "header.html" %}
+  {% endblock -%}
+
+  {%- block content %}
+    {% block maintag %}<div role="main">{% endblock %}
+    	{% block toolbar %}
+        <div class="toolbar">
+          {% block breadcrumb %}
+      			{% if self.breadcrumb_content() | trim %}
+      			<div id="breadcrumb">
+      			    <div class="container">
+      			        <ul>
+      			            <li class="first"><a href="{% url_for controller='package', action='search'%}">Home</a></li>
+      					   {% block breadcrumb_content %}{% endblock %}
+      					</ul>
+      			    </div>
+      			</div>
+      			{% endif %}
+    			{% endblock %}
+        </div>
+    	{% endblock %}
+
+      <div id="content" class="container">
+        {% block main_content %}
+          {% block flash %}
+            {% set flash_messages = h.flash.pop_messages() | list %}
+            <!--div class="flash-messages">
+              {% for message in flash_messages %}
+                <div class="alert fade in {{ message.category }}">
+                  {{ h.literal(message) }}
+                </div>
+              {% endfor %}
+            </div-->
+          {% endblock %}
+
+          
+
+          <div class="wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
+
+            {% block pre_primary %}
+            {% endblock %}
+
+            {% block primary %}
+              <div id="category-primary" class="primary">
+                {% block primary_content %}
+                  <article class="module">
+                    <div class="module-content">
+                      {% block primary_content_inner %}
+                      {% endblock %}
+                    </div>
+                  </article>
+                {% endblock %}
+              </div>
+            {% endblock %}
+
+            {% block secondary %}
+              
+            {% endblock %}
+          </div>
+        {% endblock %}
+      </div>
+    </div>
+
+
+
+
+
+
+    </div>
+  {% endblock -%}
+
+  {%- block footer %}
+    {% include "footer.html" %}
+  {% endblock -%}
+{%- endblock -%}
+
+{%- block scripts %}
+    {% resource 'ckanext-lait/theme' %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
+    {% if g.tracking_enabled %}
+      {% resource 'base/tracking.js' %}
+    {% endif %}
+    
+
+  {{ super() }}
+{% endblock -%}

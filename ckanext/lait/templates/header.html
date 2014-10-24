@@ -58,7 +58,7 @@
 									}
 								</script>
 								<form id='search-liferay' class="form-allsearch" data-module="select-switch"  onsubmit="searchLiferay();">
-								     	<input type="text" id="search" placeholder=""  class="input-search">
+								     	   <input type="text" id="search" placeholder=""  class="input-search">
 								        <button id='search-button' value="search" type=""><i class="icon-search"></i><span></span></button>
 								</form>
 							</div>
@@ -81,10 +81,10 @@
 			<div class="container">
 				<div class="nav-in" id="mainmenu">
 					<ul class="nav">
-						<li class="active"><a href="{% url_for controller='package', action='search' %}">{{_('Dati')}}</a></li>
-						<li class=""><a href="/applicazioni">{{_('Applicazioni')}}</a></li>
-						<li class=""><a href="/comunita">{{_('Comunità')}}</a></li>
-						<li class=""><a href="/notizie">{{_('Notizie ed eventi')}}</a></li>
+						<li class="active"><a href="{% url_for controller='package', action='search' %}">{{_('Data')}}</a></li>
+						<li class=""><a href="/applicazioni">{{_('Applications')}}</a></li>
+						<li class=""><a href="/comunita">{{_('Community')}}</a></li>
+						<li class=""><a href="/notizie">{{_('News')}}</a></li>
 					</ul>
 				</div>
 				<!-- end navbar -->
@@ -98,13 +98,14 @@
 				<div class="subnav-in nav-in">
 					<ul class="nav">
 						<li {% if '/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')!='true' %}class="active"{% endif %}><a href="{% url_for controller='package', action='search' %}">{{_('Dataset')}}</a></li>
-						<li><a href="/dati-geografici">{{_('Dati geografici')}}</a></li>
-						<li {% if '/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')=='true' %}class="active"{% endif %}><a href="{% url_for controller='package', action='search' %}?_exp=true">{{_('Cerca su mappa')}}</a></li>
-						<li {% if '/organization' in request.environ.CKAN_CURRENT_URL %}class="active"{% endif %}><a href="{% url_for controller='organization', action='index' %}">{{_('Cerca per organizzazione')}}</a></li>
-						<li {% if request.environ.CKAN_CURRENT_URL.endswith('/category') %}class="active"{% endif %}><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='category' %}">{{_('Cerca per categoria')}}</a></li>
+						<li><a href="/dati-geografici">{{_('Geo Data')}}</a></li>
+						<li {% if '/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')=='true' %}class="active"{% endif %}><a href="{% url_for controller='package', action='search' %}?_exp=true">{{_('Search on map')}}</a></li>
+						<li {% if '/organization' in request.environ.CKAN_CURRENT_URL %}class="active"{% endif %}><a href="{% url_for controller='organization', action='index' %}">{{_('Search by organization')}}</a></li>
+						<li {% if request.environ.CKAN_CURRENT_URL.endswith('/category') %}class="active"{% endif %}><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='category' %}">{{_('Search by category')}}</a></li>
+						<li {% if request.environ.CKAN_CURRENT_URL.endswith('/app') %}class="active"{% endif %}><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='app' %}">{{_('Search Apps')}}</a></li>
 						<li><a href="/application-programming-interface">{{_('API')}}</a></li>
 						<li><a href="/linked-data">{{_('Linked Data')}}</a></li>
-						<li><a href="/invia-il-tuo-dataset">{{_('Invia il tuo dataset')}}</a></li>
+						<li><a href="">{{_('Submit your dataset')}}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -114,4 +115,3 @@
 	</nav>
 	<!-- END NAV -->
 	<!-- HEADER CUT END -->
-

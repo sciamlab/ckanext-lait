@@ -516,7 +516,7 @@ class PackageController(base.BaseController):
         if data and not data.get('tag_string'):
             data['tag_string'] = ', '.join(
                 h.dict_list_reduce(data.get('tags', {}), 'name'))
-
+        
         errors = errors or {}
         error_summary = error_summary or {}
         # in the phased add dataset we need to know that
@@ -1178,7 +1178,7 @@ class PackageController(base.BaseController):
 
     def resource_read(self, id, resource_id):
         context = {'model': model, 'session': model.Session,
-                   'user': c.user or c.author, 'auth_user_obj': c.userobj}
+                   'user': c.user or c.author, 'auth_user_obj': c.userobj, "for_view":True}
 
         try:
             c.resource = get_action('resource_show')(context,

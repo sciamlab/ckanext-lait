@@ -12,7 +12,7 @@ Example:
 
 #}
 <ul class="media-grid media-grid-thiner" data-module="media-grid">
-  {% for related in related_items %}
+  {% for related in h.translate_related_list(related_items) %}
     {% snippet "related/snippets/related_item.html", pkg_id=pkg_id, related=related, position=loop.index %}
   {% endfor %}
 </ul>
