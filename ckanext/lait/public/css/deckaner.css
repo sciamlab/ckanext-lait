@@ -1,0 +1,455 @@
+/*----------------------------------------------------------------------------- 
+DECKANER
+Screen Stylesheet to evverride most of the ckan confusing styles
+-----------------------------------------------------------------------------*/
+/*	-	THE BANNER CONTAINER (Padding, Shadow, Border etc. )	-	*/
+
+body{
+   background: none !important;
+}
+
+.span4{
+  padding-bottom: 20px !important;
+}
+
+[role="main"], .main {
+   background: none !important;
+   padding: 0 !important;
+}
+.toolbar {
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+}
+.toolbar .breadcrumb li:after {
+  content: " | " !important;
+}
+.wrapper {
+  background: none;
+  border: 0 none !important;
+  box-shadow: none;
+}
+
+[role="main"] .secondary { 
+  /*border-right: 1px solid #DDDDDD;*/
+  margin-right: -1px;
+  width: 222px; 
+}
+[role="main"] .primary {
+  /*border-left: 1px solid #DDDDDD;*/
+  margin-left: -1px;
+}
+
+.primary .tertiary {
+  margin-left: 19px;
+}
+
+.primary .primary {
+  border-left: none;
+}
+
+.banner{		
+   padding: 0 0 0 10px;
+/* right: 0; */
+   transform: none;
+   text-align:left;
+   -webkit-transform:none;
+}
+
+.etichettina {
+-webkit-transform: rotate(45deg);
+-moz-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+-o-transform: rotate(45deg);
+transform: rotate(45deg);
+-webkit-transform-origin: center center;
+-moz-transform-origin: center center;
+-ms-transform-origin: center center;
+-o-transform-origin: center center;
+transform-origin: center center;
+position: absolute;
+top: 15px;
+right: -35px;
+width: 80px;
+color: #ffffff;
+background-color: #005d7a;
+padding: 1px 20px;
+font-size: 11px;
+text-align: center;
+text-transform: uppercase;
+display: block;
+background-color: #b7b7b7;
+-webkit-transition: background-color 0.2s ease-in;
+-moz-transition: background-color 0.2s ease-in;
+-o-transition: background-color 0.2s ease-in;
+transition: background-color 0.2s ease-in;
+height: auto;
+}
+
+.homepage .module-search {
+  padding: 0;  
+}
+
+.homepage .module-search .module-content {
+  background-color: #f6f6f6;
+}
+
+.homepage .module-search .search-giant input {
+  border-color: #666666;
+}
+
+.media-view span {
+  display: none;
+}
+
+#resources_container {
+  width: 100%;
+}
+
+ul#resources {
+  margin: 0;
+}
+
+ul.endpoints {
+  margin: 0;
+}
+ul.operations {
+  margin: 0;
+}
+.hero {
+   background: none;
+}
+.btn {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+  *zoom: 1;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f7f7f7;
+  background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#eaeaea));
+  background-image: -webkit-linear-gradient(top, #ffffff, #eaeaea);
+  background-image: -o-linear-gradient(top, #ffffff, #eaeaea);
+  background-image: linear-gradient(to bottom, #ffffff, #eaeaea);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeaeaea', GradientType=0);
+  border-color: #eaeaea #eaeaea #c4c4c4;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #eaeaea;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #333333;
+  background-color: #eaeaea;
+  *background-color: #dddddd;
+}
+.btn:active,
+.btn.active {
+  background-color: #d1d1d1 \9;
+}
+.btn:first-child {
+  *margin-left: 0;
+}
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn.active,
+.btn:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+.btn.disabled,
+.btn[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+
+
+.btn-primary.active,
+.btn-warning.active,
+.btn-danger.active,
+.btn-success.active,
+.btn-info.active,
+.btn-inverse.active {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.btn-primary {
+  color: #ffffff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
+  background-color: #206b82 !important;
+  background-image: -moz-linear-gradient(top, #30778d, #085871) !important;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#30778d), to(#085871)) !important;
+  background-image: -webkit-linear-gradient(top, #30778d, #085871) !important;
+  background-image: -o-linear-gradient(top, #30778d, #085871) !important;
+  background-image: linear-gradient(to bottom, #30778d, #085871) !important;
+  background-repeat: repeat-x !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff30778d', endColorstr='#ff085871', GradientType=0) !important;
+  border-color: #085871 #085871 #03202a !important;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
+  *background-color: #085871 !important;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff !important;
+  background-color: #085871 !important;
+  *background-color: #064559 !important;
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #053341 \9 !important;
+}
+
+.homepage.layout-1 .row1 .col2 
+{
+  bottom: 0;
+  position: absolute;
+  right: 0;
+}
+
+
+/*.module-content > *:last-child {
+    margin-bottom: -20px !important;
+}*/
+
+.module-content .pagination {
+  margin-bottom: -15px;
+}
+
+.page-header {
+  padding-bottom: 0 !important;
+    background-color: #ffffff !important;
+}
+
+.module-content .pagination {
+  margin-bottom: -21px !important;
+}
+.module .pagination {
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 4px;
+}
+.module .pagination li a {
+  padding-bottom: 0;
+  padding-top: 0;  
+}
+
+
+/*
+* RESPONSIVE CKAN SECTION
+*/
+@media (min-width: 768px) and (max-width: 979px) {
+  .subnav {
+    margin: 0 -20px !important;
+  }
+  aside {
+    /*display:none !important;*/
+    border: 1px solid #CCCCCC;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  .wrapper {
+    background: none;
+  }
+  ul.socials {
+    margin: 20px auto 10px !important;
+  }
+  .head_phone {
+    margin-top: 5px !important;
+  }
+  [role="main"] .primary {
+    clear: both;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .subnav {
+    margin: 0 -20px !important;
+  }
+  .homepage.layout-1 .row1 .col2 {
+    bottom: 0;
+    position: inherit;
+    right: 0;
+  }
+  .homepage.layout-1 .col2 {
+    margin-top: 20px;
+  }
+  .homepage.layout-2 .col2 {
+    margin-top: 20px;
+  }
+  .homepage.layout-3 .col2 {
+    margin-top: 20px;
+  }
+  [role="main"] .primary {
+    clear: both;
+    width: 100%;
+  }
+  aside {
+    /*display:none !important;*/
+    border: 1px solid #CCCCCC;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  .wrapper {
+    background: none;
+  }
+  ul.socials {
+    margin: 20px auto 10px !important;
+  }
+  .head_phone {
+    margin-top: 5px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .subnav {
+    margin: 0 -20px !important;
+  }
+  .homepage.layout-1 .row1 .col2 {
+    bottom: 0;
+    position: inherit;
+    right: 0;
+  }
+  .homepage.layout-1 .col2 {
+    margin-top: 20px;
+  }
+  .homepage.layout-2 .col2 {
+    margin-top: 20px;
+  }
+  .homepage.layout-3 .col2 {
+    margin-top: 20px;
+  }
+  aside {
+    /*display:none !important;*/
+    border: 1px solid #CCCCCC;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  .wrapper {
+    background: none;
+  }
+  ul.socials {
+    margin: 20px auto 10px !important;
+  }
+  .head_phone {
+    margin-top: 5px !important;
+  }
+}
+
+/*Breadcrumb Start*/
+#breadcrumb {
+/*    border-bottom: 1px solid #CCCCCC; */
+    float: left;
+    width: 100%;
+    margin-bottom: 0 !important;
+}
+#breadcrumb ul {
+    float: left;
+    list-style: none outside none;
+    margin: 0 0 2px;
+    padding: 0 0 0 10px !important;
+}
+#breadcrumb ul li {
+    /*background: url("../img/breadcrumb_icon.png") no-repeat scroll left 7px transparent;*/
+    float: left;
+    margin-left: 8px;
+    padding-left: 10px;
+}
+#breadcrumb .home {
+    background: none repeat scroll 0 0 transparent;
+    height: 15px;
+    margin-left: 0;
+    padding-left: 0;
+}
+/*Breadcrumg Ends*/
+
+.dropdown-menu > li > a {
+   color: #ffffff !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a {
+   color: #00aece !important;
+}
+
+.navbar .nav > li {
+   margin-bottom: -6px !important;
+}
+
+.navbar .nav > li a {
+/*   margin-bottom: -6px !important; */
+}
+
+.nav-pills > li > a {
+/*margin-top: 0 !important;*/
+}
+
+
+.nav > li > a > img {
+    margin-top: -6px;
+}
+
+
+.media-heading {
+   color: inherit !important;
+   font-weight: inherit !important; 
+
+div.alert {
+   margin: 10px 10px 10px 10px !important;
+}
+
+.page_primary_action{
+  margin: 20px 0px 20px 0px !important;
+}
+

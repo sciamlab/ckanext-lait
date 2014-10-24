@@ -1,0 +1,24 @@
+--- package.py_orig	2014-09-30 11:16:22.299905902 +0200
++++ package.py	2014-09-30 10:57:37.067934594 +0200
+@@ -221,15 +221,19 @@
+ 
+             facets = OrderedDict()
+ 
++            # LAit customization
+             default_facet_titles = {
+                     'organization': _('Organizations'),
+-                    'groups': _('Groups'),
++                    'category': _('Categories'),
++                    'rating_average_int': _('Community Rating'),
+                     'tags': _('Tags'),
+                     'res_format': _('Formats'),
+                     'license_id': _('Licenses'),
+                     }
+ 
+-            for facet in g.facets:
++            lait_custom_facets = ['organization','category','rating_average_int','tags','res_format','license_id']
++
++            for facet in lait_custom_facets:
+                 if facet in default_facet_titles:
+                     facets[facet] = default_facet_titles[facet]
+                 else:

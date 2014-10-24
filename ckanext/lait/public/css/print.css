@@ -1,0 +1,134 @@
+@media print {
+
+nav, footer, .top_line, .toolbar, .page-header, .social, .follow_button, .span7, .span4,
+section.resources > div, section.resources > ul > li > div, #disqus_thread, .revisioni, div.module-content > div,
+div.module-content > form > h2 > a, .control-order-by,
+div.module-content > ul > li > ul > li:nth-child(1), .pagination, small,
+aside > section > h2, aside > section > p, aside > section > div, aside > form{
+	display: none;
+}
+
+/*.logo {
+	background: url("../img/logoODL.png") !important;
+	margin-left: 25px;
+}*/
+
+
+.wrapper-out{
+	margin-top: 40px;
+}
+
+a[href]:after {
+	content: " (" attr(href) ")";
+	font: 12px 'open_sanslight';
+	display: block;
+}
+
+section.tags > div > ul > li > a:after,
+div.module-content > ul > li > div > ul > li > span > a:after {
+	display: inline;
+}
+
+body{
+	font-size: 14pt !important;
+	line-height: 1.3;
+}
+
+div.wrapper > div > article > div > section.resources > h2{
+	font-size: 18px
+}
+
+div.wrapper > div > article > div > section.resources > ul > li > h3 > a{
+	font-family: 'open_sansbold';
+}
+
+.info-dataset > ul > li, div.wrapper > div > article > div > ul > li,
+div.wrapper > aside > section.info-dataset > ul > li.last > span{
+	font: 14px 'open_sansbold';
+	text-transform: uppercase;
+}
+
+.info-dataset > ul > li > span, .info-dataset > ul > li > a,
+div.wrapper > div > article > div > ul > li > span,
+div.wrapper > div > article > div > section > div > ul > li > a{
+	font: 14px 'open_sanslight';
+	text-transform: uppercase;
+}
+section.tags{
+	margin: 0px;
+	padding-top: 20px !important;
+}
+
+.resources li {
+	border-bottom: none;
+}
+
+section.tags > div > ul > li{
+	padding: 5px 0;	
+}
+
+div.wrapper > div > article > div > section.resources > ul > li > p{
+	font: 16px 'open_sanslight';
+}
+
+.rating-title {
+	padding-top: 10px !important;
+}
+
+section, section > div{
+	padding: 0px !important;
+}
+div.wrapper > div > article > div > ul{
+	padding-top: 20px;
+}
+section.tags > div{
+	min-height: 0px;
+}
+
+.primary{
+	width: 100% !important;
+}
+
+aside {
+	padding: 0 25px;
+	border: none;
+	width: 890px !important;
+}
+
+div.wrapper > div > article > div,
+section.tags > div > ul{
+	padding-bottom: 0px !important;
+	padding-top: 0px !important;
+}
+div.rating, 
+section.tags > div > ul > li{
+	border-bottom: 1px solid #999;
+}
+
+h1 {
+	margin-top: 30px;
+	font-size: 24pt;
+}
+
+h2 {
+	font-size: 14pt;
+	margin-top: 25px;
+}
+
+aside h2 {
+	font-size: 18pt;
+}
+
+.wrapper-out {
+	/* background: none repeat scroll 0 0 #ffffff; */
+	box-shadow: none;
+}
+
+.category-icon-small {
+	padding-left: 0px;
+}
+
+.span5 > a[href]:after {
+	content: "";
+}
+}

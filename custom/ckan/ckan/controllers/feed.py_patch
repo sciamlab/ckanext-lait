@@ -1,0 +1,12 @@
+--- feed.py_orig	2014-09-02 12:09:00.851282000 +0200
++++ feed.py	2014-09-30 10:58:19.704933507 +0200
+@@ -152,7 +152,8 @@
+ 
+ 
+ class FeedController(base.BaseController):
+-    base_url = config.get('ckan.site_url')
++    # LAit customization
++    base_url = config.get('ckan.base_url', '')
+ 
+     def _alternate_url(self, params, **kwargs):
+         search_params = params.copy()

@@ -1,0 +1,14 @@
+{% set can_edit = h.check_access('package_update', {'id':pkg.id }) %}
+{% set url_action = 'resource_edit' if url_is_edit and can_edit else 'resource_read' %}
+{% set url = h.url_for(controller='package', action=url_action, id=pkg.name, resource_id=res.id) %}
+
+<li> 
+  <!-- img alt="icona post" src="../img/ic-csv.png" -->
+  <div class="ic">{{ res.format|upper }}</div>
+  <h3><a href="{{ url }}" title="{{ res.name or res.description }}">{{ h.resource_display_name(res) | truncate(50) }}</a> </h3>
+  <p>
+    {% if res.description %}
+      {{ h.markdown_extract(res.description, extract_length=80) }}
+    {% endif %}
+  </p>
+</li>

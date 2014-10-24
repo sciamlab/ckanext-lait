@@ -1,0 +1,103 @@
+{% set current_url = h.full_current_url() %}
+{% resource 'ckanext-lait/rating'%}
+<section class="module module-narrow social">
+<h2 class="module-heading"><i class="icon-medium icon-star"></i> {{ _('Community Rating') }}</h2>
+<div class="context-info">
+<section class="module-content">
+<h1 class="heading" id="rating_value">-</h1>
+<p class="empty" style="padding-bottom:10px;">{{ _('Total voters') }}: <span id="rating_count">0</span></p>
+<div class="starRate">
+<div class="bcg"><b></b></div>
+<ul>
+<li><a id="{{ _('Excellent') }}"><span>{{ _('Excellent') }}</span></a></li>
+<li><a id="{{ _('Good') }}"><span>{{ _('Good') }}</span></a></li>
+<li><a id="{{ _('Average') }}"><span>{{ _('Average') }}</span></a></li>
+<li><a id="{{ _('Poor') }}"><span>{{ _('Poor') }}</span></a></li>
+<li><a id="{{ _('Awful') }}"><span>{{ _('Awful') }}</span></a></li>
+</ul>
+</div>
+<p id="hint" class="empty" style="padding:10px 0 0 0;"></p>
+</section>
+</div>
+<script type="text/javascript">
+var requestObj = false;
+if (window.XMLHttpRequest) {
+    requestObj = new XMLHttpRequest();
+} else if (window.ActiveXObject) {
+    requestObj = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+var user = '{{ user.name }}';
+//alert(user);
+var hint;
+if(user != ''){
+    //enabling the rating
+    document.getElementById("{{ _('Excellent') }}").addEventListener('click', function (){ rate(5)});
+    document.getElementById("{{ _('Good') }}").addEventListener('click', function (){ rate(4)});
+    document.getElementById("{{ _('Average') }}").addEventListener('click', function (){ rate(3)});
+    document.getElementById("{{ _('Poor') }}").addEventListener('click', function (){ rate(2)});
+    document.getElementById("{{ _('Awful') }}").addEventListener('click', function (){ rate(1)});
+    hint = "{{ _('Vote the dataset choosing the appropriate level') }}";
+}else{
+    //if no user is logged in the rating is disabled
+    document.querySelector('.starRate').className = "starRateDisabled";
+    hint = "{{ _('You need to log in to vote a dataset') }}";
+}
+document.getElementById('hint').innerHTML = hint;
+//getting the current rate (with no params)
+rate();
+
+function rate(star_num){    
+    if (requestObj) {
+        //reset current rating
+        document.querySelector("#{{ _('Excellent') }}").innerHTML = "<span>{{ _('Excellent') }}</span>";
+        document.querySelector("#{{ _('Good') }}").innerHTML = "<span>{{ _('Good') }}</span>";
+        document.querySelector("#{{ _('Average') }}").innerHTML = "<span>{{ _('Average') }}</span>";
+        document.querySelector("#{{ _('Poor') }}").innerHTML = "<span>{{ _('Poor') }}</span>";
+        document.querySelector("#{{ _('Awful') }}").innerHTML = "<span>{{ _('Awful') }}</span>";
+        var ds = window.location.pathname;
+	ds = ds.substring(ds.lastIndexOf("/")+1);
+	var query = 'ds='+ds;
+	if(user!='') query = query + '&user='+user;
+	if(star_num!=undefined) query = query + '&rating='+star_num;
+        //alert('http://beta.sciamlab.com/CKANAPIExtension/rate?'+query);
+	requestObj.open("GET", 'http://93.57.107.10:8080/CKANAPIExtension/rate?'+query);
+        requestObj.onreadystatechange = function (){
+            var rating_string;
+            var rating_count;
+            if (requestObj.readyState == 4 && requestObj.status == 200) {
+                //alert(requestObj.responseText);
+                var rating_obj = eval('(' + requestObj.responseText + ')');
+                rating_count = rating_obj.count;
+                if(rating_obj.rating=='1')
+                    rating_string = "{{ _('Awful') }}";
+                else if(rating_obj.rating=='2')
+                    rating_string = "{{ _('Poor') }}";
+                else if(rating_obj.rating=='3')
+                    rating_string = "{{ _('Average') }}";
+                else if(rating_obj.rating=='4')
+                    rating_string = "{{ _('Good') }}";
+                else if(rating_obj.rating=='5')
+                    rating_string = "{{ _('Excellent') }}";
+                else
+                    rating_string = '-';
+                
+		var rating_value_obj = document.querySelector('#rating_value');
+            	rating_value_obj.innerHTML = rating_string;
+            	var rating_count_obj = document.querySelector('#rating_count');
+            	rating_count_obj.innerHTML = rating_count;
+            	if(rating_string!='-')
+		    document.querySelector('#'+rating_string).innerHTML = "<span>"+rating_string+"</span><b></b>";
+            }
+	    /*else{
+                rating_string = '-';
+                rating_count = 0;
+            }*/
+        }
+        requestObj.send(null);
+    }
+}
+
+</script>
+</section>
+

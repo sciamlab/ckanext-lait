@@ -1,0 +1,22 @@
+--- user.py_orig	2014-09-02 12:09:01.183282000 +0200
++++ user.py	2014-09-30 10:59:00.152932475 +0200
+@@ -367,7 +367,8 @@
+ 
+             h.flash_success(_("%s is now logged in") %
+                             user_dict['display_name'])
+-            return self.me()
++            # LAit customization
++            return render('_home.html')
+         else:
+             err = _('Login failed. Bad username or password.')
+             if g.openid_enabled:
+@@ -397,7 +398,8 @@
+         h.redirect_to(controller='user', action='logged_out_page')
+ 
+     def logged_out_page(self):
+-        return render('user/logout.html')
++        # LAit customization
++        return render('_home.html')
+ 
+     def request_reset(self):
+         context = {'model': model, 'session': model.Session, 'user': c.user,

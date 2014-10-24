@@ -1,0 +1,116 @@
+{% extends "package/read_base.html" %}
+
+{% set pkg = c.pkg_dict %}
+
+{% block primary_content_inner %}
+  {{ super() }}
+  {% block package_description %}
+    {% if pkg.private %}
+      <span class="dataset-private label label-inverse pull-right">
+        <i class="icon-lock"></i>
+        {{ _('Private') }}
+      </span>
+    {% endif %}
+    <h1>
+      {% block page_heading %}
+        {{ pkg.title or pkg.name }}
+        {% if pkg.state.startswith('draft') %}
+          [{{ _('Draft') }}]
+        {% endif %}
+      {% endblock %}
+    </h1>
+    {% block package_notes %}
+      {% if c.pkg_notes_formatted %}
+        <div class="notes embedded-content">
+          {{ c.pkg_notes_formatted }}
+        </div>
+      {% endif %}
+      <ul class="module-dati">
+        <li>{{ _('License') }}: 
+        {% if pkg.license_title %}
+            {% if pkg.license_url %}
+              <span><a href="{{ pkg.license_url }}">{{ pkg.license_title }}</a></span>
+            {% else %}
+              <span>{{ pkg.license_title }}</span>
+            {% endif %}
+        {% else %}
+          <span>{{ _('No License Provided') }}</span>
+        {% endif %}
+        {% if pkg.url %}
+          <li>{{ _('Origin') }}: <span><a href="{{ pkg.url }}">{{ pkg.url }}</a></span></li>
+        {% endif %}
+      </ul>
+    {% endblock %}
+    {# FIXME why is this here? seems wrong #}
+    <span class="insert-comment-thread"></span>
+  {% endblock %}
+
+  {% block package_resources %}
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
+  {% endblock %}
+
+  {% block package_tags %}
+    {% snippet "package/snippets/tags.html", tags=pkg.tags, category=pkg.category %}
+  {% endblock %}
+
+  {% block package_rating %}
+    {% snippet "package/snippets/rating.html", user=c.userobj %}
+  {% endblock %}
+
+  {% block package_additional_info %}
+    {# % snippet "package/snippets/additional_info.html", pkg_dict=pkg % #}
+  {% endblock %}
+
+  {% block disqus %}
+  <p></p>
+   <div id="disqus_thread"></div>
+    <script type="text/javascript">
+var request = false;
+if (window.XMLHttpRequest) 
+    request = new XMLHttpRequest();
+else if (window.ActiveXObject) 
+    request = new ActiveXObject("Microsoft.XMLHTTP");
+
+if (request) {
+  var uuid = '{{ c.userobj.id }}';
+  if(uuid!=''){
+    request.open("GET", '/LaitExtension-hook/api/service/disqusLoginPayload/'+uuid);
+    request.onreadystatechange = function (){
+      try {
+        if (request.readyState == 4 && request.status == 200) {
+	  var payload = eval('(' + request.responseText + ')');
+	  disqus_init(payload.payload);
+        }
+      }catch(err) {
+          alert(err);
+	  disqus_init('{}');
+      }
+    }
+    request.send(null);
+  }else{
+    disqus_init('{}');
+  }
+}
+
+function disqus_init(payload){
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lait-opendata-blog';
+  var disqus_config = function () {
+    this.language = "it";
+    this.page.remote_auth_s3 = payload;
+    this.page.api_key = 'l4FMrTA0Csaw6IajLUVdzzz8Xvl827juImnHhFrTIbWhEL4uKZXbT8JR58io3Oo5';
+  };
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+}
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+  {% endblock %}
+
+{% endblock %}

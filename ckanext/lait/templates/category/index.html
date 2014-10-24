@@ -1,0 +1,21 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Categories') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Categories'), controller='ckanext.lait.plugin:LaitController', action='index' %}</li>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block primary_content_inner %}
+  <h1 class="hide-heading">{{ _('Categories') }}</h1>
+  {% block category_list %}
+    {% set categories = h.categories().categories %}
+    {% snippet "category/snippets/category_list.html", categories=categories %}
+  {% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet "category/snippets/helper.html" %}
+{% endblock %}

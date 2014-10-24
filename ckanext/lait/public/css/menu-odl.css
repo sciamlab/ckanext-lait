@@ -1,0 +1,129 @@
+@charset "UTF-8";
+/* menu odl */
+
+/* Button Responsive Menu*/
+	.btn-responsive-menu{display: none;float: right;padding:5px;cursor:pointer;margin:  5px 20px 5px 0;color: #ffffff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);background:#002742;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+	.icon-bar 			{display: block;width: 18px;height: 2px;margin:5px;background-color: #f5f5f5;-webkit-border-radius: 1px;-moz-border-radius: 1px;border-radius: 1px;-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);}
+
+	.show{display:block!important}
+	
+	/***Tabs***/
+
+.tabs  {
+float:right;
+margin:0;
+
+}
+.tabs > li {
+	float: left;
+   padding: 5px 15px 15px 15px;
+    text-align: center;
+	list-style-type: none;
+	background: #666;
+border-radius: 20px 20px 0 0;
+line-height:20px;
+padding-top:10px;
+margin-top:10px;
+}
+
+.tabs > li a, .logo-login {
+/*font-family: 'open_sansregular';*/
+text-transform: uppercase;
+color:#fff;
+padding-top:10px;
+}
+
+.tabs > li a:hover,  .tabs > li a.active {
+	
+}
+
+.tabs > li.logo-login  {
+	
+
+}
+
+.tabs > li.logo-login  {
+	background: url("../img/icon-login.png") no-repeat scroll 10px 10px #666;
+	padding-left: 35px;
+}
+.tabs > li.en {
+	background:#002742;
+margin-left:45px;
+}
+
+/**NAVBAR**/
+
+
+.nav-in .nav {
+    display: block;
+    float: left;
+    left: 0;
+    position: relative;
+	padding-top:10px;
+}
+
+
+.nav-in .nav > li {
+    float: left;
+}
+
+.nav-in .nav > li a {
+    color: #333333;
+    font-family: 'open_sanslight';
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 16px;
+    margin-bottom: 0;
+    padding: 3px 15px 8px;
+    text-shadow: none;
+}
+
+
+.nav > li > a:hover {
+    background-color: #eeeeee !important;
+    text-decoration: none;
+	color:#ff3300 !important;
+}
+
+
+/**SUBNAV**/
+
+
+.subnav-out{
+background:#002742;
+height:auto;
+}
+
+.subnav-in .nav > li a {
+    color: #ffffff;
+    font-family: 'open_sansbold';
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 0;
+    margin: 0;
+    padding: 10px;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+
+
+.subnav-in .nav .active > a, .subnav-in .nav li:hover > a {
+    padding-top: 12px !important;
+    border-top: 0 none !important;
+    color: #ffffff !important;
+    background-color: #ff3300 !important;
+}
+
+.subnav-in ul  li:after {
+    border-bottom: 10px solid #002742;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: "";
+    height: 0;
+    left: 20px;
+    position: absolute;
+    top: -7px;
+    width: 0;
+
+}
+

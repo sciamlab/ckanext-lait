@@ -1,0 +1,42 @@
+{#
+Displays a sidebard module with information for given package
+
+pkg    - The package dict that owns the resources.
+
+Example:
+
+  {% snippet "package/snippets/info.html", pkg=pkg %}
+
+#}
+{% if pkg %}
+<section class="info-dataset">
+  <ul>
+    {% if pkg.organization %}
+      <li>{{ _('Organization') }}: <a href="{{ h.url_for(controller='organization', action='read', id=pkg.organization.id) }}">{{ pkg.organization.title}}</a></li>
+    {% endif %}
+    {% if pkg.maintainer %}
+      {% if pkg.maintainer_email %}
+        <li class="sendmail">{{ _('Maintainer') }}: <a href="mailto:{{ pkg.maintainer_email }}">{{ pkg.maintainer }}</a></li>
+      {% else %}
+        <li>{{ _('Maintainer') }}: <span>{{ pkg.maintainer }}</span></li>
+      {% endif %}
+    {% endif %}
+    <li>{{ _('Created on') }}: <span>{{pkg.metadata_created[8:10]}}/{{pkg.metadata_created[5:7]}}/{{pkg.metadata_created[:4]}}</span></li>
+    <li>{{ _('Updated on') }}: <span>{{pkg.metadata_modified[8:10]}}/{{pkg.metadata_modified[5:7]}}/{{pkg.metadata_modified[:4]}}</span></li>
+    <li class="revisioni"><a href="{{ h.url_for(controller='package', action='activity', id=pkg.id) }}">{{ _('Activity Stream') }}</a></li>
+    <li {% if not 'spatial' in pkg or pkg.spatial=='' %}class="last"{% endif %}>
+      {{ _('Followers') }}: {{ h.SI_number_span(h.get_action('dataset_follower_count', {'id': pkg.id})) }}
+      {% if not hide_follow_button and not user==None %}
+        <div class="follow_button">
+          {{ h.follow_button('dataset', pkg.name) }}
+        </div>
+      {% endif %}
+    </li>
+    {% if 'spatial' in pkg and pkg.spatial!='' %}
+    <li class="last"><span>{{ _('Location') }}</span>
+      {% snippet "package/snippets/dataset_map_sidebar.html", extent=pkg.spatial %}
+    </li>
+    {% endif %}
+  </ul>
+</section>
+{% endif %}

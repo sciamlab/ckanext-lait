@@ -1,0 +1,10 @@
+--- plugin.py_orig	2014-09-30 11:09:44.286916051 +0200
++++ plugin.py	2014-09-30 10:59:56.149931047 +0200
+@@ -81,6 +81,7 @@
+         for extra in package.extras_list:
+             if extra.key == 'spatial':
+                 if extra.state == 'active' and extra.value:
++                    extra.value = extra.value.replace('\n', '').replace('\r', '').replace(' ', '')
+                     try:
+                         log.debug('Received: %r' % extra.value)
+                         geometry = json.loads(extra.value)

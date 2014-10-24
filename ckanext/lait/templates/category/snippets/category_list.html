@@ -1,0 +1,5 @@
+<ul class="media-grid" data-module="media-grid">
+  {% for category in categories %}
+    {% snippet "category/snippets/category_item.html", category=category, position=loop.index %}
+  {% endfor %}
+</ul>

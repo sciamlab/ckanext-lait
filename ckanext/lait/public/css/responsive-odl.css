@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/* CSS responsive odl */
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {		
+
+.wrapper-out, .nav-out, .subnav-out {
+width:auto;
+max-width:100%;
+}
+
+
+
+.nav-in .nav > li {
+    float: none;
+	width:100%;
+}
+
+.subnav-in .nav{
+  height: auto;
+} 
+
+.container {
+    width:100%;
+	margin:0 20px;
+}
+.span12 {
+    width:100%;
+}
+.span6, span5 {
+    width: 50%;
+}
+}
+
+
+
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.wrapper-out, .nav-out, .subnav-out {
+width:auto;
+max-width:100%;
+}
+
+.nav-in .nav > li {
+    float: none;
+	width:100%;
+}
+
+
+}
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+.wrapper-out, .nav-out, .subnav-out {
+width:auto;
+max-width:100%;
+}
+
+.nav-in .nav > li {
+    float: none;
+	width:100%;
+}
+
+.subnav-in .nav{
+  height: auto;
+} 
+
+
+
+.logo img {
+width:240px;
+}
+.nav-in			{display:none;}
+.nav-in ul li 	{float: none; border-bottom:1px solid #ccc; }
+.nav-in ul 	{ width:100%;}
+
+.btn-responsive-menu{display:block;}	
+
+
+.tabs > li {
+margin:0 20px;
+text-align:left;
+width:auto;
+}
+
+
+.loghi li  {
+float:none;
+width:auto;
+margin:0 20px;
+
+}
+
+ul.socials{
+    float: none;
+	text-align:left;
+	margin:0 0 0 20px !important;
+   
+}
+
+.space {
+   height: auto;
+	margin-left:20px;
+}
+
+.footer-bottom p {
+    color: #002742;
+    padding: 18px 0 13px 20px;
+}
+
+.logo-foot {
+    background: url("../img/logoRegioneLazio.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: none;
+    height: 82px;
+    margin-left: 20px;
+	margin-top:20px;
+	margin-bottom:20px;
+    max-width: 311px;
+}
+
+.container{
+width:100%;
+}
+
+.subnav-out{
+height:auto;
+}
+
+
+.span4 {
+    width: 100%;
+}
+}
+

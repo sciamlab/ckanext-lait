@@ -1,0 +1,114 @@
+{#
+Displays a single of dataset.
+
+package        - A package to display.
+item_class     - The class name to use on the list item.
+hide_resources - If true hides the resources (default: false).
+banner         - If true displays a popular banner (default: false).
+truncate       - The length to trucate the description to (default: 180)
+truncate_title - The length to truncate the title to (default: 80).
+
+Example:
+
+  {% snippet 'snippets/package_item.html', package=c.datasets[0] %}
+
+#}
+{% set truncate = truncate or 180 %}
+{% set truncate_title = truncate_title or 80 %}
+{% set title = package.title or package.name %}
+{% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
+
+{% if not package.rating_average_int %}
+  {% set rating_stars = '' %}
+{% elif package.rating_average_int=='1' %}
+  {% set rating_stars = '*' %}
+{% elif package.rating_average_int=='2' %}
+  {% set rating_stars = '**' %}
+{% elif package.rating_average_int=='3' %}
+  {% set rating_stars = '***' %}
+{% elif package.rating_average_int=='4' %}
+  {% set rating_stars = '****' %}
+{% elif package.rating_average_int=='5' %}
+  {% set rating_stars = '*****' %}
+{% endif%}
+
+<li class="{{ item_class or "dataset-item" }}">
+  {% block package_item_content %}
+    <ul class="dataset-resources unstyled cat-dataset">
+      <li class="ris">
+        <div class='format-icon'></div>
+        <a href="{% url_for controller='package', action='search', category=package.category %}" class="category-icon">
+          {% for category in h.categories().categories %}
+            {% if package.get('category', '') == category.name %}
+              <div class='category-icon-{{ category.id }}'></div>
+            {% endif %}
+          {% endfor %}
+        </a>
+      </li>
+      <li class="ris">
+        {% if package.category %}
+          <p>{{ package.category }}</p>
+        {% endif %}
+      </li>
+    </ul>
+    <div class="dataset-content">
+      <h3 class="dataset-heading">
+        {% if package.private %}
+          <span class="dataset-private label label-inverse">
+            <i class="icon-lock"></i>
+            {{ _('Private') }}
+          </span>
+        {% endif %}
+        {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
+        {% if package.get('state', '').startswith('draft') %}
+          <span class="label label-info">{{ _('Draft') }}</span>
+        {% elif package.get('state', '').startswith('deleted') %}
+          <span class="label label-important">{{ _('Deleted') }}</span>
+        {% endif %}
+        {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
+      </h3>
+      {% if(package.metadata_modified) %}
+      <h4>[{{ _('Updated on') }}: {{package.metadata_modified[8:10]}}/{{package.metadata_modified[5:7]}}/{{package.metadata_modified[:4]}}]</h4>
+      {% elif(package.metadata_created) %}
+      <h4>[{{ _('Created on') }}: {{package.metadata_created[8:10]}}/{{package.metadata_created[5:7]}}/{{package.metadata_created[:4]}}]</h4>
+      {% endif %}
+      <div>{{ notes|urlize }}</div>
+      <ul class='info-dataset'>
+        {% if package.organization %}
+          <li>{{ _('Published by') }}: 
+            <span>
+            <a href="{{ h.url_for(controller='organization', action='read', id=package.organization.id) }}">{{ package.organization.title }}</a>
+            </span>
+          </li>
+        {% endif %}
+        <li>{{ _('Tags') }}: 
+          {% for tag in package.tags %}
+            <span>
+              <a href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
+            </span> |
+          {% else %}
+            <span>{{ _('None') }}</span>
+          {% endfor %}
+        </li>
+        {% if package.resources and not hide_resources %}
+        <li>{{ _('Formats') }}:
+          {% for resource in h.dict_list_reduce(package.resources, 'format') %}
+            <span>
+              <a href="{% url_for controller='package', action='search', res_format=resource %}">{{ resource|upper }}</a>
+            </span> |
+          {% endfor %}
+        </li>
+        {% endif %}
+        <li>{{ _('Community Rating')}}: 
+          <span>
+          {% if package.rating_average_int and package.rating_average_int!='None' %}
+            <a href="{% url_for controller='package', action='search', rating_average_int=package.rating_average_int %}">{{ rating_stars }}</a> ({{ _('Total voters') }}: {{package.rating_count}})
+          {% else %}
+            {{ _('None') }}
+          {% endif %}
+          </span>
+        </li>
+      </ul>
+    </div>
+  {% endblock %}
+</li>

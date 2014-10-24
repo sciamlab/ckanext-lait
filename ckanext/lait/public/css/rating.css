@@ -1,0 +1,151 @@
+/*.rating-title{
+    float: left;
+}*/
+/*.heading{
+    margin: 10px 0px 10px;
+}
+.starRate, .starRateDisabled {
+    overflow: hidden;
+    position: relative;
+}
+.starRate ul, .starRateDisabled ul {
+    margin: 0;
+    padding: 0;
+    width: 160px;
+}
+.starRate li, .starRateDisabled li {
+    display: inline;
+    list-style: none outside none;
+}
+.starRate a, .starRateDisabled a, .starRate b, .starRateDisabled b {
+    background: url("../img/star_rate.png") repeat-x scroll left top rgba(0, 0, 0, 0);
+}
+.starRate a, .starRateDisabled a {
+    background-position: left 16px;
+    color: #000;
+    float: right;
+    height: 16px;
+    margin: 0 80px 0 -144px;
+    text-decoration: none;
+    width: 80px;
+}
+.starRate a:hover {
+    background-position: left -32px;
+    cursor: pointer;
+}
+.starRate b, .starRateDisabled b {
+    background-position: left -16px;
+    height: 16px;
+    position: absolute;
+    width: 80px;
+    z-index: -1;
+}
+.starRate div b, .starRateDisabled div b {
+    background-position: left top;
+    bottom: 0;
+    left: 0;
+}
+.starRate a span, .starRateDisabled a span {
+    left: -300px;
+    position: absolute;
+}
+.starRate a:hover span {
+    left: 90px;
+    width: 100%;
+}
+.bcg {
+    z-index: 1;
+}*/
+.starRate5 {
+    background: url("../img/star_rate_5.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    margin-bottom: -2px;
+    min-width: 80px;
+}
+.starRate4 {
+    background: url("../img/star_rate_4.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    margin-bottom: -2px;
+    min-width: 64px;
+}
+.starRate3 {
+    background: url("../img/star_rate_3.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    margin-bottom: -2px;
+    min-width: 48px;
+}
+.starRate2 {
+    background: url("../img/star_rate_2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    margin-bottom: -2px;
+    min-width: 32px;
+}
+.starRate1 {
+    background: url("../img/star_rate_1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    margin-bottom: -2px;
+    min-width: 16px;
+}
+
+
+.rating-new, .rating-new-disabled {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+  font-size: 32px;
+}
+.rating-new > span, .rating-new-disabled > span {
+  display: inline-block;
+  position: relative;
+  width: 0.6em;
+}
+.rating-new > span:hover:before, .rating-new > span:hover ~ span:before{
+   content: "\2605";
+   color: #ffcc33;
+   position: absolute;
+   cursor: pointer;
+}
+
+.rating-new-selected, .rating-new-selected > :before, .rating-new-selected ~ :before {
+   content: "\2605";
+   color: #ff3300;
+   position: absolute;
+}
+
+.rating-title{
+    float: left;
+    margin-right: 15px;
+    padding-top: 2px;
+}
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    margin: 0 !important;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}

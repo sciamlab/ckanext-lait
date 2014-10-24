@@ -1,0 +1,13 @@
+{% set map_config = h.get_common_map_config() %}
+<div class="dataset-map" data-module="dataset-map" data-extent="{{ extent }}" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}" data-module-map_config="{{ h.dump_json(map_config) }}">
+  <div id="dataset-map-container"></div>
+  <div id="dataset-map-attribution">
+    <div>Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors</div>
+		{% if map_config.type == 'mapbox' %}
+		  <div>Tiles by <a href="http://www.mapbox.com/about/maps/">MapBox</a></div>
+		{% else %}
+		  <div>Tiles by <a href="http://www.mapquest.com">MapQuest</a></div>
+		{% endif %}
+  </div>
+</div>
+{% resource 'ckanext-spatial/dataset_map' %}

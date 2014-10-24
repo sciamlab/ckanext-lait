@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="CKAN LAit customization">
+  	<target name="ckan" description="Copy the CKAN customized controllers into the src directory">
+
+        <copy todir="../../ckan/ckan/controllers">
+            <fileset dir="ckan/ckan/controllers" includes="**/*.py"/>
+        </copy>
+
+        <copy todir="../../ckan/ckan/model">
+            <fileset dir="ckan/ckan/model" includes="**/*.py"/>
+        </copy>
+
+        <copy file="ckanext-spatial/ckanext/spatial/plugin.py" todir="../../ckanext-spatial/ckanext/spatial"/>
+        <copy file="ckanext-spatial/ckanext/spatial/public/js/spatial_query.js" todir="../../ckanext-spatial/ckanext/spatial/public/js"/>
+
+  	</target>              	
+</project>

@@ -1,0 +1,117 @@
+<!-- HEADER CUT START -->
+<!-- THE LINE AT THE VERY TOP OF THE PAGE -->
+<div class="top_line">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="tabs">
+					{% if c.userobj==None %}
+						<li class="logo-login"><a href="/login" class="logo-login">entra/registrati</a></li>
+						<li><a href="/login">entra con un social</a></li>
+					{% else %}
+						<li class="logo-login">benvenuto {{c.userobj.fullname}} / <a href="/c/portal/logout" class="logo-login">esci</a></li>
+					{% endif %}
+					{% set current_url = request.environ.CKAN_CURRENT_URL %}
+					{% set current_lang = request.environ.CKAN_LANG %}
+					{% if current_lang == 'it' %}
+					<li class="en"><a href="{% url_for current_url, locale='en' %}">english</a></li>
+					{% elif current_lang == 'en' %}
+					<li class="en"><a href="{% url_for current_url, locale='it' %}">italiano</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- START HEADER AREA -->
+<!--WRAPPER-OUT-- aggiunta--->
+<div class="wrapper-out">
+	<div class="wrapper-in">
+		<!--CONTAINER-- aggiunta--->
+		<div class="container">
+			<!-- div class="wrapper" -->
+				<header>
+					<div class="container">
+						<div class="row">
+							<!-- HEADER: LOGO AREA -->
+							<div class="span5">
+								<a href="/"><div class="logo"></div>
+									<!-- img alt="logo"	title="Open Data Lazio" src="img/logoODL.png" -->
+								</a>
+							</div>
+							<div class="span7">
+								<ul class="nav-open">
+									<li><a href="/">open <span>progetti</span></a></li>
+									<li><a href="/">open <span>spesa</span></a></li>
+									<li><a href="/">open <span>sanità</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span8"></div>
+							<div class="span4">
+<script type="text/javascript">
+function searchLiferay(){
+    var q=document.getElementById('search').value;
+    window.location = "/c/portal/layout?p_l_id=11418&p_p_id=3&p_p_lifecycle=0&p_p_mode=view&p_p_state=maximized&_3_struts_action=%2Fsearch%2Fsearch&_3_keywords="+q;
+    event.preventDefault();
+}
+</script>
+<form id='search-liferay' class="form-allsearch" data-module="select-switch"  onsubmit="searchLiferay();">
+	<input type="text" id="search" placeholder=""  class="input-search">
+	<button id='search-button' value="search" type=""><i class="icon-search"></i><span></span></button>
+</form>
+							</div>
+						</div>
+					</div>
+					<!--end container-->
+				</header>
+				<!-- END HEADER AREA -->
+			<!-- /div -->
+		</div>
+	</div>
+	<nav>
+		<!-- HEADER: PRIMARY SITE NAVIGATION -->
+		<div class="nav-out">
+			<div class="btn-responsive-menu">
+				<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+        	</div>
+			<div class="container">
+				<div class="nav-in" id="mainmenu">
+					<ul class="nav">
+						<li id="" class="active"><a href="{% url_for controller='package', action='search' %}"> DATI </a></li>
+						<li id="" class=""><a class="" href="/blog"> APPLICAZIONI</a></li>
+						<li id="" class=""><a class="" href="/community"> COMUNIT&Agrave;</a></li>
+						<li id="" class="single"><a href="/notizie"> NOTIZIE</a></li>
+					</ul>
+				</div>
+				<!-- end navbar -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end navbar-out -->
+
+		<div class="subnav-out">
+			<div class="container">
+				<div class="subnav-in nav-in">
+					<ul class="nav">
+						<li class="active"><a href="{% url_for controller='package', action='search' %}">Dataset</a></li>
+						<li><a href="">dati geografici</a></li>
+						<li><a href="{% url_for controller='package', action='search' %}?_exp=true">cerca su mappa</a></li>
+						<li><a href="{% url_for controller='organization', action='index' %}">cerca per ente</a></li>
+						<li><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='index' %}">cerca per argomento</a></li>
+						<li><a href="{% url_for controller='api', action='get_api', ver=3 %}">api</a></li>
+						<li><a href="">linked data</a></li>
+						<li><a href="mailto:dati@regione.lazio.it">invia il tuo dataset</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--end--container-out-->
+		</div>
+		<!--end--subnav-out-->
+	</nav>
+
+	<!-- END NAV -->
+	<!-- HEADER CUT END -->
