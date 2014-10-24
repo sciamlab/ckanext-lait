@@ -2,7 +2,7 @@
 {% if category %}
 	{% for cat in h.categories().categories  %}
 		{% if category == cat.name %}
-			<div class="category-icon-small category-icon-small-{{ cat.id }}">
+			<div class="category-icon-medium category-icon-{{ cat.id }}">
 		{% endif %}
 	{% endfor %}
 {% else %}

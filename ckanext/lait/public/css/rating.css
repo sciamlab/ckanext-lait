@@ -104,11 +104,15 @@
   position: relative;
   width: 0.6em;
 }
+
+.rating-new  > span{
+    cursor: pointer;
+}
+
 .rating-new > span:hover:before, .rating-new > span:hover ~ span:before{
    content: "\2605";
    color: #ffcc33;
    position: absolute;
-   cursor: pointer;
 }
 
 .rating-new-selected, .rating-new-selected > :before, .rating-new-selected ~ :before {
@@ -125,12 +129,12 @@
 
 .modal {
     display:    none;
-    position:   fixed;
-    z-index:    1000;
-    top:        0;
-    left:       0;
     height:     100%;
     width:      100%;
+    position:   fixed;
+    z-index:    2000;
+    top:        0;
+    left:       0;
     margin: 0 !important;
     background: rgba( 255, 255, 255, .8 ) 
                 url('http://i.stack.imgur.com/FhHRx.gif') 

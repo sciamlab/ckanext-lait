@@ -1,0 +1,47 @@
+/*
+body {
+	margin-top: 20px;
+}
+
+.container{
+	width: 1170px;
+}
+
+.affix {
+	width: 19%;
+}
+
+body > div.container > div.row > div.col-xs-8 > div > ul > li > form > div.form-group{
+	width: 50%;
+}
+form.navbar-form > div, form.navbar-form > button{
+	margin-right: 10px;
+}
+
+.pagination{
+	margin-top: 0;
+}
+.div-inline {
+	display: inline-block;
+}
+.panel-default>.panel-heading {
+	color: #ffffff;
+	background-color: #002742;
+	font-family: 'open_sansbold';
+	font-weight: normal;
+	text-transform: uppercase;
+}*/
+
+.pagination > li,table td{
+	cursor: pointer;
+}
+
+.alert > button{
+	margin-top: 2px !important;
+}
+
+.alert{
+	padding: 10px 20px 10px 10px !important;
+	margin: 0 !important;
+	font-size: 14px;
+}

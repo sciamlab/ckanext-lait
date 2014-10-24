@@ -248,11 +248,36 @@ ul.operations {
 }
 .btn-primary:active,
 .btn-primary.active {
-  background-color: #053341 \9 !important;
+  /*background-color: #053341 !important;*/
 }
 
-.homepage.layout-1 .row1 .col2 
-{
+#improve.btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 0px;
+  -webkit-transition: background-position 0s linear;
+  -moz-transition: background-position 0s linear;
+  -o-transition: background-position 0s linear;
+  transition: background-position 0s linear;
+  outline: thin dotted #333;
+  outline: 0px auto -webkit-focus-ring-color;
+  outline-offset: 0px;
+}
+.btn-improve:hover {
+  color: #ffffff !important;
+  background-color: #B12D0C !important;
+}
+.btn-improve {
+  color: #ffffff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
+  background-color: #ff7000 !important;
+  background-repeat: repeat-x !important;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
+  background-image: linear-gradient(to bottom, #ff7000, #B12D0C) !important;
+}
+
+
+.homepage.layout-1 .row1 .col2 {
   bottom: 0;
   position: absolute;
   right: 0;

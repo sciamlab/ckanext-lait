@@ -187,6 +187,10 @@ height:220px;
     max-width: 311px;
 }
 
+#mainmenu > ul > li > a{
+    text-transform:uppercase;
+}
+
 /**BREADCRUMB***/
 #breadcrumb {
     background: none repeat scroll 0 0 #efefef;
@@ -380,7 +384,7 @@ margin-right:10px;
 .feed-img{
     background: url("../img/ic-rss.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     display: inline-block;
-    height: 28px;
+    height: 27px;
     min-width: 28px;
 }
 /*** RISULTATI***/
@@ -638,115 +642,90 @@ h3 {
 	margin-right:5px;
 }
 
-.category-icon-big-agricoltura-pesca{
-    background: url("../img/catBig_agricoltura-pesca.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
 .category-icon-agricoltura-pesca{
-    background: url("../img/catSmall_agricoltura-pesca.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-agricoltura-pesca{
     background: url("../img/cat_agricoltura-pesca.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-big-ambiente-meteo{
-    background: url("../img/catBig_ambiente-meteo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .category-icon-ambiente-meteo{
     background: url("../img/cat_ambiente-meteo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-small-ambiente-meteo{
-    background: url("../img/catSmall_ambiente-meteo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+.category-icon-attivita-produttive{
+    background: url("../img/cat_attivita-produttive.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-cultura{
-    background: url("../img/catBig_cultura.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+.category-icon-bandi-concorsi{
+    background: url("../img/cat_bandi-concorsi.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.category-icon-beni-gestione{
+    background: url("../img/cat_beni-gestione.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.category-icon-bilanci-pagamenti{
+    background: url("../img/cat_bilanci-pagamenti.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .category-icon-cultura{
-    background: url("../img/catSmall_cultura.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-cultura{
     background: url("../img/cat_cultura.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-istituzioni-politica{
-    background: url("../img/catBig_istituzioni-politica.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+.category-icon-finanziamenti-pubblici{
+    background: url("../img/cat_finanziamenti-pubblici.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.category-icon-formazione{
+    background: url("../img/cat_formazione.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .category-icon-istituzioni-politica{
-    background: url("../img/catSmall_istituzioni-politica.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-istituzioni-politica{
     background: url("../img/cat_istituzioni-politica.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-istruzione-ricerca{
-    background: url("../img/catBig_istruzione-ricerca.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
 .category-icon-istruzione-ricerca{
-    background: url("../img/catSmall_istruzione-ricerca.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-istruzione-ricerca{
     background: url("../img/cat_istruzione-ricerca.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-mobilita-trasporti{
-    background: url("../img/catBig_mobilita-trasporti.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+.category-icon-lavoro{
+    background: url("../img/cat_lavoro.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .category-icon-mobilita-trasporti{
-    background: url("../img/catSmall_mobilita-trasporti.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-mobilita-trasporti{
     background: url("../img/cat_mobilita-trasporti.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-sanita{
-    background: url("../img/catBig_sanita.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+.category-icon-normativa-atti{
+    background: url("../img/cat_normativa-atti.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.category-icon-opere-pubbliche{
+    background: url("../img/cat_opere-pubbliche.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.category-icon-politiche-sociali-giovanili{
+    background: url("../img/cat_politiche-sociali-giovanili.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .category-icon-sanita{
-    background: url("../img/catSmall_sanita.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-sanita{
     background: url("../img/cat_sanita.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-tasse-tributi{
-    background: url("../img/catBig_tasse-tributi.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
 .category-icon-tasse-tributi{
-    background: url("../img/catSmall_tasse-tributi.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-tasse-tributi{
     background: url("../img/cat_tasse-tributi.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-territorio-urbanistica{
-    background: url("../img/catBig_territorio-urbanistica.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
 .category-icon-territorio-urbanistica{
-    background: url("../img/catSmall_territorio-urbanistica.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-territorio-urbanistica{
     background: url("../img/cat_territorio-urbanistica.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-icon-big-turismo-sport{
-    background: url("../img/catBig_turismo-sport.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
 .category-icon-turismo-sport{
-    background: url("../img/catSmall_turismo-sport.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.category-icon-small-turismo-sport{
     background: url("../img/cat_turismo-sport.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .category-icon-big{
-    background-size: 100%;
     min-height: 113px;
+    background-size: 90px 90px !important;
+    margin-left: 40px;
+    margin-top: 10px;
 }
 .category-icon-small{
+    background-size: 40px 40px;
+}
+.category-icon-medium{
     background-size: 78px 78px;
     padding-left:90px;
     min-height:80px;
 }
-.category-icon-small ul{
+.category-icon-medium ul{
     list-style-type:none;
     margin:0;
     padding:15px 0px 15px 0px;
 }
-.category-icon-small li, .utilizzo div {
+.category-icon-medium li, .utilizzo div {
     font:14px 'open_sansregular';
     text-transform:uppercase;
 }
-.category-icon-small li span, .utilizzo span, .rating-title{
+.category-icon-medium li span, .utilizzo span, .rating-title{
     font:14px 'open_sansbold';
     text-transform:uppercase;
 }
@@ -802,10 +781,12 @@ h3 {
 	padding-top:0;
     margin-right: 25px;
 }
+
 .media-grid{
 background: #f6f6f6;
 border: none
 }
+
 .media-grid-thiner {
     margin-right: 0px;
 }
@@ -1200,4 +1181,38 @@ text-decoration:none;
 ul.unstyled, ol.unstyled {
     list-style: none outside none;
     margin-left: 0;
+}
+.edit-spatial-box{
+    background-color: #f6f6f6;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.js .tab-content {
+    padding-top: 0px !important;
+}
+
+#licenseModalLabel{
+    font-size: 22px;
+}
+#resource-license-url{
+    font-size: 18px;
+}
+
+#category-primary{
+    width: 100%;
+}
+
+.media-item-category{
+    width: 180px !important;
+    padding: 15px !important;
+    margin: 15px 0 0 15px !important;
+}
+
+.media-item-app{
+    width: 180px !important;
+    margin: 15px 0 0 15px !important;
+}
+#category-primary > article > div > div{
+    margin-top: 20px !important;
 }

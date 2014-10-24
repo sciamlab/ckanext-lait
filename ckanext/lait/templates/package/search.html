@@ -3,7 +3,11 @@
 {% block subtitle %}{{ _("Datasets") }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{{ h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index') }}</li>
+  {% if request.params.get('_exp')=='true' %}
+    <li><a href="{% url_for controller='package', action='search' %}?_exp=true">{{_('Search on map')}}</a></li>
+  {% else %}
+    <li class="active">{{ h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index') }}</li>
+  {% endif %}
 {% endblock %}
 
 {% block primary_content %}
@@ -68,7 +72,7 @@
 {% block secondary_content %}
   {% snippet "spatial/snippets/spatial_query.html", default_extent=[[41, 11], [43, 14]] %}
   {% block header_site_search %}
-    <form class="form-search" action="{% url_for controller='package', action='search' %}" method="get">
+    <form id="dataset-search" class="form-search" action="{% url_for controller='package', action='search' %}" method="get">
       <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search datasets...') }}" class="input-search"/>
       <button value="search" type="">
         <i class="icon-search"></i> <span></span>

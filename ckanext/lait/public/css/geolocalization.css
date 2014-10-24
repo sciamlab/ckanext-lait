@@ -1,0 +1,94 @@
+.module-narrow #geolocalization-map-container {
+  height: 200px;
+}
+.module-content #geolocalization-map-container {
+  height: 250px;
+}
+#geolocalization-map-attribution {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.module-heading .action {
+  float: right;
+  color: #888888;
+  font-size: 12px;
+  line-height: 20px;
+  text-decoration: underline;
+}
+.module-narrow #geolocalization-map-attribution {
+  margin: 5px 8px;
+  color: #666;
+}
+.leaflet-draw-label-single {
+  display: none;
+}
+.leaflet-draw-label-subtext {
+  display: none;
+}
+#field-location {
+  width: 190px;
+}
+.select2-results .select2-no-results {
+  padding: 3px 6px;
+}
+#geolocalization-map-edit {
+  margin: 5px 8px;
+}
+#geolocalization-map-edit-buttons {
+  display: none;
+}
+.leaflet-control-draw-rectangle {
+  background-image: url("../img/pencil.png");
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.leaflet-marker-icon {
+    background-image: url("../img/marker-icon.png");
+}
+
+.geolocalization-map-expanded #dataset-map {
+  position: absolute;
+  width: 940px;
+  height: 384px;
+  top: -384px;
+  left: -1px;
+  background-color: white;
+  border: 1px solid #CCC;
+  margin: 0;
+}
+.geolocalization-map-expanded #dataset-map #geolocalization-map-container {
+  height: 300px;
+}
+.geolocalization-map-expanded #dataset-map #dataset-map-attribution {
+  *zoom: 1;
+}
+.geolocalization-map-expanded #dataset-map #dataset-map-attribution:before,
+.geolocalization-map-expanded #dataset-map #dataset-map-attribution:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.geolocalization-map-expanded #dataset-map #dataset-map-attribution:after {
+  clear: both;
+}
+.geolocalization-map-expanded #dataset-map #dataset-map-attribution div {
+  float: left;
+  margin-right: 10px;
+}
+.geolocalization-map-expanded #dataset-map #dataset-map-edit-buttons {
+  display: block;
+  float: right;
+  padding: 10px;
+}
+.geolocalization-map-expanded #dataset-map #dataset-map-edit {
+  display: none;
+}
+.geolocalization-map-expanded #dataset-map .module-heading {
+  border-top-color: #000;
+}
+.geolocalization-map-expanded .wrapper {
+  margin-top: 383px;
+}

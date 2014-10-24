@@ -1,6 +1,6 @@
-<li class="media-item">
+<li class="media-item media-item-category">
   {% block image %}
-    <div class="category-icon-big category-icon-big-{{ category.id }}"></div>
+    <div class="category-icon-big category-icon-{{ category.id }}"></div>
     <!-- img src="{{ category.img or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ category.name }}" class="media-image" -->
   {% endblock %}
   {% block title %}

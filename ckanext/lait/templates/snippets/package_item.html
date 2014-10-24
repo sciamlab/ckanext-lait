@@ -40,7 +40,7 @@ Example:
         <a href="{% url_for controller='package', action='search', category=package.category %}" class="category-icon">
           {% for category in h.categories().categories %}
             {% if package.get('category', '') == category.name %}
-              <div class='category-icon-{{ category.id }}'></div>
+              <div class='category-icon-{{ category.id }} category-icon-small'></div>
             {% endif %}
           {% endfor %}
         </a>

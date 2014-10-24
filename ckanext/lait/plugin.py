@@ -2,16 +2,23 @@
 import logging
 import routes.mapper
 import ckan.lib.base as base
+import ckan.lib.helpers as h
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import urllib2
 from ckan.common import _, json
 import collections
 from pylons import config
+import pylons
+from ckan.common import request, c
+import ckan.lib.navl as navl
+import sets
+import ckan
+
 log = logging.getLogger(__name__)
 
 def categories():
-    url = config.get('ckan.base_url', '')+'/CKANAPIExtension/getcategories?count=true'
+    url = config.get('ckan.base_url', '')+'/CKANAPIExtension/categories?count=true'
     try:
         response = urllib2.urlopen(url)
         response_body = response.read()
@@ -125,7 +132,8 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     def before_map(self, route_map):
         with routes.mapper.SubMapper(route_map,
                 controller='ckanext.lait.plugin:LaitController') as m:
-            m.connect('categories_index', '/category', action='index')
+            m.connect('categories_index', '/category', action='category')
+            m.connect('disqus', '/disqus', action='disqus')
         return route_map
 
     def after_map(self, route_map):
@@ -134,5 +142,13 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
 class LaitController(base.BaseController):
 
-    def index(self):
+    def category(self):
         return base.render('category/index.html')
+    
+    def disqus(self):
+        c.data = {
+            'id': request.params.get('id', u''),
+            'title': request.params.get('title', u'')
+        }
+        return base.render('package/disqus.html')
+

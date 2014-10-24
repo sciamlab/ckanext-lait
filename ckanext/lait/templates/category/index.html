@@ -1,9 +1,9 @@
-{% extends "page.html" %}
+{% extends "category/page.html" %}
 
 {% block subtitle %}{{ _('Categories') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('Categories'), controller='ckanext.lait.plugin:LaitController', action='index' %}</li>
+  <li class="active">{% link_for _('Categories'), controller='ckanext.lait.plugin:LaitController', action='category' %}</li>
 {% endblock %}
 
 {% block page_header %}{% endblock %}
@@ -17,5 +17,5 @@
 {% endblock %}
 
 {% block secondary_content %}
-  {% snippet "category/snippets/helper.html" %}
 {% endblock %}
+

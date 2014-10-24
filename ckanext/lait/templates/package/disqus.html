@@ -1,0 +1,22 @@
+{%- block doctype %}<!DOCTYPE html>{% endblock -%}
+
+{%- block htmltag -%}
+{% set lang = h.lang() %}
+<!--[if IE 7]> <html lang="{{ lang }}" class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html lang="{{ lang }}" class="ie ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="{{ lang }}" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ lang }}"> <!--<![endif]-->
+{%- endblock -%}
+
+  <head{% block headtag %}{% endblock %}>
+    <title>{{c.data.title}}</title>
+  </head>
+  <body{% block bodytag %} data-site-root="{{ h.url('/', locale='default', qualified=true) }}" data-locale-root="{{ h.url('/', qualified=true) }}" {% endblock %}>
+    <div>
+	{% block disqus %}
+	   {% snippet "snippets/disqus.html", user=c.userobj, id=c.data.id, title=c.data.title %}
+	{% endblock %}
+	</div>
+  </body>
+</html>
+

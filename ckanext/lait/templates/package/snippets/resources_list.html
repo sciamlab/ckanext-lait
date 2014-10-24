@@ -30,7 +30,7 @@ Example:
     {% endif %}
     {% endblock %}
     <div>
-      <div class="api add-info"><a href="{% url_for controller='api', action='action', logic_function='package_show', id=pkg.name, ver=3 %}"> API </a></div> 
-      <div class="opendata add-info"><a href="">Linked open data</a></div>
+      <div class="api add-info"><a href="{% url_for controller='api', action='action', logic_function='package_show', id=pkg.name, ver=3 %}">{{_('API')}}</a></div> 
+      <div class="opendata add-info"><a href="{% url_for controller='package', action='read', id=pkg.name %}.rdf">{{_('RDF')}}</a></div>
     </div>
 </section>

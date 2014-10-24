@@ -9,7 +9,7 @@
 						<li class="logo-login"><a href="/login" class="logo-login">entra/registrati</a></li>
 						<li><a href="/login">entra con un social</a></li>
 					{% else %}
-						<li class="logo-login">benvenuto {{c.userobj.fullname}} / <a href="/c/portal/logout" class="logo-login">esci</a></li>
+						<li class="logo-login">{{c.userobj.name}} / <a href="/c/portal/logout" class="logo-login">esci</a></li>
 					{% endif %}
 					{% set current_url = request.environ.CKAN_CURRENT_URL %}
 					{% set current_lang = request.environ.CKAN_LANG %}
@@ -50,17 +50,17 @@
 						<div class="row">
 							<div class="span8"></div>
 							<div class="span4">
-<script type="text/javascript">
-function searchLiferay(){
-    var q=document.getElementById('search').value;
-    window.location = "/c/portal/layout?p_l_id=11418&p_p_id=3&p_p_lifecycle=0&p_p_mode=view&p_p_state=maximized&_3_struts_action=%2Fsearch%2Fsearch&_3_keywords="+q;
-    event.preventDefault();
-}
-</script>
-<form id='search-liferay' class="form-allsearch" data-module="select-switch"  onsubmit="searchLiferay();">
-	<input type="text" id="search" placeholder=""  class="input-search">
-	<button id='search-button' value="search" type=""><i class="icon-search"></i><span></span></button>
-</form>
+								<script type="text/javascript">
+									function searchLiferay(){
+									    var q=document.getElementById('search').value;
+									    window.location = "/c/portal/search?keywords="+q;
+									    event.preventDefault();
+									}
+								</script>
+								<form id='search-liferay' class="form-allsearch" data-module="select-switch"  onsubmit="searchLiferay();">
+								     	<input type="text" id="search" placeholder=""  class="input-search">
+								        <button id='search-button' value="search" type=""><i class="icon-search"></i><span></span></button>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -81,10 +81,10 @@ function searchLiferay(){
 			<div class="container">
 				<div class="nav-in" id="mainmenu">
 					<ul class="nav">
-						<li id="" class="active"><a href="{% url_for controller='package', action='search' %}"> DATI </a></li>
-						<li id="" class=""><a class="" href="/blog"> APPLICAZIONI</a></li>
-						<li id="" class=""><a class="" href="/community"> COMUNIT&Agrave;</a></li>
-						<li id="" class="single"><a href="/notizie"> NOTIZIE</a></li>
+						<li class="active"><a href="{% url_for controller='package', action='search' %}">{{_('Dati')}}</a></li>
+						<li class=""><a href="/applicazioni">{{_('Applicazioni')}}</a></li>
+						<li class=""><a href="/comunita">{{_('Comunità')}}</a></li>
+						<li class=""><a href="/notizie">{{_('Notizie ed eventi')}}</a></li>
 					</ul>
 				</div>
 				<!-- end navbar -->
@@ -97,14 +97,14 @@ function searchLiferay(){
 			<div class="container">
 				<div class="subnav-in nav-in">
 					<ul class="nav">
-						<li class="active"><a href="{% url_for controller='package', action='search' %}">Dataset</a></li>
-						<li><a href="">dati geografici</a></li>
-						<li><a href="{% url_for controller='package', action='search' %}?_exp=true">cerca su mappa</a></li>
-						<li><a href="{% url_for controller='organization', action='index' %}">cerca per ente</a></li>
-						<li><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='index' %}">cerca per argomento</a></li>
-						<li><a href="{% url_for controller='api', action='get_api', ver=3 %}">api</a></li>
-						<li><a href="">linked data</a></li>
-						<li><a href="mailto:dati@regione.lazio.it">invia il tuo dataset</a></li>
+						<li {% if '/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')!='true' %}class="active"{% endif %}><a href="{% url_for controller='package', action='search' %}">{{_('Dataset')}}</a></li>
+						<li><a href="/dati-geografici">{{_('Dati geografici')}}</a></li>
+						<li {% if '/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')=='true' %}class="active"{% endif %}><a href="{% url_for controller='package', action='search' %}?_exp=true">{{_('Cerca su mappa')}}</a></li>
+						<li {% if '/organization' in request.environ.CKAN_CURRENT_URL %}class="active"{% endif %}><a href="{% url_for controller='organization', action='index' %}">{{_('Cerca per organizzazione')}}</a></li>
+						<li {% if request.environ.CKAN_CURRENT_URL.endswith('/category') %}class="active"{% endif %}><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='category' %}">{{_('Cerca per categoria')}}</a></li>
+						<li><a href="/application-programming-interface">{{_('API')}}</a></li>
+						<li><a href="/linked-data">{{_('Linked Data')}}</a></li>
+						<li><a href="/invia-il-tuo-dataset">{{_('Invia il tuo dataset')}}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -112,6 +112,6 @@ function searchLiferay(){
 		</div>
 		<!--end--subnav-out-->
 	</nav>
-
 	<!-- END NAV -->
 	<!-- HEADER CUT END -->
+
