@@ -78,12 +78,15 @@ def translate_resource_data_dict(data_dict):
     as possible translated into the desired or the fallback language.
 
     '''
-    desired_lang_code = pylons.request.environ['CKAN_LANG']
+    try:
+        desired_lang_code = pylons.request.environ['CKAN_LANG']
+    except Exception, e:
+        desired_lang_code = 'it'
+    
     fallback_lang_code = pylons.config.get('ckan.locale_default', 'en')
 
     # Get a flattened copy of data_dict to do the translation on.
-    flattened = navl.dictization_functions.flatten_dict(
-            data_dict)
+    flattened = navl.dictization_functions.flatten_dict(data_dict)
 
     # Get a simple flat list of all the terms to be translated, from the
     # flattened data dict.

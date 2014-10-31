@@ -23,7 +23,7 @@ function onLoad(){
 }
 
 function enter(e){
-	if(e.charCode == 13)
+	if(e.charCode == 13 && !$('#translateModal').hasClass('in'))
 		search();
 }
 
@@ -85,6 +85,7 @@ function populateTable() {
     var query_filter = document.getElementById("search-filter").value;
 	//update terms and pages count 
 	var service = 'count';
+	//getting current count (filtered)
 	doAjax('GET', ckan4j_webapi_endpoint, service, 'e=category&l='+lang_code_current+'&tr='+include_translated+'&ntr='+include_not_translated+'&q='+query_filter, null, true, 
 		function(result){
 //	    	alert(result);
@@ -92,13 +93,37 @@ function populateTable() {
 	    	terms_count = json.count;
 	    	document.getElementById("terms-count").innerHTML = terms_count;
 	    	document.getElementById("terms-count-box").style.display = 'block';
-	    	var remainder_page = 0;
+	    	var additional_page = 0;
 	    	if(terms_count%page_size>1)
-	    		remainder_page = 1;
-	    	page_last = (Math.floor(terms_count/page_size))+remainder_page;
+	    		additional_page = 1;
+	    	page_last = (Math.floor(terms_count/page_size))+additional_page;
 	    	updatePagination();
 	    }
     );
+    
+    //getting total count
+    var total_terms_count;
+    doAjax('GET', ckan4j_webapi_endpoint, service, 'e=category&l='+lang_code_current+'&tr=true&ntr=true&q=', null, false, 
+		function(result){
+//	    	alert(result);
+	    	var json = eval('(' + result + ')');
+	    	total_terms_count = json.count;
+	    }
+    );
+    //getting translated count
+    var translated_terms_count;
+    doAjax('GET', ckan4j_webapi_endpoint, service, 'e=category&l='+lang_code_current+'&tr=true&ntr=false&q=', null, false, 
+		function(result){
+//	    	alert(result);
+	    	var json = eval('(' + result + ')');
+	    	translated_terms_count = json.count;
+	    }
+    );
+    var translation_percentage = translated_terms_count/total_terms_count*100;
+    document.getElementById("terms-stats-translated").innerHTML = translated_terms_count;
+    document.getElementById("terms-stats-total").innerHTML = total_terms_count;
+    document.getElementById("terms-stats-percentage").innerHTML = translation_percentage.toFixed(2);
+	document.getElementById("terms-stats-box").style.display = 'block';
     
 	//update table content
 	service = 'list';
@@ -165,7 +190,6 @@ function insertTranslation(){
 				"<button type='button' class='close' data-dismiss='alert'>&times;</button>" +
 				"<b>"+document.getElementById("msg-ok").innerHTML+"</b>" +
 				"</div>";
-
 				window.setTimeout(function() {
 					$('#translateModal').modal('hide');
 					message_box.innerHTML = "";

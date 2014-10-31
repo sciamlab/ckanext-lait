@@ -7,45 +7,54 @@
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:dcat="http://www.w3.org/ns/dcat#"
   xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
 >
   <dcat:Dataset rdf:about="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}">
     <owl:sameAs rdf:resource="urn:uuid:${c.pkg_dict['id']}"/>
+    <dct:identifier>${c.pkg_dict['name']}</dct:identifier>
+    <dct:title>${c.pkg_dict['title']}</dct:title>
     <dct:description>${c.pkg_dict['notes']}</dct:description>
+    <adms:contactPoint py:if="c.pkg_dict.get('author', None)">
+      <foaf:Agent>
+        <foaf:name>${ c.pkg_dict['author'] }</foaf:name>
+        <foaf:mbox  py:if="c.pkg_dict.get('author_email', None)" rdf:resource="mailto:${c.pkg_dict['author_email']}"/>
+      </foaf:Agent>
+    </adms:contactPoint>
+    <dct:publisher py:if="c.pkg_dict.get('maintainer', None)">
+      <foaf:Agent>
+        <foaf:name>${ c.pkg_dict['maintainer'] }</foaf:name>
+        <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['maintainer_email']}"/>
+      </foaf:Agent>  
+    </dct:publisher>
+    <dct:issued>${c.pkg_dict['metadata_created']}</dct:issued>
+    <dct:modified>${c.pkg_dict['metadata_modified']}</dct:modified>
+    <dcat:landingPage>${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}</dcat:landingPage>
     <py:for each="tag_dict in c.pkg_dict['tags']">
         <dcat:keyword>${ tag_dict["name"] }</dcat:keyword>
     </py:for>
-    <foaf:homepage rdf:resource="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}"/>
-    <rdfs:label>${c.pkg_dict['name']}</rdfs:label>
-
-    <dct:identifier>${c.pkg_dict['name']}</dct:identifier>
-    <dct:title>${c.pkg_dict['title']}</dct:title>
+    <dct:spatial>${c.pkg_dict['spatial']}</dct:spatial>
+    <dcat:theme>${c.pkg_dict['category']}</dcat:theme>
+    <dct:accrualPeriodicity></dct:accrualPeriodicity>
+    <dct:temporal></dct:temporal>
+    <foaf:homepage rdf:resource="${ h.url_for(controller='package',action='search', qualified=True)}"/>
     <py:for each="rsc_dict in c.pkg_dict['resources']">
         <dcat:distribution>
             <dcat:Distribution>
-                <dcat:accessURL rdf:resource="${ rsc_dict['url'] }"/>
-                    <dct:format py:if="rsc_dict.get('format')">
-                        <dct:IMT>
-                            <rdf:value>${rsc_dict.get('format')}</rdf:value>
-                            <rdfs:label>${rsc_dict.get('format')}</rdfs:label>
-                        </dct:IMT>
-                    </dct:format>
-               <dct:title py:if="rsc_dict.get('name')">${rsc_dict.get('name')}</dct:title>
+                <dct:title py:if="rsc_dict['name']">${rsc_dict['name']}</dct:title>
+                <dct:description py:if="rsc_dict['description']">${rsc_dict['description']}</dct:description>
+                <dct:format py:if="rsc_dict['format']">${rsc_dict['format']}</dct:format>
+                <dcat:accessURL rdf:resource="${ h.url_for(controller='package', action='resource_read', id=c.pkg_dict['name'], resource_id=rsc_dict['id'], qualified=True) }"/>
+                <dcat:downloadURL rdf:resource="${ rsc_dict['url'] }"/>
+                <dct:license py:if="c.pkg_dict['license_id']">${c.pkg_dict['license_id']}</dct:license>
+                <dct:issued>${rsc_dict['created']}</dct:issued>
             </dcat:Distribution>
         </dcat:distribution>
     </py:for>
-    <dct:creator  py:if="c.pkg_dict.get('author', None)">
-      <rdf:Description>
-        <foaf:name>${ c.pkg_dict['author'] }</foaf:name>
-        <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['author_email']}"/>
-      </rdf:Description>
-    </dct:creator>
-    <dct:contributor py:if="c.pkg_dict.get('maintainer', None)">
-      <rdf:Description>
-        <foaf:name>${ c.pkg_dict['maintainer'] }</foaf:name>
-        <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['maintainer_email']}"/>
-      </rdf:Description>
-    </dct:contributor>
-
-    <dct:rights py:if="c.pkg_dict.get('license_url', None)" rdf:resource="${c.pkg_dict['license_url']}"/>
+    <foaf:Organization py:if="c.pkg_dict['organization']">
+        <foaf:name>${ c.pkg_dict['organization'].get('title') }</foaf:name>
+        <foaf:img py:if="c.pkg_dict['organization'].get('image_display_url')">${ c.pkg_dict['organization'].get('image_display_url') }</foaf:img>
+        <dct:description>${ c.pkg_dict['organization'].get('description') }</dct:description>
+        <foaf:homepage>${ h.url_for('organization_read', action='read', id=c.pkg_dict['organization'].get('name'), qualified=True) }</foaf:homepage>
+    </foaf:Organization>
   </dcat:Dataset>
 </rdf:RDF>

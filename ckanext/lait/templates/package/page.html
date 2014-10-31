@@ -43,26 +43,7 @@
               {% endfor %}
             </div -->
           {% endblock %}
-          {% block license %}
-            <!-- Modal added for license confirmation-->
-            <div id="licenseModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="licenseModalLabel" aria-hidden="true" style="display:none">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="licenseModalLabel">{{ _('License confirmation') }}</h3>
-              </div>
-
-              <div class="modal-body">
-                <h2>{{ _('Before proceed with the download you must read and accept the license.') }}</h2>
-                <hr>
-                <h2 id="resource-license-name"></h2>
-                <span id="resource-license-url"></span>
-              </div>
-              <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">{{ _('I do not agree, bring me back!') }}</button>
-                <button id="license-confirmation" class="btn btn-primary">{{ _('OK, please proceed') }}</button>
-              </div>
-            </div>
-          {% endblock %}
+          
 
           <div class="wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
 

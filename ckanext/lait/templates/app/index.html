@@ -13,9 +13,9 @@
   <h1 class="hide-heading">{{ _('Apps') }}</h1>
   	{% set q = request.params.q %}
     {% if q %}
-	  	{% set params = 't=application&q='+q %}
+	  	{% set params = 'q='+q %}
 	  {% else %}
-	  	{% set params = 't=application' %}
+	  	{% set params = '' %}
 	  {% endif %}
     {% set apps = h.apps(params) %}
     {% set apps_translated = h.translate_resource_data_dict_list(apps.items) %}

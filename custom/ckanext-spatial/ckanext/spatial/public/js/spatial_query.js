@@ -103,7 +103,7 @@ this.ckan.module('spatial-query', function ($, _) {
         }
       }));
       map.addLayer(markersLayer);      
-      
+   
       //Imposta gli eventi sul geocoder
       ricerca.on("select2-selecting", function(e){
     	  var coordinates = e.val.split(" ");

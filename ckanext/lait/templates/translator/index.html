@@ -20,7 +20,7 @@
     	<div>
     		<div style="float:left;">
     			<h2 id="terms-count-box" style="font-weight:bold;display:none">
-				    <span id="terms-count"></span> {{ _('terms found') }}
+				    <span id="terms-count"></span> {{ _('terms found') }} - {{_('Translated')}} <span id="terms-stats-translated"></span> {{ _('on')}} <span id="terms-stats-total"></span> (<span id="terms-stats-percentage"></span>&#37;)
 			  	</h2>
     		</div>
 	    	<div style="float:right;font-size:18px;margin-top: 8px;">
@@ -32,6 +32,7 @@
 				<br style="clear:both;" />
 	    	</div>
 		  	<br style="clear:both;" />
+		  	<div id="terms-stats-box" style="font-style:italic;font-size:14px;display:none">{{_('Translated')}} <span id="terms-stats-translated"></span> {{ _('terms on')}} <span id="terms-stats-total"></span> (<span id="terms-stats-percentage"></span>&#37;)</div>
 	  	</div>
     	
 	</form>
