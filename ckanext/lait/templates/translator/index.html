@@ -17,10 +17,11 @@
 	        </button>
 	        
     	</div>
-    	<div>
+
+    	<div style="margin-bottom: 10px;">
     		<div style="float:left;">
     			<h2 id="terms-count-box" style="font-weight:bold;display:none">
-				    <span id="terms-count"></span> {{ _('terms found') }} - {{_('Translated')}} <span id="terms-stats-translated"></span> {{ _('on')}} <span id="terms-stats-total"></span> (<span id="terms-stats-percentage"></span>&#37;)
+				    <span id="terms-count"></span> {{ _('terms found') }}
 			  	</h2>
     		</div>
 	    	<div style="float:right;font-size:18px;margin-top: 8px;">
@@ -32,12 +33,15 @@
 				<br style="clear:both;" />
 	    	</div>
 		  	<br style="clear:both;" />
-		  	<div id="terms-stats-box" style="font-style:italic;font-size:14px;display:none">{{_('Translated')}} <span id="terms-stats-translated"></span> {{ _('terms on')}} <span id="terms-stats-total"></span> (<span id="terms-stats-percentage"></span>&#37;)</div>
+		  	
 	  	</div>
-    	
+    	<div id="terms-stats-box" class="alert" style="font-style:italic;font-size:14px;display:none">
+	  		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		  	{{_('Translated')}} <span id="terms-stats-translated"></span> {{ _('terms on')}} <span id="terms-stats-total"></span> (<span id="terms-stats-percentage"></span>&#37;)
+		</div>
 	</form>
 
-	<div style="margin:0 -25px;font-size: 14px;">
+	<div style="margin: 15px -25px 0px -25px !important;font-size: 14px;">
 		<table id="main-table" class="table table-hover table-bordered">
 			<thead>
 				<tr>

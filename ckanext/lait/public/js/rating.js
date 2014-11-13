@@ -63,17 +63,19 @@ function doAjax(method, host, service, query, data, asynch, callback){
         //document.getElementsByTagName("body")[0].className = "loading";
         $('#loaderModal').modal('show');
         requestObj.onreadystatechange = function (){
-            try {
-                if (requestObj.readyState == 4 && requestObj.status == 200){
-                    var result = requestObj.responseText;
-                    if(callback) callback(result);
-                    //document.getElementsByTagName("body")[0].className = "";
+            if (requestObj.readyState == 4){
+                try {
+                    if (requestObj.status == 200){
+                        var result = requestObj.responseText;
+                        if(callback) callback(result);
+                    }else if(requestObj.status == 500){
+                        alert(requestObj.responseText);
+                    }
+                }catch(err){
+                    alert(err);
+                }finally{
                     $('#loaderModal').modal('hide');
                 }
-            }catch(err){
-                alert(err);
-            }finally{
-                
             }
         };
         requestObj.open(method, host+service+'?'+query, asynch);

@@ -14,18 +14,18 @@
     <dct:identifier>${c.pkg_dict['name']}</dct:identifier>
     <dct:title>${c.pkg_dict['title']}</dct:title>
     <dct:description>${c.pkg_dict['notes']}</dct:description>
-    <adms:contactPoint py:if="c.pkg_dict.get('author', None)">
+    <dct:publisher py:if="c.pkg_dict.get('author', None)">
       <foaf:Agent>
         <foaf:name>${ c.pkg_dict['author'] }</foaf:name>
         <foaf:mbox  py:if="c.pkg_dict.get('author_email', None)" rdf:resource="mailto:${c.pkg_dict['author_email']}"/>
       </foaf:Agent>
-    </adms:contactPoint>
-    <dct:publisher py:if="c.pkg_dict.get('maintainer', None)">
+    </dct:publisher>
+    <adms:contactPoint py:if="c.pkg_dict.get('maintainer', None)">
       <foaf:Agent>
         <foaf:name>${ c.pkg_dict['maintainer'] }</foaf:name>
         <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['maintainer_email']}"/>
       </foaf:Agent>  
-    </dct:publisher>
+    </adms:contactPoint>
     <dct:issued>${c.pkg_dict['metadata_created']}</dct:issued>
     <dct:modified>${c.pkg_dict['metadata_modified']}</dct:modified>
     <dcat:landingPage>${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}</dcat:landingPage>
