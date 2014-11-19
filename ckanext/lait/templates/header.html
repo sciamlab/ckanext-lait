@@ -1,12 +1,11 @@
-<!-- HEADER CUT START -->
-<!-- THE LINE AT THE VERY TOP OF THE PAGE -->
 {% set current_url = request.environ.CKAN_CURRENT_URL %}
 {% set current_lang = request.environ.CKAN_LANG %}
 {% set liferay_lang_prefix = '' %}
+<!-- START commentato per RILASCIO -->
 <div class="top_line">
 	<div class="container">
 		<div class="row">
-			<div class="span12">
+			<!-- div class="span12">
 				<ul class="tabs">
 					{% if c.userobj==None %}
 						<li class="logo-login"><a href="/login" class="logo-login">{{_('entra')}}/{{_('registrati')}}</a></li>
@@ -21,12 +20,11 @@
 						<li class="en"><a href="{% url_for current_url, locale='it' %}">italiano</a></li>
 					{% endif %}
 				</ul>
-			</div>
+			</div -->
 		</div>
 	</div>
 </div>
-<!-- START HEADER AREA -->
-<!--WRAPPER-OUT-->
+<!-- END commentato per RILASCIO -->
 <div class="wrapper-out">
 	<div class="wrapper-in">
 		<div>
@@ -34,14 +32,12 @@
 				<!-- img alt="logo"	title="Open Data Lazio" src="img/logoODL.png" -->
 			</a>
 		</div>
-		<!--CONTAINER-->
 		<div class="container">
-			<!-- div class="wrapper" -->
-
+			<!-- START commentato per RILASCIO -->
 			<header>
                 <div class="container">
-                    <div class="row">
-                        <div class="span4">
+                    <div class="row" style="min-height:22px">
+                        <!-- div class="span4">
                         	<script type="text/javascript">
 								function searchLiferay(){
 								    var q=document.getElementById('search').value;
@@ -49,7 +45,7 @@
 								    event.preventDefault();
 								}
 							</script>
-                	        <form class="form-allsearch custom-home" data-module="select-switch" method="get">
+                	        <form id='search-liferay' class="form-allsearch custom-home" data-module="select-switch" onsubmit="searchLiferay();">
 								<input type="text" id="search" placeholder="" class="input-search">
 								<button id='search-button' value="search" type="">
 									<i class="icon-search"></i><span></span>
@@ -62,16 +58,15 @@
 								<li><a href="{{liferay_lang_prefix}}/">open <span>spesa</span></a></li>
 								<li><a href="{{liferay_lang_prefix}}/">open <span>sanità</span></a></li>
                             </ul>
-                    	</div>
+                    	</div -->
                     </div>
-                </div> <!--end container-->
+                </div>
             </header>
-			<!-- END HEADER AREA -->
-			<!-- /div -->
+            <!-- END commentato per RILASCIO -->
 		</div>
 	</div>
-	<nav>
-		<!-- HEADER: PRIMARY SITE NAVIGATION -->
+	<!-- START commentato per RILASCIO -->
+	<!-- nav>
 		<div class="nav-out">
 			<div class="btn-responsive-menu">
 				<span class="icon-bar"></span>
@@ -87,11 +82,8 @@
 						<li class=""><a href="{{liferay_lang_prefix}}/notizie">{{_('News')}}</a></li>
 					</ul>
 				</div>
-				<!-- end navbar -->
 			</div>
-			<!-- end container -->
 		</div>
-		<!-- end navbar-out -->
 
 		<div class="subnav-out">
 			<div class="container">
@@ -109,9 +101,6 @@
 					</ul>
 				</div>
 			</div>
-			<!--end--container-out-->
 		</div>
-		<!--end--subnav-out-->
-	</nav>
-	<!-- END NAV -->
-	<!-- HEADER CUT END -->
+	</nav -->
+<!-- END commentato per RILASCIO -->

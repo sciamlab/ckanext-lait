@@ -19,7 +19,7 @@
   <label class="control-label" for="field-category">{{ _('Category') }}</label>
   <div class="controls">
     <select id="field-category" name="category" data-module="autocomplete">
-      <option value=""></option>
+      <!--option value=""></option-->
       {% for category in h.categories().categories  %}
         <option value="{{ category.name }}" {% if data.get('category') == category.name %}selected="selected"{% endif %}>{{ category.name }}</option>
       {% endfor %}
@@ -73,6 +73,9 @@
   {{ form.input('tag_string', id='field-tags', label=_('Tags'), placeholder=_('eg. economy, mental health, government'), value=data.tag_string, error=errors.tags, classes=['control-full'], attrs=tag_attrs) }}
 {% endblock %}
 
+{{ form.input('update_frequency', label=_('Update frequency'), id='field-update-frequency', placeholder=_('eg. Weekly'), value=data.update_frequency, error=errors.update_frequency) }}
+{{ form.input('temporal_period', label=_('Temporal period'), id='field-temporal-period', placeholder=_('eg. Q2-2014'), value=data.temporal_period, error=errors.temporal_period) }}
+
 {% block package_basic_fields_license %}
 <div class="control-group">
   {% set error = errors.license_id %}
@@ -124,7 +127,7 @@
           {% for organization in organizations_available %}
             {# get out first org from users list only if there is not an existing org #}
             {% set selected_org = (existing_org and existing_org == organization.id) or (not existing_org and not data.id and organization.id == organizations_available[0].id) %}
-            <option value="{{ organization.id }}" {% if selected_org %} selected="selected" {% endif %}>{{ organization.name }}</option>
+            <option value="{{ organization.id }}" {% if selected_org %} selected="selected" {% endif %}>{{ organization.display_name }}</option>
           {% endfor %}
         </select>
       </div>

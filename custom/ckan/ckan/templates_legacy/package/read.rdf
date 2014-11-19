@@ -34,8 +34,8 @@
     </py:for>
     <dct:spatial>${c.pkg_dict['spatial']}</dct:spatial>
     <dcat:theme>${c.pkg_dict['category']}</dcat:theme>
-    <dct:accrualPeriodicity></dct:accrualPeriodicity>
-    <dct:temporal></dct:temporal>
+    <dct:accrualPeriodicity>${ c.pkg_dict['update_frequency'] }</dct:accrualPeriodicity>
+    <dct:temporal>${ c.pkg_dict['temporal_period'] }</dct:temporal>
     <foaf:homepage rdf:resource="${ h.url_for(controller='package',action='search', qualified=True)}"/>
     <py:for each="rsc_dict in c.pkg_dict['resources']">
         <dcat:distribution>

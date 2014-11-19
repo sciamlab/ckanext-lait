@@ -11,6 +11,7 @@
             <fileset dir="ckan/ckan">
               <include name="**/*.rdf"/>
               <include name="**/*.py"/>
+              <include name="**/*.po"/>
             </fileset>
         </copy>
 

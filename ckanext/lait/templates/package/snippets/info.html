@@ -23,6 +23,12 @@ Example:
     {% endif %}
     <li>{{ _('Created on') }}: <span>{{pkg.metadata_created[8:10]}}/{{pkg.metadata_created[5:7]}}/{{pkg.metadata_created[:4]}}</span></li>
     <li>{{ _('Updated on') }}: <span>{{pkg.metadata_modified[8:10]}}/{{pkg.metadata_modified[5:7]}}/{{pkg.metadata_modified[:4]}}</span></li>
+    {% if pkg.update_frequency %}
+      <li>{{ _('Update frequency') }}: <span>{{pkg.update_frequency}}</span></li>
+    {% endif %}
+    {% if pkg.temporal_period %}
+      <li>{{ _('Temporal period') }}: <span>{{pkg.temporal_period}}</span></li>
+    {% endif %}
     <li class="revisioni"><a href="{{ h.url_for(controller='package', action='activity', id=pkg.id) }}">{{ _('Activity Stream') }}</a></li>
     <li {% if not 'spatial' in pkg or pkg.spatial=='' %}class="last"{% endif %}>
       {{ _('Followers') }}: {{ h.SI_number_span(h.get_action('dataset_follower_count', {'id': pkg.id})) }}

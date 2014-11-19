@@ -70,7 +70,11 @@
 {% endblock %}
 
 {% block secondary_content %}
-  {% snippet "spatial/snippets/spatial_query.html", default_extent=[[41, 11], [43, 14]] %}
+  
+  <!-- START commentato per RILASCIO -->
+  {# % snippet "spatial/snippets/spatial_query.html", default_extent=[[41, 11], [43, 14]] % #}
+  <!-- END commentato per RILASCIO -->
+              
   {% block header_site_search %}
     <form id="dataset-search" class="form-search" action="{% url_for controller='package', action='search' %}" method="get">
       <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search datasets...') }}" class="input-search"/>

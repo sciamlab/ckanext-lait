@@ -7,6 +7,9 @@
       {% set nav_item_class = ' ' %}
       {% set wrapper_class = 'nav-facet nav-facet-tertiary' %}
     {% endif %}
+<!-- START aggiunto per RILASCIO -->
+{% if name!='rating_average_int' %}
+<!-- END aggiunto per RILASCIO -->
     <section class="{{ wrapper_class or 'module module-narrow module-shallow' }}">
       <h2 class="module-heading">
         <!-- i class="icon-medium icon-filter"></i -->
@@ -46,5 +49,8 @@
         <p class="module-content empty">{{ _('There are no {facet_type} that match this search').format(facet_type=title) }}</p>
       {% endif %}
     </section>
+<!-- START aggiunto per RILASCIO -->
+{% endif %}
+<!-- END aggiunto per RILASCIO -->
   {% endif %}
 {% endwith %}

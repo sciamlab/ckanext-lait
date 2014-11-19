@@ -237,7 +237,10 @@
     padding: 51px 35px 35px;
     }
     .logo {
-        background: url("../img/opendatalogo.png");
+        /* START commentato per RILASCIO */
+        /*background: url("../img/opendatalogo.png");*/
+        background: url("../img/opendatalogo_cs.png");
+        /* END commentato per RILASCIO */
         background-size: 1170px 127px;
         min-height: 127px;
     }
@@ -2732,3 +2735,24 @@ div.alert {
 }
 /*Footer End*/
 
+/**custom css**/    
+div.alert {
+    margin-bottom: 30px;/**modificato**/
+    margin-left: 20px;
+    padding: 15px 15px 15px 35px; /**modificato**/
+    box-shadow: 0 0 5px #ccc; /**aggiunto**/
+}
+
+/**custom css**/
+.alert-info {
+    background-color: #fff; /**modificato**/
+    border: 1px dashed #ff3300; /**modificato**/
+    color: #002742; /**aggiunto**/
+    font: 15px open_sanslight; /**aggiunto**/
+}
+
+/**main-min.css**/
+.alert-info h4 {
+    color: #ff3300; /**modificato**/
+    font:16px open_sansbold; /**aggiunto**/
+}
