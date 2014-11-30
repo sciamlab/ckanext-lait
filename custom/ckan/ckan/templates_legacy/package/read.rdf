@@ -32,10 +32,10 @@
     <py:for each="tag_dict in c.pkg_dict['tags']">
         <dcat:keyword>${ tag_dict["name"] }</dcat:keyword>
     </py:for>
-    <dct:spatial>${c.pkg_dict['spatial']}</dct:spatial>
+    <dct:spatial py:if="c.pkg_dict.get('spatial', None)">${c.pkg_dict['spatial']}</dct:spatial>
     <dcat:theme>${c.pkg_dict['category']}</dcat:theme>
-    <dct:accrualPeriodicity>${ c.pkg_dict['update_frequency'] }</dct:accrualPeriodicity>
-    <dct:temporal>${ c.pkg_dict['temporal_period'] }</dct:temporal>
+    <dct:accrualPeriodicity py:if="c.pkg_dict.get('update_frequency', None)">${ c.pkg_dict['update_frequency'] }</dct:accrualPeriodicity>
+    <dct:temporal py:if="c.pkg_dict.get('temporal_period', None)">${ c.pkg_dict['temporal_period'] }</dct:temporal>
     <foaf:homepage rdf:resource="${ h.url_for(controller='package',action='search', qualified=True)}"/>
     <py:for each="rsc_dict in c.pkg_dict['resources']">
         <dcat:distribution>
