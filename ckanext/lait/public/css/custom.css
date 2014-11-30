@@ -234,19 +234,7 @@
         width: 210px;
     }
     .tour-btn {
-    padding: 51px 35px 35px;
-    }
-    .logo {
-        /* START commentato per RILASCIO */
-        /*background: url("../img/opendatalogo.png");*/
-        background: url("../img/opendatalogo_cs.png");
-        /* END commentato per RILASCIO */
-        background-size: 1170px 127px;
-        min-height: 127px;
-    }
- 
-    .logo .logo {
-    
+        padding: 51px 35px 35px;
     }
 }
 

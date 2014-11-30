@@ -50,11 +50,8 @@
             </dcat:Distribution>
         </dcat:distribution>
     </py:for>
-    <foaf:Organization py:if="c.pkg_dict['organization']">
-        <foaf:name>${ c.pkg_dict['organization'].get('title') }</foaf:name>
-        <foaf:img py:if="c.pkg_dict['organization'].get('image_display_url')">${ c.pkg_dict['organization'].get('image_display_url') }</foaf:img>
-        <dct:description>${ c.pkg_dict['organization'].get('description') }</dct:description>
-        <foaf:homepage>${ h.url_for('organization_read', action='read', id=c.pkg_dict['organization'].get('name'), qualified=True) }</foaf:homepage>
+    </dcat:Dataset>
+    <foaf:Organization py:if="c.pkg_dict['organization']" rdf:about="${ h.url_for('organization_read', action='read', id=c.pkg_dict['organization'].get('name'), qualified=True) }">
+        <rdfs:label>${ c.pkg_dict['organization'].get('title') }</rdfs:label>
     </foaf:Organization>
-  </dcat:Dataset>
 </rdf:RDF>

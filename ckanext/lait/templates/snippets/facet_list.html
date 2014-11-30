@@ -1,5 +1,5 @@
 {% set hide_empty = hide_empty or false %}
-{% resource 'ckanext-lait/rating' %}
+{# % resource 'ckanext-lait/rating' % #}
 {% with items = items or h.get_facet_items_dict(name) %}
   {% if items or not hide_empty %}
     {% if within_tertiary %}

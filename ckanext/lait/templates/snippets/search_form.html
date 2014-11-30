@@ -41,7 +41,7 @@
   
   {% block search_title %}
     {% if not no_title %}
-      <h2 class="trovati">{% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}<a href="{% url_for controller='feed', action='general' %}"><div class='feed-img'></div></a></h2>
+      <h2 class="trovati">{% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}<a href="{% url_for controller='feed', action='general' %}"><img src="/catalog/img/ic-rss.png" alt='rss' /></a></h2>
     {% endif %}
   {% endblock %}
 

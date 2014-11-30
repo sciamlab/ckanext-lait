@@ -184,10 +184,6 @@ height:220px;
 .logo-foot {
 	margin-right: 3px;
 	float:right;
-    background: url("../img/regione-lazio-footer.png");
-    background-size: 140px 37px;
-    background-repeat: no-repeat;
-    height: 82px;
 }
 
 #mainmenu > ul > li > a{
@@ -645,7 +641,7 @@ h3 {
 	margin-right:5px;
 }
 
-.category-icon-agricoltura-pesca{
+/*.category-icon-agricoltura-pesca{
     background: url("../img/cat_agricoltura-pesca.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 .category-icon-ambiente-meteo{
@@ -704,31 +700,36 @@ h3 {
 }
 .category-icon-turismo-sport{
     background: url("../img/cat_turismo-sport.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
+}*/
 .category-icon-big{
-    min-height: 113px;
-    background-size: 90px 90px !important;
+    height: 90px;
+    width:  90px;
     margin-left: 40px;
     margin-top: 10px;
 }
 .category-icon-small{
-    background-size: 40px 40px;
+   height: 40px;
+   width:  40px;
 }
 .category-icon-medium{
-    background-size: 78px 78px;
-    padding-left:90px;
-    min-height:80px;
+   height: 78px;
+   width:  78px;
+   float: left;
 }
-.category-icon-medium ul{
+.category-tags{
+    min-height:80px;
+    margin-left: 90px;
+}
+.category-tags ul{
     list-style-type:none;
     margin:0;
     padding:15px 0px 15px 0px;
 }
-.category-icon-medium li, .utilizzo div {
+.category-tags li, .utilizzo div {
     font:14px 'open_sansregular';
     text-transform:uppercase;
 }
-.category-icon-medium li span, .utilizzo span, .rating-title{
+.category-tags li span, .utilizzo span, .rating-title{
     font:14px 'open_sansbold';
     text-transform:uppercase;
 }
@@ -746,7 +747,7 @@ h3 {
     height: 40px;
     min-width: 40px;
 }
-.logo-cc{
+/*.logo-cc{
     background: url("../img/logoCC.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 36px;
     width: 104px;
@@ -760,7 +761,7 @@ h3 {
     background: url("../img/logow3c-rdf.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 36px;
     width: 107px;
-}
+}*/
 /**DATASET***/
 
 [role="main"] .primary-odl {
@@ -888,26 +889,7 @@ border: none
     font-size: 15px;
     font-weight: 500;
 }
-/*
-.resources div.ic-csv{
- 	 background:url(../img/ic-csv.png) no-repeat;
-}
 
-.resources div.ic-json{
- 	 background:url(../img/ic-json.png) no-repeat;
-}
-
-.resources div.ic-xml{
- 	 background:url(../img/ic-xml.png) no-repeat;
-}
-
-.resources div.ic-turtle{
- 	 background:url(../img/ic-turtle.png) no-repeat;
-}
-.resources div.ic-rdf{
- 	 background:url(../img/ic-rdf.png) no-repeat;
-}
-*/
 .resources p{
     padding-top: 5px;
 }
@@ -1078,46 +1060,7 @@ float:left;
     padding: 7px !important;
 }
 
-/**rating**/
-/*.rate1{
-    background: url("../img/rate1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    display: inline-block;
-    height: 27px;
-    margin-bottom: -2px;
-    min-width: 180px;
-}
 
-.rate2{
-    background: url("../img/rate2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    display: inline-block;
-    height: 27px;
-    margin-bottom: -2px;
-    min-width: 180px;
-}
-
-.rate3{
-    background: url("../img/rate3.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    display: inline-block;
-    height: 27px;
-    margin-bottom: -2px;
-    min-width: 180px;
-}
-
-.rate4{
-    background: url("../img/rate4.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    display: inline-block;
-    height: 27px;
-    margin-bottom: -2px;
-    min-width: 180px;
-}
-
-.rate5{
-    background: url("../img/rate5.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    display: inline-block;
-    height: 27px;
-    margin-bottom: -2px;
-    min-width: 180px;
-}*/
 
 /*****altri-dataset******/
 

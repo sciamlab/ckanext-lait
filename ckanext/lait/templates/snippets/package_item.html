@@ -36,11 +36,11 @@ Example:
   {% block package_item_content %}
     <ul class="dataset-resources unstyled cat-dataset">
       <li class="ris">
-        <div class='format-icon'></div>
+        <img src="/catalog/img/ic-dataset.png" alt='' />
         <a href="{% url_for controller='package', action='search', category=package.category %}" class="category-icon">
           {% for category in h.categories().categories %}
             {% if package.get('category', '') == category.name %}
-              <div class='category-icon-{{ category.id }} category-icon-small'></div>
+              <img class="category-icon-small" src="/catalog/img/cat_{{ category.id }}.png" />
             {% endif %}
           {% endfor %}
         </a>

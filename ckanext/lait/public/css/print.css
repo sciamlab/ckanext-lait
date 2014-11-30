@@ -8,12 +8,6 @@ aside > section > h2, aside > section > p, aside > section > div, aside > form{
 	display: none;
 }
 
-/*.logo {
-	background: url("../img/logoODL.png") !important;
-	margin-left: 25px;
-}*/
-
-
 .wrapper-out{
 	margin-top: 40px;
 }

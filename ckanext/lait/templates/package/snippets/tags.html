@@ -2,12 +2,11 @@
 {% if category %}
 	{% for cat in h.categories().categories  %}
 		{% if category == cat.name %}
-			<div class="category-icon-medium category-icon-{{ cat.id }}">
+			<img class="category-icon-medium" src="/catalog/img/cat_{{ cat.id }}.png" />
 		{% endif %}
 	{% endfor %}
-{% else %}
-	<div class="category-icon-medium">
 {% endif %}
+<div class="category-tags">
 		<ul>
 		{% if category %}
 			<li><span>{{ _('Category') }}</span>: <a href="{% url_for controller='package', action='search', category=category %}">{{ category }}</a></li>
