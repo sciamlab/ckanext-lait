@@ -41,11 +41,11 @@
                         	<script type="text/javascript">
 								function searchLiferay(){
 								    var q=document.getElementById('search').value;
-								    window.location = "/c/portal/search?keywords="+q;
-								    event.preventDefault();
+								    window.location.href = "/c/portal/search?keywords="+q;
+								    //event.preventDefault();
 								}
 							</script>
-                	        <form id='search-liferay' class="form-allsearch custom-home" data-module="select-switch" onsubmit="searchLiferay();">
+                	        <form id='search-liferay' class="form-allsearch custom-home" data-module="select-switch" onsubmit="searchLiferay();return false;">
 								<input type="text" id="search" placeholder="" class="input-search">
 								<button id='search-button' value="search" type="">
 									<i class="icon-search"></i><span></span>

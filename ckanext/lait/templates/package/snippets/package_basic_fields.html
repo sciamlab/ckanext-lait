@@ -76,6 +76,17 @@
 {{ form.input('update_frequency', label=_('Update frequency'), id='field-update-frequency', placeholder=_('eg. Weekly'), value=data.update_frequency, error=errors.update_frequency) }}
 {{ form.input('temporal_period', label=_('Temporal period'), id='field-temporal-period', placeholder=_('eg. Q2-2014'), value=data.temporal_period, error=errors.temporal_period) }}
 
+<div class="control-group">
+  <label for="field-openess-rating" class="control-label">{{ _('Openess rating') }}</label>
+  <div class="controls">
+    <select id="field-openess-rating" name="openess_rating" style="width: auto;">
+      {% for option in [('1', _('1')), ('2', _('2')), ('3', _('3')), ('4', _('4')), ('5', _('5'))] %}
+      <option value="{{ option[0] }}" {% if option[0] == data.openess_rating %}selected="selected"{% endif %}>{{ option[1] }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+
 {% block package_basic_fields_license %}
 <div class="control-group">
   {% set error = errors.license_id %}

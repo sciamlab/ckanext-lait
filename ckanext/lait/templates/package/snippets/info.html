@@ -14,6 +14,13 @@ Example:
     {% if pkg.organization %}
       <li>{{ _('Organization') }}: <a href="{{ h.url_for(controller='organization', action='read', id=pkg.organization.id) }}">{{ pkg.organization.title}}</a></li>
     {% endif %}
+    {% if pkg.author %}
+      {% if pkg.author_email %}
+        <li class="sendmail">{{ _('Author') }}: <a href="mailto:{{ pkg.author_email }}">{{ pkg.author }}</a></li>
+      {% else %}
+        <li>{{ _('Author') }}: <span>{{ pkg.author }}</span></li>
+      {% endif %}
+    {% endif %}
     {% if pkg.maintainer %}
       {% if pkg.maintainer_email %}
         <li class="sendmail">{{ _('Maintainer') }}: <a href="mailto:{{ pkg.maintainer_email }}">{{ pkg.maintainer }}</a></li>
@@ -28,6 +35,9 @@ Example:
     {% endif %}
     {% if pkg.temporal_period %}
       <li>{{ _('Temporal period') }}: <span>{{pkg.temporal_period}}</span></li>
+    {% endif %}
+    {% if pkg.openess_rating %}
+      <li>{{ _('Openess rating') }}: <span>{{pkg.openess_rating}}</span></li>
     {% endif %}
     <li class="revisioni"><a href="{{ h.url_for(controller='package', action='activity', id=pkg.id) }}">{{ _('Activity Stream') }}</a></li>
     <li {% if not 'spatial' in pkg or pkg.spatial=='' %}class="last"{% endif %}>
