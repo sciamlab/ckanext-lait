@@ -363,20 +363,19 @@ padding-top:10px;
 }
 .tabs > li.en {
 	background:#002742;
-margin-left:45px;
+    margin-left:45px;
 }
 /***loghi footer**/
 .loghi ul {
-list-style-type:none;
-margin-left:0px;
-
+    list-style-type:none;
+    margin-left:0px;
 }
 
 .loghi li {
-float:left;
-list-style-type:none; 
-margin-right:10px;
-
+    float:left;
+    list-style-type:none; 
+    margin-right:10px;
+    margin-top: 15px !important;
 }
 
 /*********************************************/
