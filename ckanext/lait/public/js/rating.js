@@ -5,22 +5,24 @@ if (window.XMLHttpRequest) {
     requestObj = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-var user = document.getElementById("user").innerHTML;
-var api_key = document.getElementById("api-key").innerHTML;
-//alert(user+' '+api_key);
-if(user != ''){
-    //enabling the rating
-    document.getElementById("star5").addEventListener('click', function (){ rate(5)});
-    document.getElementById("star4").addEventListener('click', function (){ rate(4)});
-    document.getElementById("star3").addEventListener('click', function (){ rate(3)});
-    document.getElementById("star2").addEventListener('click', function (){ rate(2)});
-    document.getElementById("star1").addEventListener('click', function (){ rate(1)});
-}else{
-    //if no user is logged in the rating is disabled
-    document.querySelector('.rating-new').className = "rating-new-disabled";
+if(document.getElementById("user")!=undefined){
+    var user = document.getElementById("user").innerHTML;
+    var api_key = document.getElementById("api-key").innerHTML;
+    //alert(user+' '+api_key);
+    if(user != ''){
+        //enabling the rating
+        document.getElementById("star5").addEventListener('click', function (){ rate(5)});
+        document.getElementById("star4").addEventListener('click', function (){ rate(4)});
+        document.getElementById("star3").addEventListener('click', function (){ rate(3)});
+        document.getElementById("star2").addEventListener('click', function (){ rate(2)});
+        document.getElementById("star1").addEventListener('click', function (){ rate(1)});
+    }else{
+        //if no user is logged in the rating is disabled
+        document.querySelector('.rating-new').className = "rating-new-disabled";
+    }
+    //getting the current rate (with no params)
+    rate();
 }
-//getting the current rate (with no params)
-rate();
 
 function rate(star_num){    
     if (requestObj) {

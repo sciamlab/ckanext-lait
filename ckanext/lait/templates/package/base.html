@@ -10,6 +10,7 @@
   {% if pkg %}
     {% set dataset = pkg.title or pkg.name %}
     <!-- START commentato per RILASCIO -->
+    <!-- commentato per non far apparire il link organizzazione nel breadcrumb-->
     {#% if pkg.organization %#}
       {#% set organization = pkg.organization.title or pkg.organization.name %#}
       <!-- li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>

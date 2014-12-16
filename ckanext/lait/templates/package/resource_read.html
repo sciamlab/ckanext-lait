@@ -168,8 +168,8 @@
 
   <!-- START commentato per RILASCIO -->
   {% block disqus %}
-    {# % snippet "snippets/disqus.html", user=c.userobj, id=res.id, title=res.name % #}
-    <!-- div style="margin-top: 10px;">
+    {% snippet "snippets/disqus.html", user=c.userobj, id=res.id, title=res.name %}
+    <div style="margin-top: 10px;">
       <script type="text/javascript">
       var win_detached;
       function detach(){
@@ -181,7 +181,7 @@
       <button id="detach" type="button" class="btn btn-default" onclick="detach();">
         {{ _('Popup comments') }}
       </button>
-    </div -->
+    </div>
   {% endblock %}
   <!-- END commentato per RILASCIO -->
 {% endblock %}

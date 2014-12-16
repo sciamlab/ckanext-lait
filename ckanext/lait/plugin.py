@@ -336,14 +336,16 @@ class LaitController(base.BaseController):
     def geocoding_gazetteer(self):
         q = request.params.get('q', '')
         limit = request.params.get('limit', 20)
-        response_body = '{"ResultSet": {"Result": [{"Name": "Artena", "Value": "41.741230 12.912126"}, {"Name": "Via Catone", "Value": "41.907078 12.459023"}, {"Name": "Ciampino", "Value": "41.799315 12.589956"}, {"Name": "Colleferro", "Value": "41.726717 13.003762"}, {"Name": "Fonte Nuova", "Value": "42.001102 12.628789"}, {"Name": "Via Frascati", "Value": "41.819438 12.698100"}, {"Name": "Via Marino", "Value": "41.855321 12.747131"}, {"Name": "Monte Porzio Catone", "Value": "41.818371 12.715984"}, {"Name": "Roma", "Value": "41.873013 12.487933"}, {"Name": "Valmontone", "Value": "41.774455 12.920125"}]}}'
-
+        url = config.get('ckan.base_url', '')+'/CKANAPIExtension/geocoding_gazetteer?text='+q.replace(' ', '%20')
         try:
-            result = json.loads(response_body)
-            resultSetJson = result['ResultSet']
-            resultValueJson = resultSetJson['Result']
-            result = [obj for obj in resultValueJson if q.upper() in obj['Name'].upper()]	    
+            response = urllib2.urlopen(url)
+            response_body = response.read()
         except Exception, inst:
-            msg = "Couldn't read response from geocoding service %r: %s" % (response_body, inst)
+            msg = "Couldn't connect to geocoding_gazetteer service %r: %s" % (url, inst)
+            raise Exception, msg
+        try:
+            result= json.loads(response_body)
+        except Exception, inst:
+            msg = "Couldn't read response from geocoding_gazetteerservice %r: %s" % (response_body, inst)
             raise Exception, inst
         return result

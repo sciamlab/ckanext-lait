@@ -5,13 +5,14 @@
 <div class="top_line">
 	<div class="container">
 		<div class="row">
-			<!-- div class="span12">
+			<div class="span12">
 				<ul class="tabs">
 					{% if c.userobj==None %}
 						<li class="logo-login"><a href="/login" class="logo-login">{{_('entra')}}/{{_('registrati')}}</a></li>
-						<li><a href="/login">{{_('entra con un social')}}</a></li>
+						<!-- li><a href="/login">{{_('entra con un social')}}</a></li -->
 					{% else %}
-						<li class="logo-login">{{c.userobj.name}} / <a href="/c/portal/logout" class="logo-login">{{_('esci')}}</a></li>
+						<li class="logo-login"><a href="">{{c.userobj.name}}</a></li>
+						<li><a href="/c/portal/logout">{{_('esci')}}</a></li>
 					{% endif %}
 					{% if current_lang == 'it' %}
 						<li class="en"><a href="{% url_for current_url, locale='en' %}">english</a></li>
@@ -20,7 +21,7 @@
 						<li class="en"><a href="{% url_for current_url, locale='it' %}">italiano</a></li>
 					{% endif %}
 				</ul>
-			</div -->
+			</div>
 		</div>
 	</div>
 </div>
@@ -37,7 +38,7 @@
 			<header>
                 <div class="container">
                     <div class="row" style="min-height:22px">
-                        <!-- div class="span4">
+                        <div class="span4">
                         	<script type="text/javascript">
 								function searchLiferay(){
 								    var q=document.getElementById('search').value;
@@ -58,7 +59,7 @@
 								<li><a href="{{liferay_lang_prefix}}/">open <span>spesa</span></a></li>
 								<li><a href="{{liferay_lang_prefix}}/">open <span>sanità</span></a></li>
                             </ul>
-                    	</div -->
+                    	</div>
                     </div>
                 </div>
             </header>
@@ -66,7 +67,7 @@
 		</div>
 	</div>
 	<!-- START commentato per RILASCIO -->
-	<!-- nav>
+	<nav>
 		<div class="nav-out">
 			<div class="btn-responsive-menu">
 				<span class="icon-bar"></span>
@@ -102,5 +103,5 @@
 				</div>
 			</div>
 		</div>
-	</nav -->
+	</nav>
 <!-- END commentato per RILASCIO -->
