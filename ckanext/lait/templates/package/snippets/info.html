@@ -29,7 +29,9 @@ Example:
       {% endif %}
     {% endif %}
     <li>{{ _('Created on') }}: <span>{{pkg.metadata_created[8:10]}}/{{pkg.metadata_created[5:7]}}/{{pkg.metadata_created[:4]}}</span></li>
-    <li>{{ _('Updated on') }}: <span>{{pkg.metadata_modified[8:10]}}/{{pkg.metadata_modified[5:7]}}/{{pkg.metadata_modified[:4]}}</span></li>
+    {% if pkg.dataset_last_update %}
+      <li>{{ _('Updated on') }}: <span>{{pkg.dataset_last_update[8:10]}}/{{pkg.dataset_last_update[5:7]}}/{{pkg.dataset_last_update[:4]}}</span></li>
+    {% endif %}
     {% if pkg.update_frequency %}
       <li>{{ _('Update frequency') }}: <span>{{pkg.update_frequency}}</span></li>
     {% endif %}

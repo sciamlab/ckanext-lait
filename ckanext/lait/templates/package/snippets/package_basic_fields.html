@@ -49,19 +49,16 @@
     </div>
   </div>
 </div>
-<!-- div class="control-group">
-  <label class="control-label" for="field-rating-avg">{{ _('Rating Average') }}</label>
-  <div class="controls" --><input id="field-rating-avg" type="hidden" name="rating_average" value="{{ data.get('rating_average') }}"><!-- /div>
-</div>
 
-<div class="control-group">
-  <label class="control-label" for="field-rating-int">{{ _('Rating Average Int') }}</label>
-  <div class="controls" --><input id="field-rating-int" type="hidden" name="rating_average_int" value="{{ data.get('rating_average_int') }}"><!-- /div>
-</div>
-<div class="control-group">
-  <label class="control-label" for="field-rating-count">{{ _('Rating Count') }}</label>
-  <div class="controls" --><input id="field-rating-count" type="hidden" name="rating_count" value="{{ data.get('rating_count') }}"><!-- /div>
-</div -->
+<input id="field-rating-avg" type="hidden" name="rating_average" value="{{ data.get('rating_average') }}">
+<input id="field-rating-int" type="hidden" name="rating_average_int" value="{{ data.get('rating_average_int') }}">
+<input id="field-rating-count" type="hidden" name="rating_count" value="{{ data.get('rating_count') }}">
+
+<input id="field-dataset-last-update" type="hidden" name="dataset_last_update">
+<script type="text/javascript">
+var now = new Date();
+document.getElementById('field-dataset-last-update').value = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+</script>
 {% endblock %}
 
 {% block package_basic_fields_description %}

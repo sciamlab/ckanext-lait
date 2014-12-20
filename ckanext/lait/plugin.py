@@ -204,6 +204,10 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def _modify_package_schema(self, schema):
         schema.update({
+            'dataset_last_update': [tk.get_validator('ignore_missing'),
+                            tk.get_converter('convert_to_extras')]
+        })
+        schema.update({
             'openess_rating': [tk.get_validator('ignore_missing'),
                             tk.get_converter('convert_to_extras')]
         })
@@ -249,6 +253,10 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def show_package_schema(self):
         schema = super(LaitPlugin, self).show_package_schema()
+        schema.update({
+            'dataset_last_update': [tk.get_converter('convert_from_extras'),
+                            tk.get_validator('ignore_missing')]
+        })
         schema.update({
             'openess_rating': [tk.get_converter('convert_from_extras'),
                             tk.get_validator('ignore_missing')]

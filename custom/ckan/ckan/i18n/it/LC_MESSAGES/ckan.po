@@ -2,17 +2,8 @@
 # Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the ckan project.
 # 
-# Translators:
-# amercader <amercadero@gmail.com>, 2014
-# alesarrett <alessandro.sarretta@gmail.com>, 2013
-# <dex@lucadex.it>, 2012
-# groundrace <groundrace@me.com>, 2013
-# <internet@davidread.org>, 2011
-# lafuga2 <lafuga2@gmail.com>, 2012
-# Lorenzo Ruzzene <lorenzo.ruzzene@gmail.com>, 2014
-# Luca De Santis <lucadex@gmail.com>, 2012-2013
-# M2M <matteo.merlanti@gmail.com>, 2013
-# Monica Cainarca <monberl@gmail.com>, 2013
+# to compile: python setup.py compile_catalog --locale it
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: CKAN\n"
@@ -6034,8 +6025,8 @@ msgid "To register or log in as another user, you need to"
 msgstr "Per registrarti o per accedere con un altro utente, devi"
 
 #: ckan/templates_legacy/user/logout_first.html:17
-msgid "logout"
-msgstr "uscire"
+# msgid "logout"
+# msgstr "uscire"
 
 #: ckan/templates_legacy/user/logout_first.html:17
 msgid "first."
@@ -6224,6 +6215,23 @@ msgstr "Frequenza di aggiornamento"
 #: ckan/templates/snippets/package_item.html
 msgid "Community Rating"
 msgstr "Rating della Comunità"
+
+#: ckanext/lait/templates/header.html
+msgid "login"
+msgstr "entra"
+
+#: ckanext/lait/templates/header.html
+msgid "sign up"
+msgstr "registrati"
+
+#: ckanext/lait/templates/header.html
+msgid "logout"
+msgstr "esci"
+
+#: ckanext/lait/templates/package/read.html
+#: ckanext/lait/templates/package/resource_read.html
+msgid "Popup comments"
+msgstr "Popup commenti"
 
 #: ckanext/lait/templates/header.html
 msgid "Data"

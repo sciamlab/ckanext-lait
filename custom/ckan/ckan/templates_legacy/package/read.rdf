@@ -27,7 +27,7 @@
       </foaf:Agent>  
     </adms:contactPoint>
     <dct:issued>${c.pkg_dict['metadata_created']}</dct:issued>
-    <dct:modified>${c.pkg_dict['metadata_modified']}</dct:modified>
+    <dct:modified py:if="c.pkg_dict.get('dataset_last_update', None)">${c.pkg_dict['dataset_last_update']}</dct:modified>
     <dcat:landingPage>${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}</dcat:landingPage>
     <py:for each="tag_dict in c.pkg_dict['tags']">
         <dcat:keyword>${ tag_dict["name"] }</dcat:keyword>
