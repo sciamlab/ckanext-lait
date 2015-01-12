@@ -71,10 +71,10 @@ function doAjax(method, host, service, query, data, asynch, callback){
                         var result = requestObj.responseText;
                         if(callback) callback(result);
                     }else if(requestObj.status == 500){
-                        alert(requestObj.responseText);
+                        //alert(requestObj.responseText);
                     }
                 }catch(err){
-                    alert(err);
+                    //alert(err);
                 }finally{
                     $('#loaderModal').modal('hide');
                 }

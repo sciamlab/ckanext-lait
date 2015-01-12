@@ -55,12 +55,15 @@ ckan.module('geojsonpreview', function (jQuery, _) {
 			iconAnchor: [12, 41],
 			popupAnchor: [1, -34]
       });
-	  
+
+      var baseUrl = "http://" + document.domain;
       // Initialize the WFST layer
       layers.commentApproved = L.wfst(
 			null,{
 				// Required
-				url : 'http://ovpngw.sinergis.it/geoserver/ows',
+				url : baseUrl + '/LaitExtension-hook/api/service/wfsProxy?targetUrl=' + baseUrl + '/geoserver/wfs',
+					
+				//url : "http://ovpngw.sinergis.it/geoserver/ows",
 				featureNS : 'opendata',
 				featureType : 'comment',
 				primaryKeyField : 'id',

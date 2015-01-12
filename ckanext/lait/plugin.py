@@ -6,6 +6,7 @@ import ckan.lib.helpers as h
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import urllib2
+import urllib
 from ckan.common import _, json
 import collections
 from pylons import config
@@ -34,8 +35,11 @@ def categories():
     return categories
 
 def apps(params):
+    #params = params.replace("&amp;", "&")
+    params = params.replace(" ", "%20")
     url = config.get('ckan.base_url', '')+'/CKANAPIExtension/apps?'+params
     try:
+        print(url)
         response = urllib2.urlopen(url)
         response_body = response.read()
     except Exception, inst:

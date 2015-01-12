@@ -1,4 +1,4 @@
-var host = 'http://ovpngw.sinergis.it';
+var host = '';
 var ckan4j_webapi_endpoint = host + '/CKANAPIExtension/translate/term/';
 var page_size = 25;
 var page_current;
@@ -222,7 +222,7 @@ function doAjax(method, host, service, query, data, asynch, callback){
 	                if(callback) callback(result);
 	            }
 	        }catch(err){
-	        	alert(err);
+	        	//alert(err);
             }finally{
             	
             }

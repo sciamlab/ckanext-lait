@@ -1,6 +1,6 @@
 {% extends "app/page.html" %}
 {% import 'macros/form.html' as form %}
-
+{% set current_lang = request.environ.CKAN_LANG %}
 {% block subtitle %}{{ _('Apps') }}{% endblock %}
 
 {% block breadcrumb_content %}
@@ -12,11 +12,13 @@
 {% block primary_content_inner %}
   <h1 class="hide-heading">{{ _('Apps') }}</h1>
   	{% set q = request.params.q %}
-    {% if q %}
+  	{% set params = '' %}
+    {% if q and q!='' %}
 	  	{% set params = 'q='+q %}
-	  {% else %}
-	  	{% set params = '' %}
-	  {% endif %}
+	{% endif %}
+	{% if current_lang=='en' %}
+	  	{% set params = params+'&amp;lang='+current_lang %}
+	{% endif %}
     {% set apps = h.apps(params) %}
     {% set apps_translated = h.translate_resource_data_dict_list(apps.items) %}
     <!-- START SEARCH FORM -->

@@ -266,6 +266,7 @@ this.ckan.module('wmspreview', function (jQuery, _) {
         	        })
         	    ]
         	});
+	   var baseUrl = "http://" + document.domain;
           self.wfs = new OpenLayers.Layer.Vector("Editable Features", {
               strategies: [new OpenLayers.Strategy.BBOX(), saveStrategy],
               projection: new OpenLayers.Projection("EPSG:4326"),
@@ -273,7 +274,8 @@ this.ckan.module('wmspreview', function (jQuery, _) {
               protocol: new OpenLayers.Protocol.WFS({
                   version: "1.1.0",
                   srsName: "EPSG:4326",
-                  url: "http://ovpngw.sinergis.it/geoserver/ows",
+		    //url : "http://ovpngw.sinergis.it/geoserver/ows",
+                  url: baseUrl + '/LaitExtension-hook/api/service/wfsProxy?targetUrl=' + baseUrl + '/geoserver/wfs?',
                   featureNS :  "http://ovpngw.sinergis.it",
                   featureType: "comment",
                   geometryName: "the_geom"/*,

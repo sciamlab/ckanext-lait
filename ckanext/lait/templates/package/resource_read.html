@@ -46,7 +46,7 @@
           {% block resource_actions %}
           <ul>
             {% block resource_actions_inner %}
-            {% if c.userobj!=None and (res.format|lower=='wms' or res.format|lower=='geojson') %}
+            {% if c.userobj!=None and (res.format|lower=='wms' or res.format|lower=='geojson' or res.format|lower=='csv') %}
               <li>
                 <script type="text/javascript">
                   function improve(){

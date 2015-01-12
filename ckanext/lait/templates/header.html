@@ -11,8 +11,7 @@
 						<li class="logo-login"><a href="/login" class="logo-login">{{_('login')}}/{{_('sign up')}}</a></li>
 						<!-- li><a href="/login">{{_('entra con un social')}}</a></li -->
 					{% else %}
-						<li class="logo-login"><a href="">{{c.userobj.name}}</a></li>
-						<li><a href="/c/portal/logout">{{_('logout')}}</a></li>
+						<li class="logo-login">{{c.userobj.fullname}} / <a href="/c/portal/logout">{{_('logout')}}</a></li>
 					{% endif %}
 					{% if current_lang == 'it' %}
 						<li class="en"><a href="{% url_for current_url, locale='en' %}">english</a></li>
