@@ -6,7 +6,7 @@
     {% endblock %}
 
     {% set map_config = h.get_common_map_config_geojson() %}
-    <div data-module="geojsonpreview" id="data-preview" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}" data-module-map_config="{{ h.dump_json(map_config) }}" user="{{ c.userobj.name }}" id_dataset="{{ c.package.id }}" id_risorsa="{{ c.resource.id }}" message_puntual_proposition_insert="{{_('Enter a detailed proposal positioning')}}" message_proposition_description="{{_('Insert description')}}">
+    <div data-module="geojsonpreview" id="data-preview" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}" data-module-map_config="{{ h.dump_json(map_config) }}" user="{{ c.userobj.name }}" id_dataset="{{ c.package.id }}" id_risorsa="{{ c.resource.id }}" message_puntual_proposition_insert="{{_('Enter a detailed proposal positioning')}}" message_proposition_description="{{_('Insert description')}}" message_description="{{_('Description')}}" message_status="{{_('Status')}}" message_user="{{_('User')}}">
         <h4 class="loading-dialog">
           <div class="loading-spinner"></div>
           <div class="left">{{ _('Loading...') }}</div>

@@ -24,7 +24,10 @@ ckan.module('geojsonpreview', function (jQuery, _) {
       this.options.id_risorsa = this.el.attr('id_risorsa');   
       this.options.messagePuntualPropositionInsert = this.el.attr('message_puntual_proposition_insert');
       this.options.messagePropositionDescription = this.el.attr('message_proposition_description');
-           
+      this.options.message_description = this.el.attr('message_description');
+      this.options.message_user=this.el.attr('message_user');
+      this.options.message_status=this.el.attr('message_status');  
+
       var self = this;
 
       self.el.empty();
@@ -150,11 +153,11 @@ ckan.module('geojsonpreview', function (jQuery, _) {
 				currentLayer.closePopup();		
 				map.removeLayer(currentLayer);
 				var feature = currentLayer.feature;
-	            var popupContent  = "<table><tr><td><b>Descrizione :</b></td><td>" + feature.properties.testo + "</td></tr>"+
-	            					  "<tr><td><b>Utente      :</b></td><td>" + feature.properties.id_utente + "</td></tr>";
+	            var popupContent  = "<table><tr><td><b>"+this.options.message_description+" :</b></td><td>" + feature.properties.testo + "</td></tr>"+
+	            					  "<tr><td><b>"+this.options.message_user+"      :</b></td><td>" + feature.properties.id_utente + "</td></tr>";
 	            if (feature.properties.stato && feature.properties.stato == "NOT APPROVED")
 	            {
-	            	popupContent +=	"<tr><td><b>Stato       :</b></td><td>" + feature.properties.stato + "</td></tr>";
+	            	popupContent +=	"<tr><td><b>"+this.options.message_status+"       :</b></td><td>" + feature.properties.stato + "</td></tr>";
 	            }
 	            					
 	            popupContent +="</table>";
@@ -266,11 +269,11 @@ ckan.module('geojsonpreview', function (jQuery, _) {
     onEachFeature: function (feature, layer) {
         if (feature.properties) {
             var popupContent;
-            popupContent = "<table><tr><td><b>Descrizione :</b></td><td>" + feature.properties.testo + "</td></tr>"+
-            					  "<tr><td><b>Utente      :</b></td><td>" + feature.properties.id_utente + "</td></tr>";
+            popupContent = "<table><tr><td><b>"+this.options.message_description+" :</b></td><td>" + feature.properties.testo + "</td></tr>"+
+            					  "<tr><td><b>"+this.options.message_user+"      :</b></td><td>" + feature.properties.id_utente + "</td></tr>";
             if (feature.properties.stato && feature.properties.stato == "NOT APPROVED")
             {
-            	popupContent +=	"<tr><td><b>Stato       :</b></td><td>" + feature.properties.stato + "</td></tr>";
+            	popupContent +=	"<tr><td><b>"+this.options.message_status+"       :</b></td><td>" + feature.properties.stato + "</td></tr>";
             }
             					
             popupContent +="</table>";

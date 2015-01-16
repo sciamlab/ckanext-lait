@@ -1,10 +1,13 @@
 /* Module for handling the spatial querying
  */
+var current_lang = parent.document.getElementById("current-lang").innerHTML;
 this.ckan.module('spatial-query', function ($, _) {
 
   return {
     options: {
       i18n: {
+        draw_rectangle_label: 'Draw rectangle',
+        draw_rectangle_label_it: 'Disegna rettangolo'
       },
       style: {
         color: '#F06F64',
@@ -23,8 +26,20 @@ this.ckan.module('spatial-query', function ($, _) {
         '</div>'
       ].join('')
     },
+    template_it: {
+      buttons: [
+        '<div id="dataset-map-edit-buttons">',
+        '<a href="javascript:;" class="btn cancel">Cancella</a> ',
+        '<a href="javascript:;" class="btn apply disabled">Applica</a>',
+        '</div>'
+      ].join('')
+    },
 
     initialize: function () {
+      if(current_lang=='it'){
+        this.template = this.template_it;
+        this.options.i18n.draw_rectangle_label = this.options.i18n.draw_rectangle_label_it;
+      }
       var module = this;
       $.proxyAll(this, /_on/);
       L.Icon.Default.imagePath = this.options.site_url + 'js/vendor/leaflet/images';
@@ -99,7 +114,7 @@ this.ckan.module('spatial-query', function ($, _) {
         circle: false, marker: false,
         rectangle: {
           shapeOptions: module.options.style,
-          title: 'Draw rectangle'
+          title: this.options.i18n.draw_rectangle_label
         }
       }));
       map.addLayer(markersLayer);      
@@ -121,9 +136,10 @@ this.ckan.module('spatial-query', function ($, _) {
           if (should_zoom && !extentLayer) {
             map.zoomIn();
           }
-          resetMap();
+          //resetMap();
           is_exanded = true;
-          $(".geometric-search").show();       
+          $(".geometric-search").show();
+          $("#clear-geometric-search").show();     
         }
       });
 
@@ -132,6 +148,8 @@ this.ckan.module('spatial-query', function ($, _) {
 
       // Handle the cancel expanded action
       $('.cancel', buttons).on('click', function() {
+        $(".geometric-search").hide();
+        $("#clear-geometric-search").hide();
         $('body').removeClass('dataset-map-expanded');
         if (extentLayer) {
           map.removeLayer(extentLayer);
@@ -140,15 +158,17 @@ this.ckan.module('spatial-query', function ($, _) {
         setPreviousBBBox();
         resetMap();
         is_exanded = false;
-        $(".geometric-search").hide();
+
       });
 
       // Handle the apply expanded action
       $('.apply', buttons).on('click', function() {
         if (extentLayer) {
+          $(".geometric-search").hide();
+          $("#clear-geometric-search").hide();
           $('body').removeClass('dataset-map-expanded');
           is_exanded = false;
-          resetMap();
+          //resetMap();
           // Eugh, hacky hack.
           setTimeout(function() {
             map.fitBounds(extentLayer.getBounds());

@@ -1,10 +1,6 @@
 <section class="tags">
 {% if category %}
-	{% for cat in h.categories().categories  %}
-		{% if category == cat.name %}
-			<img class="category-icon-medium" src="/catalog/img/cat_{{ cat.id }}.png" />
-		{% endif %}
-	{% endfor %}
+	<img class="category-icon-medium" src="/catalog/img/cat_{{ category_id }}.png" />
 {% endif %}
 <div class="category-tags">
 		<ul>

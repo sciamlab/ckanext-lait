@@ -38,11 +38,9 @@ Example:
       <li class="ris">
         <img src="/catalog/img/ic-dataset.png" alt='' />
         <a href="{% url_for controller='package', action='search', category=package.category %}" class="category-icon">
-          {% for category in h.categories().categories %}
-            {% if package.get('category', '') == category.name %}
-              <img class="category-icon-small" src="/catalog/img/cat_{{ category.id }}.png" />
-            {% endif %}
-          {% endfor %}
+          {% if package.get('category_id', '') != '' %}
+            <img class="category-icon-small" src="/catalog/img/cat_{{ package.category_id }}.png" />
+          {% endif %}
         </a>
       </li>
       <li class="ris">

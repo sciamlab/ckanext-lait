@@ -50,7 +50,7 @@
   {% endblock %}
 
   {% block package_tags %}
-    {% snippet "package/snippets/tags.html", tags=pkg.tags, category=pkg.category %}
+    {% snippet "package/snippets/tags.html", tags=pkg.tags, category=pkg.category, category_id=pkg.category_id %}
   {% endblock %}
 
 <!-- START commentato per RILASCIO -->

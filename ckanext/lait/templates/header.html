@@ -1,5 +1,6 @@
 {% set current_url = request.environ.CKAN_CURRENT_URL %}
 {% set current_lang = request.environ.CKAN_LANG %}
+<div id="current-lang" style="display:none;">{{ current_lang }}</div>
 {% set liferay_lang_prefix = '' %}
 <!-- START commentato per RILASCIO -->
 <div class="top_line">
@@ -76,10 +77,11 @@
 			<div class="container">
 				<div class="nav-in" id="mainmenu">
 					<ul class="nav">
+						<li class=""><a href="{{liferay_lang_prefix}}/">{{_('Home')}}</a></li>
 						<li class="active"><a href="{% url_for controller='package', action='search' %}">{{_('Data')}}</a></li>
 						<li class=""><a href="{{liferay_lang_prefix}}/applicazioni">{{_('Applications')}}</a></li>
 						<li class=""><a href="{{liferay_lang_prefix}}/comunita">{{_('Community')}}</a></li>
-						<li class=""><a href="{{liferay_lang_prefix}}/notizie">{{_('News')}}</a></li>
+						<li class=""><a href="{{liferay_lang_prefix}}/notizie">{{_('News and Events')}}</a></li>
 					</ul>
 				</div>
 			</div>

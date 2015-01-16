@@ -30,7 +30,6 @@ this.ckan.module('dataset-map', function (jQuery, _) {
 
       jQuery.proxyAll(this, /_on/);
       this.el.ready(this._onReady);
-
     },
 
     _onReady: function(){

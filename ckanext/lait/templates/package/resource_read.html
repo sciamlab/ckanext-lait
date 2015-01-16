@@ -116,7 +116,7 @@
       {% block data_preview %}
 	 {% if (res.format.lower() == "geojson" or res.format.lower() == "gjson" or res.format.lower() == "wms" or res.format.lower() == "csv") %}
 	    <div style="padding: 0 25px 10px;">
-              <input type="text" class="geometric-search" placeholder="Cerca su mappa" id="field-geometric-search" data-module="autocomplete" data-module-source="http://ovpngw.sinergis.it/catalog/geocoding_gazetteer?q=?" data-module-key="Value">
+              <input type="text" class="geometric-search" placeholder="{{_('Search on map')}}" id="field-geometric-search" data-module="autocomplete" data-module-source="http://ovpngw.sinergis.it/catalog/geocoding_gazetteer?q=?" data-module-key="Value">
 	    </div>
         {% endif %}
         {{ h.resource_preview(c.resource, c.package) }}

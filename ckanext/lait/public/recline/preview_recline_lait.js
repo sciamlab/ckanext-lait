@@ -1,5 +1,6 @@
 // recline preview module
-this.ckan.module('reclinepreview', function (jQuery, _) {
+var current_lang = parent.document.getElementById("current-lang").innerHTML;
+this.ckan.module('reclinepreview', function (jQuery, _) {  
   return {
     options: {
       i18n: {
@@ -16,13 +17,15 @@ this.ckan.module('reclinepreview', function (jQuery, _) {
       this.el.ready(this._onReady);
       // hack to make leaflet use a particular location to look for images
       L.Icon.Default.imagePath = this.options.site_url + 'js/vendor/leaflet/images';
-      
       //Inizializzazione dei parametri di pagina
       this.options.user = this.el.attr('user');
       this.options.id_dataset = this.el.attr('id_dataset');   
       this.options.id_risorsa = this.el.attr('id_risorsa');   
       this.options.messagePuntualPropositionInsert = this.el.attr('message_puntual_proposition_insert');
-      this.options.messagePropositionDescription = this.el.attr('message_proposition_description');      
+      this.options.messagePropositionDescription = this.el.attr('message_proposition_description');
+      this.options.message_description = this.el.attr('message_description');
+      this.options.message_user=this.el.attr('message_user');
+      this.options.message_status=this.el.attr('message_status');  
     },
 
     _onReady: function() {
@@ -203,11 +206,11 @@ this.ckan.module('reclinepreview', function (jQuery, _) {
 				onEachFeature: function (feature, layer) {
 			        if (feature.properties) {
 			            var popupContent;
-			            popupContent = "<table><tr><td><b>Descrizione :</b></td><td>" + feature.properties.testo + "</td></tr>"+
-			            					  "<tr><td><b>Utente      :</b></td><td>" + feature.properties.id_utente + "</td></tr>";
+			            popupContent = "<table><tr><td><b>"+this.options.message_description+" :</b></td><td>" + feature.properties.testo + "</td></tr>"+
+			            					  "<tr><td><b>"+this.options.message_user+"      :</b></td><td>" + feature.properties.id_utente + "</td></tr>";
 			            if (feature.properties.stato && feature.properties.stato == "NOT APPROVED")
 			            {
-			            	popupContent +=	"<tr><td><b>Stato       :</b></td><td>" + feature.properties.stato + "</td></tr>";
+			            	popupContent +=	"<tr><td><b>"+this.options.message_status+"       :</b></td><td>" + feature.properties.stato + "</td></tr>";
 			            }
 			            					
 			            popupContent +="</table>";
@@ -287,16 +290,22 @@ this.ckan.module('reclinepreview', function (jQuery, _) {
 				currentLayer.closePopup();		
 				mapView.map.removeLayer(currentLayer);
 				var feature = currentLayer.feature;
-	            var popupContent = "<table><tr><td><b>Descrizione :</b></td><td>" + feature.properties.testo + "</td></tr>"+
-									  "<tr><td><b>Utente      :</b></td><td>" + feature.properties.id_utente + "</td></tr>"+	
-									  "<tr><td><b>Stato       :</b></td><td>" + feature.properties.stato + "</td></tr>"+
+	            var popupContent = "<table><tr><td><b>"+this.options.message_description+" :</b></td><td>" + feature.properties.testo + "</td></tr>"+
+									  "<tr><td><b>"+this.options.message_user+"      :</b></td><td>" + feature.properties.id_utente + "</td></tr>"+	
+									  "<tr><td><b>"+this.options.message_status+"       :</b></td><td>" + feature.properties.stato + "</td></tr>"+
 							       "</table>";
 	            var justInserted = layers.commentApproved.getLayers().length-1;
 	            layers.commentApproved.getLayers()[justInserted].bindPopup(popupContent); 				
 				layers.commentApproved.getLayers()[justInserted].addTo(mapView.map);
 				 $('.commentPoint').show(); 
 			});
-			
+
+			$("#miglioraDatoAnnullaInput" ).on("click", function() {
+				var currentLayer = layers.drawnItems.getLayers()[0];
+				currentLayer.closePopup();
+				mapView.map.removeLayer(currentLayer);	
+			});
+
 			return returnPopup;
 	  };  
 	  mapView.map.closePopup = function (popup) {
@@ -339,7 +348,7 @@ this.ckan.module('reclinepreview', function (jQuery, _) {
 			layers.drawnItems.addLayer(layer);
 			L.DomUtil.addClass(layer._icon, "commentPoint");
 			
-			var popup = e.layer.bindPopup('<label for="miglioraDatoInputText">'+self.options.messagePropositionDescription+'</label><input id="miglioraDatoInputText" type="text"/></br><input class="btn" id="miglioraDatoInput" type="button" value="Salva"/>',{closeButton:false,closeOnClick: false}).openPopup();
+			var popup = e.layer.bindPopup('<label for="miglioraDatoInputText">'+self.options.messagePropositionDescription+'</label><input id="miglioraDatoInputText" type="text"/></br><input class="btn" id="miglioraDatoInput" type="button" value="Salva"/><input class="btn" id="miglioraDatoAnnullaInput" type="button" value="Annulla"/>',{closeButton:false,closeOnClick: false}).openPopup();
       });
       
       var improveButton = $('#improve', parent.document.body);

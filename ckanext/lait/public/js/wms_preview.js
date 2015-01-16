@@ -70,7 +70,10 @@ this.ckan.module('wmspreview', function (jQuery, _) {
       this.options.messagePuntualPropositionInsert = this.el.attr('message_puntual_proposition_insert');     
       this.options.user = this.el.attr('user');
       this.options.id_dataset = this.el.attr('id_dataset');   
-      this.options.id_risorsa = this.el.attr('id_risorsa');         
+      this.options.id_risorsa = this.el.attr('id_risorsa');  
+      this.options.message_description = this.el.attr('message_description');
+      this.options.message_user=this.el.attr('message_user');
+      this.options.message_status=this.el.attr('message_status');         
     },
 
     _onReady: function() {
@@ -387,12 +390,12 @@ this.ckan.module('wmspreview', function (jQuery, _) {
     
     onFeatureWfsSelect: function(event) {
         var feature = event.feature;
-        var popupContent = "<table><tr><td><b>Descrizione :</b></td><td>" + feature.attributes.testo + "</td></tr>"+
-		  "<tr><td><b>Utente      :</b></td><td>" + feature.attributes.id_utente + "</td></tr>";
+        var popupContent = "<table><tr><td><b>"+this.options.message_description+" :</b></td><td>" + feature.attributes.testo + "</td></tr>"+
+		  "<tr><td><b>"+this.options.message_user+"      :</b></td><td>" + feature.attributes.id_utente + "</td></tr>";
         
         if (feature.attributes.stato && feature.attributes.stato == "NOT APPROVED")
         {
-        	popupContent +=	"<tr><td><b>Stato       :</b></td><td>" + feature.attributes.stato + "</td></tr>";
+        	popupContent +=	"<tr><td><b>"+this.options.message_status+"       :</b></td><td>" + feature.attributes.stato + "</td></tr>";
         }
         
         popupContent += "</table>";

@@ -1,7 +1,7 @@
 {% extends "dataviewer/base.html" %}
 
 {% block page %}
-  <div data-module="reclinepreview" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}" user="{{ c.userobj.name }}" id_dataset="{{ c.package.id }}" id_risorsa="{{ c.resource.id }}" message_puntual_proposition_insert="{{_('Enter a detailed proposal positioning')}}" message_proposition_description="{{_('Insert description')}}">
+  <div data-module="reclinepreview" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}" user="{{ c.userobj.name }}" id_dataset="{{ c.package.id }}" id_risorsa="{{ c.resource.id }}" message_puntual_proposition_insert="{{_('Enter a detailed proposal positioning')}}" message_proposition_description="{{_('Insert description')}}" message_description="{{_('Description')}}" message_status="{{_('Status')}}" message_user="{{_('User')}}">
     <h4 class="loading-dialog">
       <div class="loading-spinner"></div>
       <div class="left">{{ _('Loading...') }}</div>

@@ -1,7 +1,6 @@
 this.recline = this.recline || {};
 this.recline.Backend = this.recline.Backend || {};
 this.recline.Backend.Ckan = this.recline.Backend.Ckan || {};
-
 (function(my) {
   // ## CKAN Backend
   //
@@ -1954,6 +1953,7 @@ Backbone.sync = function(method, model, options) {
 this.recline = this.recline || {};
 this.recline.View = this.recline.View || {};
 
+var current_lang = parent.document.getElementById("current-lang").innerHTML;
 (function($, my) {
 
 // ## Graph view for a Dataset using Flot graphing library.
@@ -1977,7 +1977,7 @@ my.Flot = Backbone.View.extend({
     <div class="recline-flot"> \
       <div class="panel graph" style="display: block;"> \
         <div class="js-temp-notice alert alert-block"> \
-          <h3 class="alert-heading">Hey there!</h3> \
+          <h3 class="alert-heading">'+this.options.i18n.flot_title+'!</h3> \
           <p>There\'s no graph here yet because we don\'t know what fields you\'d like to see plotted.</p> \
           <p>Please tell us by <strong>using the menu on the right</strong> and a graph will automatically appear.</p> \
         </div> \
@@ -5504,7 +5504,7 @@ my.QueryEditor = Backbone.View.extend({
     <form action="" method="GET" class="form-inline"> \
       <div class="input-prepend text-query"> \
         <span class="add-on"><i class="icon-search"></i></span> \
-        <input type="text" name="q" value="{{q}}" class="span2" placeholder="Search data ..." class="search-query" /> \
+        <input type="text" name="q" value="{{q}}" class="span2" placeholder="{{Search}}" class="search-query" /> \
       </div> \
       <button type="submit" class="btn">Go &raquo;</button> \
     </form> \

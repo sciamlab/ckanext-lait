@@ -6216,6 +6216,9 @@ msgstr "Frequenza di aggiornamento"
 msgid "Community Rating"
 msgstr "Rating della Comunità"
 
+msgid "Clear filter"
+msgstr "Rimuovi filtro"
+
 #: ckanext/lait/templates/header.html
 msgid "login"
 msgstr "entra"

@@ -18,12 +18,23 @@
   {% set error = errors.category %}
   <label class="control-label" for="field-category">{{ _('Category') }}</label>
   <div class="controls">
-    <select id="field-category" name="category" data-module="autocomplete">
-      <!--option value=""></option-->
-      {% for category in h.categories().categories  %}
+    {% set categories = h.categories().categories %}
+    <script type="text/javascript">
+      var cats = {};
+        {% for category in categories  %}
+          cats["{{category.name}}"] = "{{category.id}}";
+        {% endfor %}
+      function update_category(){
+        var select = document.getElementById('field-category');
+        document.getElementById('field-category-id').value = cats[select.options[select.selectedIndex].value];
+      }
+    </script>
+    <select id="field-category" name="category" data-module="autocomplete" onclick="update_category();">
+      {% for category in categories  %}
         <option value="{{ category.name }}" {% if data.get('category') == category.name %}selected="selected"{% endif %}>{{ category.name }}</option>
       {% endfor %}
     </select>
+    <input id="field-category-id" type="hidden" name="category_id" value="{{ data.get('category_id') }}">
     {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
   </div>
 </div>

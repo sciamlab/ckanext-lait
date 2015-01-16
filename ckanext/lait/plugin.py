@@ -243,6 +243,10 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             'category': [tk.get_validator('ignore_missing'),
                             tk.get_converter('convert_to_extras')]
         })
+        schema.update({
+            'category_id': [tk.get_validator('ignore_missing'),
+                            tk.get_converter('convert_to_extras')]
+        })
         return schema
 
     def create_package_schema(self):
@@ -291,6 +295,10 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         })
         schema.update({
             'category': [tk.get_converter('convert_from_extras'),
+                            tk.get_validator('ignore_missing')]
+        })
+        schema.update({
+            'category_id': [tk.get_converter('convert_from_extras'),
                             tk.get_validator('ignore_missing')]
         })
         return schema
