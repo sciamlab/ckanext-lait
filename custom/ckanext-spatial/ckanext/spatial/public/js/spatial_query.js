@@ -22,6 +22,7 @@ this.ckan.module('spatial-query', function ($, _) {
       buttons: [
         '<div id="dataset-map-edit-buttons">',
         '<a href="javascript:;" class="btn cancel">Cancel</a> ',
+        '<a id="reset-button" href="" class="btn cancel">Reset</a>',
         '<a href="javascript:;" class="btn apply disabled">Apply</a>',
         '</div>'
       ].join('')
@@ -30,6 +31,7 @@ this.ckan.module('spatial-query', function ($, _) {
       buttons: [
         '<div id="dataset-map-edit-buttons">',
         '<a href="javascript:;" class="btn cancel">Cancella</a> ',
+        '<a id="reset-button" href="" class="btn cancel">Resetta</a>',
         '<a href="javascript:;" class="btn apply disabled">Applica</a>',
         '</div>'
       ].join('')
@@ -136,20 +138,21 @@ this.ckan.module('spatial-query', function ($, _) {
           if (should_zoom && !extentLayer) {
             map.zoomIn();
           }
-          //resetMap();
+          resetMap();
           is_exanded = true;
           $(".geometric-search").show();
-          $("#clear-geometric-search").show();     
+          //$("#clear-geometric-search").show();     
         }
       });
 
       // Setup the expanded buttons
       buttons = $(module.template.buttons).insertBefore('#dataset-map-attribution');
+      document.getElementById('reset-button').href=document.getElementById('reset-href').innerHTML;
 
       // Handle the cancel expanded action
       $('.cancel', buttons).on('click', function() {
         $(".geometric-search").hide();
-        $("#clear-geometric-search").hide();
+        //$("#clear-geometric-search").hide();
         $('body').removeClass('dataset-map-expanded');
         if (extentLayer) {
           map.removeLayer(extentLayer);
@@ -165,10 +168,10 @@ this.ckan.module('spatial-query', function ($, _) {
       $('.apply', buttons).on('click', function() {
         if (extentLayer) {
           $(".geometric-search").hide();
-          $("#clear-geometric-search").hide();
+          //$("#clear-geometric-search").hide();
           $('body').removeClass('dataset-map-expanded');
           is_exanded = false;
-          //resetMap();
+          resetMap();
           // Eugh, hacky hack.
           setTimeout(function() {
             map.fitBounds(extentLayer.getBounds());

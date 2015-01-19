@@ -1055,9 +1055,9 @@ float:left;
     width: 900px !important;
     height: 364px !important;
 }
-.dataset-map-expanded #dataset-map #dataset-map-edit-buttons {
+/*.dataset-map-expanded #dataset-map #dataset-map-edit-buttons {
     padding: 7px !important;
-}
+}*/
 
 
 
@@ -1160,4 +1160,7 @@ ul.unstyled, ol.unstyled {
 }
 #category-primary > article > div > div{
     margin-top: 20px !important;
+}
+#reset-button{
+        margin-right: 3px;
 }

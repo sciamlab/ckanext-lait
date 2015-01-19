@@ -390,12 +390,12 @@ this.ckan.module('wmspreview', function (jQuery, _) {
     
     onFeatureWfsSelect: function(event) {
         var feature = event.feature;
-        var popupContent = "<table><tr><td><b>"+this.options.message_description+" :</b></td><td>" + feature.attributes.testo + "</td></tr>"+
-		  "<tr><td><b>"+this.options.message_user+"      :</b></td><td>" + feature.attributes.id_utente + "</td></tr>";
+        var popupContent = "<table><tr><td><b>"+self.options.message_description+" :</b></td><td>" + feature.attributes.testo + "</td></tr>"+
+		  "<tr><td><b>"+self.options.message_user+"      :</b></td><td>" + feature.attributes.id_utente + "</td></tr>";
         
         if (feature.attributes.stato && feature.attributes.stato == "NOT APPROVED")
         {
-        	popupContent +=	"<tr><td><b>"+this.options.message_status+"       :</b></td><td>" + feature.attributes.stato + "</td></tr>";
+        	popupContent +=	"<tr><td><b>"+self.options.message_status+"       :</b></td><td>" + feature.attributes.stato + "</td></tr>";
         }
         
         popupContent += "</table>";
