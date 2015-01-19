@@ -17,10 +17,10 @@
         {{ title }}
       </h2>
       {% if items %}
+
         <nav>
           <ul class="{{ nav_class or 'unstyled nav nav-simple nav-facet' }}">
             {% for item in items %}
-              {% set href = h.remove_url_param(name, item.name, extras=extras, alternative_url=alternative_url) if item.active else h.add_url_param(new_params={name: item.name}, extras=extras, alternative_url=alternative_url) %}
               {% set label = label_function(item) if label_function else item.display_name %}
               {% set label_truncated = h.truncate(label, 22) if not label_function else label %}
               {% if label_truncated!='None' %}
@@ -28,7 +28,7 @@
                 <li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %}">
                   <a href="{{ href }}" title="{{ label if label != label_truncated else '' }}">
                 	{% if name=='rating_average_int' %}
-                		<div class="starRate{{ label_truncated}}"></div> <span>{{ count }}</span>
+                		<div class="starRate{{ item.name }}"></div> <span>{{ count }}</span>
                   {% else %}
                    	{{ label_truncated }} <span>{{ count }}</span>
   		            {% endif %}
