@@ -68,7 +68,12 @@
 <input id="field-dataset-last-update" type="hidden" name="dataset_last_update">
 <script type="text/javascript">
 var now = new Date();
-document.getElementById('field-dataset-last-update').value = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+var year = now.getFullYear();
+var month = now.getMonth()+1;
+if(month.length==1) month = '0'+month;
+var day = now.getDate();
+if(day.length==1) day = '0'+day;
+document.getElementById('field-dataset-last-update').value = year+'-'+month'-'+day;
 </script>
 {% endblock %}
 
