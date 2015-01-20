@@ -19,7 +19,7 @@
   <label class="control-label" for="field-category">{{ _('Category') }}</label>
   <div class="controls">
     {% set categories = h.categories().categories %}
-    <input id="field-category-id" name="category_id" value="{{ data.get('category_id') }}">
+    <input id="field-category-id" type="hidden" name="category_id" value="{{ data.get('category_id') }}">
     <script type="text/javascript">
       var cats = {};
       {% set first = True %}
