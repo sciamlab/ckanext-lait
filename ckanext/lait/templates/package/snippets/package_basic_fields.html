@@ -21,9 +21,11 @@
     {% set categories = h.categories().categories %}
     <script type="text/javascript">
       var cats = {};
-        {% for category in categories  %}
-          cats["{{category.name}}"] = "{{category.id}}";
-        {% endfor %}
+      {% for category in categories  %}
+        cats["{{category.name}}"] = "{{category.id}}";
+      {% endfor %}
+      document.getElementById('field-category-id').value = cats[0].value];
+      
       function update_category(){
         var select = document.getElementById('field-category');
         document.getElementById('field-category-id').value = cats[select.options[select.selectedIndex].value];
