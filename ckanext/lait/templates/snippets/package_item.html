@@ -65,8 +65,8 @@ Example:
         {% endif %}
         {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
       </h3>
-      {% if(package.metadata_modified) %}
-      <h4>[{{ _('Updated on') }}: {{package.metadata_modified[8:10]}}/{{package.metadata_modified[5:7]}}/{{package.metadata_modified[:4]}}]</h4>
+      {% if package.dataset_last_update %}
+      <h4>[{{ _('Updated on') }}: {{package.dataset_last_update[8:10]}}/{{package.dataset_last_update[5:7]}}/{{package.dataset_last_update[:4]}}]</h4>
       {% elif(package.metadata_created) %}
       <h4>[{{ _('Created on') }}: {{package.metadata_created[8:10]}}/{{package.metadata_created[5:7]}}/{{package.metadata_created[:4]}}]</h4>
       {% endif %}
