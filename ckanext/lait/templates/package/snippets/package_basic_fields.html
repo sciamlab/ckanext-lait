@@ -68,13 +68,13 @@
 <input id="field-dataset-last-update" type="hidden" name="dataset_last_update">
 <script type="text/javascript">
 var now = new Date();
-var year = now.getFullYear();
-var month = now.getMonth()+1;
+var year = now.getFullYear().toString();
+var month = (now.getMonth()+1).toString();
 if(month.length==1) {
   month = '0'+month;
   alert(month);
 }
-var day = now.getDate();
+var day = now.getDate().toString();
 if(day.length==1) {
   day = '0'+day;
   alert(day);
