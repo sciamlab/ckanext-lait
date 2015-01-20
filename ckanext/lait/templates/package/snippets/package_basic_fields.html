@@ -22,14 +22,19 @@
     <input id="field-category-id" name="category_id" value="{{ data.get('category_id') }}">
     <script type="text/javascript">
       var cats = {};
+      {% set first = True %}
       {% for category in categories  %}
+        {% if first %}
+          var first_cat = "{{category.id}}";
+          {% set first = False %}
+        {% endif %}
         cats["{{category.name}}"] = "{{category.id}}";
         {% if data.get('category') == category.name %}
           document.getElementById('field-category-id').value = "{{category.id}}";
         {% endif %}
       {% endfor %}
       if(document.getElementById('field-category-id').value == 'None'){
-        document.getElementById('field-category-id').value = cats[0];
+        document.getElementById('field-category-id').value = first_cat;
       }
       function update_category(){
         var select = document.getElementById('field-category');
