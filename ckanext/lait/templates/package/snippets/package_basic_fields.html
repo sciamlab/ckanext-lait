@@ -23,8 +23,10 @@
       var cats = {};
       {% for category in categories  %}
         cats["{{category.name}}"] = "{{category.id}}";
+        {% if data.get('category') == category.name %}
+          document.getElementById('field-category-id').value = "{{category.id}}";
+        {% endif %}
       {% endfor %}
-      document.getElementById('field-category-id').value = cats[0].value];
       
       function update_category(){
         var select = document.getElementById('field-category');
