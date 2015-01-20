@@ -28,7 +28,9 @@
           document.getElementById('field-category-id').value = "{{category.id}}";
         {% endif %}
       {% endfor %}
-      
+      if(document.getElementById('field-category-id').value == 'None'){
+        document.getElementById('field-category-id').value = cats[0];
+      }
       function update_category(){
         var select = document.getElementById('field-category');
         document.getElementById('field-category-id').value = cats[select.options[select.selectedIndex].value];
