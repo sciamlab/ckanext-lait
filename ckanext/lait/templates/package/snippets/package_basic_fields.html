@@ -40,7 +40,7 @@
 </div>
 <div class="edit-spatial-box">
   {{ form.textarea('spatial', id='field-spatial', label=_('Location'), placeholder=_('eg. GeoJson data'), value=data.spatial, error=errors.spatial) }}
-  <div class="control-group">
+  <div class="control-group" style="display:none">
     {% set error = errors.comuni %}
     <label class="control-label">{{ _('Municipality') }}</label>
     <div class="controls">
