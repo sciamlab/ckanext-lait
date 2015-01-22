@@ -37,7 +37,7 @@ Example:
     <ul class="dataset-resources unstyled cat-dataset">
       <li class="ris">
         <img src="/catalog/img/ic-dataset.png" alt='' />
-        <a href="{% url_for controller='package', action='search', category=package.category %}" class="category-icon">
+        <a href="{% url_for controller='package', action='search', category_id=package.category_id %}" class="category-icon">
           {% if package.get('category_id', '') != '' %}
             <img class="category-icon-small" src="/catalog/img/cat_{{ package.category_id }}.png" />
           {% endif %}
