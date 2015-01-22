@@ -15,10 +15,10 @@
 						<li class="logo-login">{{c.userobj.fullname}} / <a href="/c/portal/logout">{{_('logout')}}</a></li>
 					{% endif %}
 					{% if current_lang == 'it' %}
-						<li class="en"><a href="{% url_for current_url, locale='en' %}">english</a></li>
+						<li class="en"><a href="/c/portal/language?redirect={% url_for current_url, locale='en' %}">english</a></li>
 					{% elif current_lang == 'en' %}
-						{% set liferay_lang_prefix = '/en' %}
-						<li class="en"><a href="{% url_for current_url, locale='it' %}">italiano</a></li>
+						{#% set liferay_lang_prefix = '/en' %#}
+						<li class="en"><a href="/c/portal/language?redirect={% url_for current_url, locale='it' %}">italian</a></li>
 					{% endif %}
 				</ul>
 			</div>
