@@ -35,7 +35,7 @@ def categories():
     return categories
 
 def apps(params):
-    #params = params.replace("&amp;", "&")
+    params = params.replace("&amp;", "&")
     params = params.replace(" ", "%20")
     url = config.get('ckan.base_url', '')+'/CKANAPIExtension/apps?'+params
     try:
