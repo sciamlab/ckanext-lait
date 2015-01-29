@@ -6216,6 +6216,12 @@ msgstr "Frequenza di aggiornamento"
 msgid "Community Rating"
 msgstr "Rating della Comunità"
 
+msgid "News and events"
+msgstr "Notizie ed eventi"
+
+msgid "Contacts"
+msgstr "Contatti"
+
 msgid "Clear filter"
 msgstr "Rimuovi filtro"
 

@@ -1,6 +1,6 @@
 {% set liferay_lang_prefix = '' %}
 {% if request.environ.CKAN_LANG == 'en' %}
-	{% set liferay_lang_prefix = '/en' %}
+	{#% set liferay_lang_prefix = '/en' %#}
 {% endif %}
 </div>
 			<!--END CONTAINER-OUT-->
@@ -23,6 +23,10 @@
 						<ul class="socials unstyled">
 							<li><a class="facebook" href="https://www.facebook.com/reglazio"></a><br></li>
 							<li><a class="twitter" href="https://twitter.com/RegioneLazio"></a><br></li>
+<<<<<<< HEAD
+=======
+							<!--li><a class="gplus" href=""></a><br></li-->
+>>>>>>> 73482b80778305f05cf6fb38fd030b956c56a4de
 							<li><a class="mail" href="mailto:info.opendatalazio@regione.lazio.it"></a><br></li>
 						</ul>
                 	</div>
@@ -54,7 +58,7 @@
 								<ul class="footer-navigate">
 									<li><a href="{{liferay_lang_prefix}}/application-programming-interface">{{_('Api')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/servizi-geografici">{{_('Geo services')}}</a></li>
-									<li><a href="{{liferay_lang_prefix}}/endpoint-sparql">{{_('Sparql endpoint')}}</a></li>
+									<li><a href="{{liferay_lang_prefix}}/virtuoso/sparql/">{{_('Sparql endpoint')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/ontologie">{{_('Ontologies')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/risolutore-di-uri">{{_('URIs resolver')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/feed-xml-rss">{{_('XML/RSS feed')}}</a></li>

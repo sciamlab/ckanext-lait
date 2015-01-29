@@ -15,10 +15,10 @@
 						<li class="logo-login">{{c.userobj.fullname}} / <a href="/c/portal/logout">{{_('logout')}}</a></li>
 					{% endif %}
 					{% if current_lang == 'it' %}
-						<li class="en"><a href="{% url_for current_url, locale='en' %}">english</a></li>
+						<li class="en"><a href="/c/portal/language?redirect={% url_for current_url, locale='en' %}">english</a></li>
 					{% elif current_lang == 'en' %}
-						{% set liferay_lang_prefix = '/en' %}
-						<li class="en"><a href="{% url_for current_url, locale='it' %}">italiano</a></li>
+						{#% set liferay_lang_prefix = '/en' %#}
+						<li class="en"><a href="/c/portal/language?redirect={% url_for current_url, locale='it' %}">italian</a></li>
 					{% endif %}
 				</ul>
 			</div>
@@ -81,7 +81,7 @@
 						<li class="active"><a href="{% url_for controller='package', action='search' %}">{{_('Data')}}</a></li>
 						<li class=""><a href="{{liferay_lang_prefix}}/applicazioni">{{_('Applications')}}</a></li>
 						<li class=""><a href="{{liferay_lang_prefix}}/comunita">{{_('Community')}}</a></li>
-						<li class=""><a href="{{liferay_lang_prefix}}/notizie">{{_('News and Events')}}</a></li>
+						<li class=""><a href="{{liferay_lang_prefix}}/notizie">{{_('News and events')}}</a></li>
 					</ul>
 				</div>
 			</div>

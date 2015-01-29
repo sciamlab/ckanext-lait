@@ -1,9 +1,14 @@
+{% if request.environ.CKAN_LANG == 'en' %}
+  {% set cat_name = category.name_en %}
+{% else %}
+  {% set cat_name = category.name %}
+{% endif %}
 <li class="media-item media-item-category">
   {% block image %}
     <img class="category-icon-big" src="/catalog/img/cat_{{ category.id }}.png" />
   {% endblock %}
   {% block title %}
-    <h3 class="media-heading">{{ category.name }}</h3>
+    <h3 class="media-heading">{{ cat_name }}</h3>
   {% endblock %}
   {% block description %}
     {% if category.description %}
@@ -17,8 +22,8 @@
       <span class="count">{{ _('0 Datasets') }}</span>
     {% endif %}
   {% endblock %}
-  <a href="{% url_for controller='package', action='search', category=category.name %}" title="{{ _('View {name}').format(name=category.name) }}" class="media-view">
-    <span>{{ _('View {name}').format(name=category.name) }}</span>
+  <a href="{% url_for controller='package', action='search', category=category.name %}" title="{{ _('View {name}').format(name=cat_name) }}" class="media-view">
+    <span>{{ _('View {name}').format(name=cat_name) }}</span>
   </a>
 </li>
 {% if position is divisibleby 4 %}
