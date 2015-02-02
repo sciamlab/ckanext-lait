@@ -6319,7 +6319,7 @@ msgid "Licenses"
 msgstr "Licenze di utilizzo"
 #: ckanext/lait/templates/footer.html
 msgid "Regulations and directives"
-msgstr "Leggi e direttve"
+msgstr "Leggi e direttive"
 
 #: ckanext/lait/templates/package/resource_read.html
 msgid "Improve the data"
