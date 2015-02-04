@@ -3220,11 +3220,8 @@ msgid ""
 msgstr " <p>Le organizzazioni agiscono come dipartimenti per la pubblicazione dei dataset (per esempio, il Dipartimento della Sanità). Ciò significa che i dataset possono essere pubblicati da un dipartimento invece che da un individuo, e appartengono al dipartimento.</p> <p>All'interno delle organizzazioni, gli amministratori possono assegnare ruoli e autorizzazioni ai loro membri, concedendo così agli utenti individuali il diritto di pubblicare i dataset per quella particolare organizzazione (ad es. l'Istituto nazionale di statistica).</p> "
 
 #: ckan/templates/organization/snippets/helper.html:8
-msgid ""
-" CKAN Organizations are used to create, manage and publish collections of "
-"datasets. Users can have different roles within an Organization, depending "
-"on their level of authorisation to create, edit and publish. "
-msgstr "Le Organizzazioni di CKAN sono usate per creare, gestire e pubblicare raccolte di dataset. Gli utenti possono avere diverse ruoli all'interno di un'Organizzazione, in relazione al loro livello di autorizzazione nel creare, modificare e pubblicare."
+msgid "An organization represents a Regione Lazio office or department, responsible for dataset publication."
+msgstr "Un'organizzazione rappresenta un ufficio o un dipartimento della Regione Lazio, responsabile per la pubblicazione di dataset."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
