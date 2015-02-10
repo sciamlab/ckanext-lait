@@ -17,7 +17,7 @@ e.g.
     <!--{{ _('Filter by location') }}
     <a href="{{ h.remove_url_param(['_exp', 'ext_bbox','ext_prev_extent', 'ext_location']) }}" class="action">{{ _('Clear') }}</a-->
   <!--/h2-->
-  <input type="text" class="geometric-search" placeholder="{{_('Search on map')}}" id="field-geometric-search" data-module="autocomplete" data-module-source="http://ovpngw.sinergis.it/catalog/geocoding_gazetteer?q=?" data-module-key="Value" style="display:none;width:500px;">
+  <input type="text" class="geometric-search" placeholder="{{_('Search on map')}}" id="field-geometric-search" data-module="autocomplete" data-module-source="/geocoding_gazetteer?q=?" data-module-key="Value" style="display:none;width:500px;">
   <!-- a id="clear-geometric-search" href="{{ h.remove_url_param(['_exp', 'ext_bbox','ext_prev_extent', 'ext_location']) }}" 
 class="action" style="float: right; padding-top: 6px; padding-right: 6px; display:none">{{ _('Clear filter') }}</a -->
 
