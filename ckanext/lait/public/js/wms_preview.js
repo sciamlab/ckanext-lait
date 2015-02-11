@@ -358,7 +358,7 @@ this.ckan.module('wmspreview', function (jQuery, _) {
             "chicken", 
             feature.geometry.getBounds().getCenterLonLat(),
             null,
-            '<label for="miglioraDatoInputText" class="miglioraDatoInputText">'+this.options.messagePropositionDescription+'</label><input id="miglioraDatoInputText" type="text"/></br><input class="btn" id="miglioraDatoInput" type="button" value="Salva"/>',
+            '<label for="miglioraDatoInputText" class="miglioraDatoInputText">'+this.options.messagePropositionDescription+'</label><input id="miglioraDatoInputText" type="text"/></br><input class="btn" id="miglioraDatoInput" type="button" value="Salva"/><input class="btn" id="miglioraDatoAnnullaInput" type="button" value="Annulla"/>',
             null, 
             false, 
             self.onPopupClose);
@@ -377,6 +377,12 @@ this.ckan.module('wmspreview', function (jQuery, _) {
             delete feature.popup;
 			this.wfs.addFeatures(feature);
 		}.bind(this));        
+		
+		$("#miglioraDatoAnnullaInput" ).on("click", function() {
+this.drawLayer.removeAllFeatures();
+feature.popup.destroy();
+delete feature.popup;
+                }.bind(this));
     },
     
     onFeatureUnselect: function(event) {
