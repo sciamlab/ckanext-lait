@@ -6213,6 +6213,9 @@ msgstr "Frequenza di aggiornamento"
 msgid "Community Rating"
 msgstr "Rating della Comunità"
 
+msgid "Portal search"
+msgstr "Ricerca sul portale"
+
 msgid "News and events"
 msgstr "Notizie ed eventi"
 

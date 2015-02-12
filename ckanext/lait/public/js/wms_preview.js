@@ -135,7 +135,7 @@ this.ckan.module('wmspreview', function (jQuery, _) {
               "maxScale": (layer.maxScale) ? layer.maxScale : null,
               "minScale": (layer.minScale) ? layer.minScale : null,
               "isBaseLayer": false,
-              "visibility": (count == 0)
+              "visibility": true
               })  //Tiled?
             );
 

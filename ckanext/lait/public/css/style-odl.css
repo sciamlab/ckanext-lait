@@ -1164,3 +1164,7 @@ ul.unstyled, ol.unstyled {
 #reset-button{
         margin-right: 3px;
 }
+#content > div > section > div > p{
+	margin-bottom: 10px;
+	font-weight: bold;
+}

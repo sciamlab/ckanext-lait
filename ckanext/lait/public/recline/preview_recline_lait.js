@@ -126,13 +126,6 @@ this.ckan.module('reclinepreview', function (jQuery, _) {
           })
         },
         {
-          id: 'graph',
-          label: 'Graph',
-          view: new recline.View.Graph({
-            model: dataset
-          })
-        },
-        {
           id: 'map',
           label: 'Map',
           view: mapView
@@ -164,7 +157,8 @@ this.ckan.module('reclinepreview', function (jQuery, _) {
       layers.drawnItems = new L.FeatureGroup();
       layers.markersLayer = new L.FeatureGroup();      
       mapView.map.addLayer(layers.drawnItems);
-      mapView.map.addLayer(layers.markersLayer);      
+      mapView.map.addLayer(layers.markersLayer);  
+      mapView.map.setView([41.9737037522, 12.7773122216], 8);    
 
       ricerca.on("select2-selecting", function(e){
     	  var coordinates = e.val.split(" ");
