@@ -2,6 +2,11 @@
 
 /*@import url('rating.css');*/
 
+.nav-open > li.noh a:hover, .nav-open > li.noh a:hover span  {
+	color:#999;
+	text-decoration:none;
+}
+
 .stages {
     margin-top: 0px !important;
 }

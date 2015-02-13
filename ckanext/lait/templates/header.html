@@ -15,10 +15,11 @@
 						<li class="logo-login">{{c.userobj.fullname}} / <a href="/c/portal/logout">{{_('logout')}}</a></li>
 					{% endif %}
 					{% if current_lang == 'it' %}
-						<li class="en"><a href="/c/portal/language?redirect={% url_for current_url, locale='en' %}">english</a></li>
+						{% set liferay_lang_prefix = '/it' %}
+						<li class="en"><a href="{% url_for current_url, locale='en' %}">english</a></li>
 					{% elif current_lang == 'en' %}
-						{#% set liferay_lang_prefix = '/en' %#}
-						<li class="en"><a href="/c/portal/language?redirect={% url_for current_url, locale='it' %}">italian</a></li>
+						{% set liferay_lang_prefix = '/en' %}
+						<li class="en"><a href="{% url_for current_url, locale='it' %}">italian</a></li>
 					{% endif %}
 				</ul>
 			</div>
@@ -55,9 +56,9 @@
                         </div>
                         <div class="span8">
                             <ul class="nav-open">
-	                        <li>open <span>progetti</span></li>
+	                        <li class="noh"><a href="http://openprogetti.lazio.it">open <span>progetti</span></a></li>
 				<li><a href="http://openspesa.lazio.it">open <span>spesa</span></a></li>
-				<li>open <span>sanità</span></li>
+				<li class="noh"><a href="http://opensanita.lazio.it">open <span>sanità</span></a></li>
                             </ul>
                     	</div>
                     </div>
@@ -86,20 +87,41 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="subnav-out">
 			<div class="container">
 				<div class="subnav-in nav-in">
 					<ul class="nav">
-						<li {% if '/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')!='true' %}class="active"{% endif %}><a href="{% url_for controller='package', action='search' %}">{{_('Dataset')}}</a></li>
-						<li><a href="{{liferay_lang_prefix}}/dati-geografici">{{_('Geo Data')}}</a></li>
-						<li {% if '/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')=='true' %}class="active"{% endif %}><a href="{% url_for controller='package', action='search' %}?_exp=true">{{_('Search on map')}}</a></li>
-						<li {% if '/organization' in request.environ.CKAN_CURRENT_URL %}class="active"{% endif %}><a href="{% url_for controller='organization', action='index' %}">{{_('Search by organization')}}</a></li>
-						<li {% if request.environ.CKAN_CURRENT_URL.endswith('/category') %}class="active"{% endif %}><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='category' %}">{{_('Search by category')}}</a></li>
-						<li {% if request.environ.CKAN_CURRENT_URL.endswith('/app') %}class="active"{% endif %}><a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='app' %}">{{_('Search Apps')}}</a></li>
-						<li><a href="{{liferay_lang_prefix}}/application-programming-interface">{{_('API')}}</a></li>
-						<li><a href="{{liferay_lang_prefix}}/linked-data">{{_('Linked Data')}}</a></li>
-						<li><a href="{{liferay_lang_prefix}}/invia-il-tuo-dataset">{{_('Submit your dataset')}}</a></li>
+
+{% set is_geo_data = ('?res_format=wms&res_format=geojson' in request.environ.CKAN_CURRENT_URL) %}
+{% set is_map_search = ('/dataset' in request.environ.CKAN_CURRENT_URL and request.params.get('_exp')=='true') %}
+{% set is_linked_data = ('?res_format=sparql&res_format=rdf' in request.environ.CKAN_CURRENT_URL) %}
+	
+	<li {% if not is_geo_data and not is_map_search and not is_linked_data %}class="active"{% endif %}>
+		<a href="{% url_for controller='package', action='search' %}">{{_('Dataset')}}</a></li>
+
+	<li {% if is_geo_data %}class="active"{% endif %}>
+		<a href="{% url_for controller='package', action='search' %}?res_format=wms&res_format=geojson">{{_('Geo Data')}}</a></li>
+
+	<li {% if is_map_search %}class="active"{% endif %}>
+		<a href="{% url_for controller='package', action='search' %}?_exp=true">{{_('Search on map')}}</a></li>
+
+	<li {% if '/organization' in request.environ.CKAN_CURRENT_URL %}class="active"{% endif %}>
+		<a href="{% url_for controller='organization', action='index' %}">{{_('Search by organization')}}</a></li>
+
+	<li {% if request.environ.CKAN_CURRENT_URL.endswith('/category') %}class="active"{% endif %}>
+		<a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='category' %}">{{_('Search by category')}}</a></li>
+
+	<li {% if request.environ.CKAN_CURRENT_URL.endswith('/app') %}class="active"{% endif %}>
+		<a href="{% url_for controller='ckanext.lait.plugin:LaitController', action='app' %}">{{_('Search Apps')}}</a></li>
+
+	<li>
+		<a href="{{liferay_lang_prefix}}/application-programming-interface">{{_('API')}}</a></li>
+
+	<li {% if is_linked_data %}class="active"{% endif %}>
+		<a href="{% url_for controller='package', action='search' %}?res_format=sparql&res_format=rdf">{{_('Linked Data')}}</a></li>
+
+	<li>
+		<a href="{{liferay_lang_prefix}}/invia-il-tuo-dataset">{{_('Submit your dataset')}}</a></li>
 					</ul>
 				</div>
 			</div>

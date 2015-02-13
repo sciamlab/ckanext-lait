@@ -1,6 +1,6 @@
-{% set liferay_lang_prefix = '' %}
+{% set liferay_lang_prefix = '/it' %}
 {% if request.environ.CKAN_LANG == 'en' %}
-	{#% set liferay_lang_prefix = '/en' %#}
+	{% set liferay_lang_prefix = '/en' %}
 {% endif %}
 </div>
 			<!--END CONTAINER-OUT-->
@@ -43,7 +43,7 @@
 									<li><a href="{{liferay_lang_prefix}}/chi-siamo">{{_('About')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/linee-guida">{{_('Guidelines')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/contatti">{{_('Contacts')}}</a></li>
-									<li><a href="{% url_for controller='ckanext.stats.controller:StatsController', action='index' %}">{{_('Statistics')}}</a></li>
+									<li><a href="{{liferay_lang_prefix}}/statistiche">{{_('Statistics')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/informativa-dati-personali">{{_('Personal data disclaimer')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/condizione-d-uso">{{_('Terms of use')}}</a></li>
 									<li><a href="{{liferay_lang_prefix}}/link">{{_('Links')}}</a></li>
