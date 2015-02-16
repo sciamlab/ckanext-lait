@@ -6157,6 +6157,9 @@ msgstr "Al momento non ci sono app per questo sito"
 #: ckanext/lait/templates/app/index.html
 msgid "Apps"
 msgstr "App"
+#: ckanext/lait/templates/app/index.html
+msgid "No apps found"
+msgstr "Nessuna app trovata"
 
 #: ckan/templates/translator/index.html
 msgid "Translator"
