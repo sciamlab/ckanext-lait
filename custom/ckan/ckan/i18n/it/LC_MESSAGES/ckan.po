@@ -6216,6 +6216,9 @@ msgstr "Frequenza di aggiornamento"
 msgid "Community Rating"
 msgstr "Rating della Comunità"
 
+msgid "Share"
+msgstr "Condividi"
+
 msgid "Portal search"
 msgstr "Ricerca sul portale"
 
@@ -6291,8 +6294,8 @@ msgstr "Chi siamo"
 msgid "Links"
 msgstr "Link"
 #: ckanext/lait/templates/footer.html
-msgid "Data and Ontologies"
-msgstr "Dati e ontologie"
+msgid "ONTOLOGIES"
+msgstr "ONTOLOGIE"
 #: ckanext/lait/templates/footer.html
 msgid "Geo services"
 msgstr "Servizi geografici"
@@ -6311,6 +6314,9 @@ msgstr "Feed XML/RSS"
 #: ckanext/lait/templates/footer.html
 msgid "Help"
 msgstr "Aiuto"
+#: ckanext/lait/templates/footer.html
+msgid "HELP"
+msgstr "AIUTO"
 #: ckanext/lait/templates/footer.html
 msgid "Support"
 msgstr "Assistenza"

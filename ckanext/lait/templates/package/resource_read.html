@@ -73,7 +73,7 @@
                   document.getElementById("resource-license-url").innerHTML = '<a target="_blank" href="{{pkg.license_url}}">{{pkg.license_url}}</a>';
                   document.getElementById("license-confirmation").onclick = function(){
                     $('#licenseModal').modal('hide');
-                    window.location.href = '{{res.url}}';
+                    window.location.href = '{{res.url}}'.replace(/&amp;/g,'&');
                   };
                 </script>
                 <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="#licenseModal" data-toggle="modal">
