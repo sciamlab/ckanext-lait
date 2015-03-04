@@ -1157,6 +1157,7 @@ ul.unstyled, ol.unstyled {
     width: 180px !important;
     padding: 15px !important;
     margin: 15px 0 0 15px !important;
+    height: 200px;
 }
 
 .media-item-app{
