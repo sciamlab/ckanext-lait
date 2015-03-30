@@ -8,7 +8,7 @@
     <img class="category-icon-big" src="/catalog/img/cat_{{ category.id }}.png" />
   {% endblock %}
   {% block title %}
-    <h3 class="media-heading">{{ cat_name }}</h3>
+    <h3 class="media-heading" style="text-align:center">{{ cat_name }}</h3>
   {% endblock %}
   {% block description %}
     {% if category.description %}
@@ -17,9 +17,9 @@
   {% endblock %}
   {% block datasets %}
     {% if category.packages %}
-      <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', category.packages).format(num=category.packages) }}</strong>
+      <strong class="count" style="text-align:center">{{ ungettext('{num} Dataset', '{num} Datasets', category.packages).format(num=category.packages) }}</strong>
     {% elif category.packages == 0 %}
-      <span class="count">{{ _('0 Datasets') }}</span>
+      <span class="count" style="text-align:center">{{ _('0 Datasets') }}</span>
     {% endif %}
   {% endblock %}
   <a href="{% url_for controller='package', action='search', category=category.name %}" title="{{ _('View {name}').format(name=cat_name) }}" class="media-view">
