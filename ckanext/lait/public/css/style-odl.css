@@ -1174,3 +1174,6 @@ ul.unstyled, ol.unstyled {
 	margin-bottom: 10px;
 	font-weight: bold;
 }
+.media-item-organization{
+    height: 200px;
+}
