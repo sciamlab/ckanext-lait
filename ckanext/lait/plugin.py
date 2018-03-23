@@ -44,7 +44,7 @@ def infograph_data(res,infograph_config):
 	query += ' GROUP BY "'+axis1+'" ORDER BY "'+axis1+'"'
 	# +' LIMIT 10'
 	log.debug(query)
-	url = config.get('ckan.base_url', 'http://localhost:5000')+'/api/action/datastore_search_sql?sql='+query.replace(' ','%20')
+	url = config.get('ckan.base_url')+'/catalog/api/action/datastore_search_sql?sql='+query.replace(' ','%20')
 	try:
 		response = urllib2.urlopen(url)
 		response_body = response.read()
@@ -62,7 +62,7 @@ def infograph_data(res,infograph_config):
 	return data
 
 def categories():
-    url = 'http://dati.lazio.it/CKANAPIExtension/categories?count=true'
+    url = config.get('ckan.base_url')+'/CKANAPIExtension/categories?count=true'
     try:
         response = urllib2.urlopen(url)
         response_body = response.read()
