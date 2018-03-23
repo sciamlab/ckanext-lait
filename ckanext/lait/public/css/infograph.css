@@ -1,0 +1,80 @@
+.filter .values {
+	list-style-type: none;
+	display: inline;
+	margin: 0;
+}
+.filter .values li {
+	font-weight: bold;
+	display: inline;
+}
+.filter .values li:after {
+    content: " | ";
+}
+.filter .values li:last-child:after {
+    content: "";
+}
+
+
+.toolTip {
+	position: absolute;
+	display: none;
+	min-width: 80px;
+	height: auto;
+	background: none repeat scroll 0 0 #ffffff;
+	border: 1px solid #6F257F;
+	padding: 14px;
+	text-align: center;
+}
+
+
+
+
+
+.pie_chart .arc text {
+	font-size: 14px;
+	font-weight: bold;
+	fill: white;
+	text-anchor: middle;
+}
+.pie_chart .arc path, .line_chart .line {
+	stroke: #fff;
+}
+
+.bar_chart .bar {
+	fill: #002742;
+}
+.line_chart .line {
+	fill: none;
+	stroke: #002742;
+	stroke-width: 1.5px;
+	/* stroke-linejoin: round;
+	stroke-linecap: round; */
+}
+
+/* hover */
+.pie_chart .arc:hover path, .bar_chart .bar:hover, .line_chart .circle:hover  {
+	fill: #ff3300;
+}
+
+
+
+
+
+
+
+
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: #ff3300;
+}
+
+.hover-line {
+  stroke: #ff3300;
+  stroke-width: 2px;
+  stroke-dasharray: 3,3;
+}

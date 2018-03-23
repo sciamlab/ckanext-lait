@@ -46,7 +46,7 @@
         <option value="{{ category.name }}" {% if data.get('category') == category.name %}selected="selected"{% endif %}>{{ category.name }}</option>
       {% endfor %}
     </select>
-    
+
     {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
   </div>
 </div>
@@ -88,6 +88,8 @@ if(day.length==1) day = '0'+day;
 document.getElementById('field-dataset-last-update').value = year+'-'+month+'-'+day;
 </script>
 {% endblock %}
+
+{{ form.textarea('infograph', id='field-infograph', label=_('Infograph'), placeholder=_('eg. Json data'), value=data.infograph, error=errors.infograph) }}
 
 {% block package_basic_fields_description %}
   {{ form.markdown('notes', id='field-notes', label=_('Description'), placeholder=_('eg. Some useful notes about the data'), value=data.notes, error=errors.notes) }}

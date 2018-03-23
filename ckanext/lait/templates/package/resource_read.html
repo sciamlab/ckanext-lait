@@ -108,17 +108,78 @@
           {% endblock %}
         </div>
       </div>
-      {% block data_preview %}
-	 {% if (res.format.lower() == "geojson" or res.format.lower() == "gjson" or res.format.lower() == "wms" or res.format.lower() == "csv") %}
-	    <div style="padding: 0 25px 10px;">
-              <input type="text" class="geometric-search" placeholder="{{_('Search on map')}}" id="field-geometric-search" data-module="autocomplete" data-module-source="/geocoding_gazetteer?q=?" data-module-key="Value">
-	    </div>
-        {% endif %}
-        {{ h.resource_preview(c.resource, c.package) }}
-      {% endblock %}
+
+			{% block data_preview %}
+				{% set infograph_config = h.convert_string_to_dict(pkg.infograph) %}
+				{% set is_chart = res.id in infograph_config %}
+
+			  <ul class="nav nav-tabs" id="myTab">
+					{% if is_chart %}
+						<li class="active">
+							<a href="#tab1" data-toggle="tab">
+								<i class="icon icon-bar-chart"></i>
+								{{_('Chart')}}
+							</a>
+						</li>
+					{% endif %}
+					<li class="{{'active' if not is_chart else ''}}">
+						<a href="#tab2" data-toggle="tab">
+							<i class="icon icon-table"></i>
+							{{_('Data')}}
+						</a>
+					</li>
+			  </ul>
+			  <div class="tab-content" id="myTabContent" style="display:block">
+					{% if is_chart %}
+				    <div class="tab-pane in active" id="tab1">
+							<h2>{{_(infograph_config[res.id].title)}}</h2>
+							{% set filters = infograph_config[res.id].get('filter',[]) %}
+							{% if filters %}
+								<h3><strong>{{_('Active filters')}}:</strong></h3>
+								<ul class="filter">
+								{% for f in filters %}
+						      <li>{{f.column}} {{f.get('operator','=')}}
+										<ul class="values">
+											{% for v in f.get('values',[]) %}
+												<li>"{{v}}"</li>
+											{% endfor %}
+										</ul>
+									</li>
+						    {% endfor %}
+								</ul>
+							{% endif %}
+							<div class="module-content ckanext-datapreview" style="text-align: center">
+								<svg class="{{infograph_config[res.id]['graph_type']}}_chart" width="800" height="666" preserveAspectRatio="none"></svg>
+							</div>
+				    </div>
+					{% endif %}
+			    <div class="tab-pane {{'in active' if not is_chart else ''}}" id="tab2">
+				 			{% if (res.format.lower() == "geojson" or res.format.lower() == "gjson" or res.format.lower() == "wms" or res.format.lower() == "csv") %}
+						    <div style="padding: 0 25px 10px;">
+						      <input type="text" class="geometric-search" placeholder="{{_('Search on map')}}" id="field-geometric-search" data-module="autocomplete" data-module-source="/geocoding_gazetteer?q=?" data-module-key="Value">
+						    </div>
+			        {% endif %}
+			        {{ h.resource_preview(c.resource, c.package) }}
+			    </div>
+			  </div>
+
+				{% if is_chart %}
+					<meta id="res_id" data="{{res.id}}">
+					<meta id="infograph_config" data="{{h.convert_dict_to_string(infograph_config[res.id])}}">
+					{% set infograph_data = h.infograph_data(res,infograph_config[res.id]) %}
+					<meta id="infograph_data" data="{{h.convert_dict_to_string(infograph_data)}}">
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/it.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+					{% resource 'ckanext-lait/infograph'%}
+				{% endif %}
+
+			{% endblock %}
+
     </section>
   {% endblock %}
-          
+
 {% endblock %}
 
 {% block primary_content %}
@@ -191,4 +252,3 @@
     {% snippet "snippets/social.html" %}
   {% endblock %}
 {% endblock %}
-

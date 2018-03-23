@@ -16,11 +16,53 @@ import ckan.lib.navl as navl
 import sets
 import ckan
 import ckan.lib.jsonp as jsonp
+import ast
 
 log = logging.getLogger(__name__)
 
+def convert_dict_to_string(dictionary):
+	return json.dumps(dictionary)
+
+def convert_string_to_dict(string):
+	# return ast.literal_eval(string)
+	return json.loads(string) if string else {}
+
+def infograph_data(res,infograph_config):
+	res_id = res['id']
+	axis1 = infograph_config['axis1']
+	axis2 = infograph_config['axis2']
+	aggregation = infograph_config.get('aggregation','sum')
+	# sort = infograph_config.get('sort','_id')
+	# order = infograph_config.get('order','ASC')
+	query = 'SELECT "'+axis1+'",'+aggregation+'("'+axis2+'") AS "'+axis2+'" FROM "'+res_id+'" WHERE 1=1'
+	if infograph_config.get('filter',[]):
+		for f in infograph_config.get('filter',[]):
+			query += ' AND (1=0'
+			for v in f.get('values',[]):
+				query += ' OR "'+f['column']+'" '+f.get('operator','=')+' \''+v+'\''
+			query += ')'
+	query += ' GROUP BY "'+axis1+'" ORDER BY "'+axis1+'"'
+	# +' LIMIT 10'
+	log.debug(query)
+	url = config.get('ckan.base_url', 'http://localhost:5000')+'/api/action/datastore_search_sql?sql='+query.replace(' ','%20')
+	try:
+		response = urllib2.urlopen(url)
+		response_body = response.read()
+	except Exception, inst:
+		msg = "Couldn't connect to datastore service %r: %s" % (url, inst)
+		raise Exception, msg
+	try:
+		datastore = json.loads(response_body)
+	except Exception, inst:
+		msg = "Couldn't read response from datastore service %r: %s" % (response_body, inst)
+		raise Exception, inst
+	data = []
+	for r in datastore["result"]["records"]:
+		data.append({'axis1':r[axis1],'axis2':float(r[axis2])})
+	return data
+
 def categories():
-    url = config.get('ckan.base_url', '')+'/CKANAPIExtension/categories?count=true'
+    url = 'http://dati.lazio.it/CKANAPIExtension/categories?count=true'
     try:
         response = urllib2.urlopen(url)
         response_body = response.read()
@@ -86,7 +128,7 @@ def translate_resource_data_dict(data_dict):
         desired_lang_code = pylons.request.environ['CKAN_LANG']
     except Exception, e:
         desired_lang_code = 'it'
-    
+
     fallback_lang_code = pylons.config.get('ckan.locale_default', 'en')
 
     # Get a flattened copy of data_dict to do the translation on.
@@ -195,7 +237,12 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         return translated_data_dict
 
     def get_helpers(self):
-        return {'translate_related_list': translate_related_list, 'translate_resource_data_dict_list': translate_resource_data_dict_list, 'apps': apps, 'comuni': comuni, 'categories': categories, 'facets':facets}
+        return {'translate_related_list': translate_related_list,
+		'translate_resource_data_dict_list': translate_resource_data_dict_list,
+		'apps': apps, 'comuni': comuni, 'categories': categories, 'facets':facets,
+		'infograph_data': infograph_data,
+		'convert_string_to_dict': convert_string_to_dict,
+		'convert_dict_to_string': convert_dict_to_string}
 
     def update_config(self, config):
         # Add this plugin's templates dir to CKAN's extra_template_paths, so
@@ -225,6 +272,10 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         })
         schema.update({
             'spatial': [tk.get_validator('ignore_missing'),
+                            tk.get_converter('convert_to_extras')]
+        })
+        schema.update({
+            'infograph': [tk.get_validator('ignore_missing'),
                             tk.get_converter('convert_to_extras')]
         })
         schema.update({
@@ -279,6 +330,10 @@ class LaitPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         })
         schema.update({
             'spatial': [tk.get_converter('convert_from_extras'),
+                            tk.get_validator('ignore_missing')]
+        })
+        schema.update({
+            'infograph': [tk.get_converter('convert_from_extras'),
                             tk.get_validator('ignore_missing')]
         })
         schema.update({
